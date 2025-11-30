@@ -193,6 +193,7 @@
             letter-spacing: 1px;
             transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s;
             border: none; /* Ensure buttons don't have default borders */
+            cursor: pointer;
         }
 
         .button:hover {
@@ -294,6 +295,8 @@
             outline: none;
         }
 
+        /* Removed Message Box and Copy Button styles */
+
         /* --- FOOTER --- */
         footer {
             background: #000000;
@@ -385,8 +388,6 @@
                 </div>
 
             </div>
-            <!-- Removed: The entire #support-section div was here. -->
-
         </div>
     </section>
 
@@ -397,24 +398,22 @@
             <p>I am always looking for new challenges and learning opportunities.</p>
             
             <div class="contact-form">
-                <!-- 
-                    FORM FIX: Using mailto: protocol as a reliable alternative to Formsubmit.
-                    The recipient email is now set to sukrutmannari2@gmail.com
-                -->
-                <form action="mailto:sukrutmannari2@gmail.com" method="POST" enctype="text/plain">
+                <!-- FORM REVERTED: Using FormSubmit for reliable backend-less form submission -->
+                <form action="https://formsubmit.co/sukrutmannari2@gmail.com" method="POST">
+                    <!-- Hidden field for email subject line -->
+                    <input type="hidden" name="_subject" value="New Portfolio Inquiry from Sukrut Mannari Website">
+
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <!-- Added 'Name' attribute to be included in the email body -->
+                        <!-- Note: Field names are capitalized for better email readability via FormSubmit -->
                         <input type="text" id="name" name="Name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <!-- Added 'Email' attribute to be included in the email body -->
                         <input type="email" id="email" name="Email" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <!-- Added 'Message' attribute to be included in the email body -->
                         <textarea id="message" name="Message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="button">Send Message</button>
@@ -431,6 +430,8 @@
     <footer>
         <p>&copy; 2025 Sukrut Mannari. All rights reserved.</p>
     </footer>
+
+    <!-- All custom JavaScript logic for manual email copying has been removed -->
 
 </body>
 </html>
