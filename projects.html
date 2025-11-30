@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Sukrut Mannari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+            height: 3px;
+            background-color: #38bdf8;
+            border-radius: 9999px;
+        }
+        .project-card {
+            background-color: #161b22;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            scroll-margin-top: 6rem; /* For smooth scrolling to anchors */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar (Identical to index.html) -->
+    <header class="sticky top-0 z-50 bg-[#0d1117]/95 backdrop-blur-sm shadow-md">
+        <nav class="container flex justify-between items-center h-16">
+            <div class="text-xl font-bold text-white tracking-wider">SUKRUT MANNARI</div>
+            <div class="space-x-4 text-sm font-medium">
+                <a href="index.html" class="hover:text-blue-400 transition-colors">Home</a>
+                <a href="projects.html" class="text-blue-400 transition-colors">Projects</a>
+                <a href="music.html" class="hover:text-blue-400 transition-colors">Music</a>
+                <a href="extracurriculars.html" class="hover:text-blue-400 transition-colors">Extracurriculars</a>
+                <a href="index.html#connect" class="hover:text-blue-400 transition-colors">Connect</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="py-12">
+        <section class="container">
+            <h1 class="text-4xl font-extrabold text-white mb-4">Engineering & Robotics Projects</h1>
+            <p class="text-xl text-gray-400 mb-12">Explore the designs, construction processes, and technologies used in my hands-on creations.</p>
+
+            <!-- Project 1: Bluetooth-Controlled Lego EV3 Car -->
+            <div id="lego-car" class="project-card">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4">Bluetooth-Controlled Lego EV3 Car</h2>
+                <p class="text-gray-300 mb-4">
+                    This project involved creating a remote-controlled car using the official Lego Mindstorms EV3 kit. The primary challenge was programming the **EV3 Intelligent Brick** to establish and maintain a stable **Bluetooth connection** with an external custom controller (often a smartphone or tablet interface).
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-400 pl-4">
+                    <li>**Technology:** Lego Mindstorms EV3, Bluetooth Communication, EV3-G graphical programming language (or Python/Scratch equivalent).</li>
+                    <li>**Construction:** Careful assembly ensuring the structural integrity to withstand quick starts and stops, focusing on gear ratios for optimal speed vs. torque.</li>
+                    <li>**Skills Demonstrated:** Robotics control, wireless communication protocol implementation, debugging hardware/software interaction.</li>
+                </ul>
+            </div>
+
+            <!-- Project 2: Upcycled RC Glider Project -->
+            <div id="glider" class="project-card">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4">Upcycled RC Glider Project</h2>
+                <p class="text-gray-300 mb-4">
+                    This build focused heavily on applying **aeronautical principles** and sustainability. I salvaged the motor, battery, and remote electronics from a discarded RC car. The new airframe was meticulously crafted from lightweight cardboard, requiring multiple iterations to perfect the airfoil shape and ensure the **center of gravity** was correctly balanced for stable flight.
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-400 pl-4">
+                    <li>**Key Focus:** Aerodynamics, weight distribution, material science (lightweight cardboard construction).</li>
+                    <li>**Process:** Measured, cut, and assembled custom wings and stabilizers. Required careful soldering and wiring of the salvaged components.</li>
+                    <li>**Outcome:** A functional, lightweight glider capable of being remotely steered after a successful launch.</li>
+                </ul>
+            </div>
+
+            <!-- Project 3: Arduino Steering Wheel (Unojoy) -->
+            <div id="arduino" class="project-card">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4">Arduino Steering Wheel (Unojoy)</h2>
+                <p class="text-gray-300 mb-4">
+                    I utilized an Arduino Uno microcontroller and the **Unojoy framework** to create a custom steering wheel that could interface with PC games. This project deepened my understanding of how analog inputs (like a rotary sensor or potentiometer) are read by a microcontroller, converted into digital data, and then sent to a computer, simulating a standard game controller.
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-400 pl-4">
+                    <li>**Technology:** Arduino Uno, Unojoy library, Potentiometer (for steering input), custom button inputs.</li>
+                    <li>**Coding:** Implementing C++ code in the Arduino IDE to map physical rotation to game controller axis data.</li>
+                    <li>**Learning:** Gained experience in microcontrollers, input/output (I/O) hardware interfacing, and device drivers.</li>
+                </ul>
+            </div>
+
+            <!-- Project 4: Lego Master Builds Collection -->
+            <div id="lego-collection" class="project-card">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4">Lego Master Builds Collection</h2>
+                <p class="text-gray-300 mb-4">
+                    This collection represents a history of complex, large-scale Lego builds, showcasing early development in **structural and mechanical engineering**. These builds required careful planning, attention to detail, and persistence in following intricate instruction manuals. It highlights an ingrained passion for construction and problem-solving from a young age.
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-400 pl-4">
+                    <li>**Focus:** Complex mechanical systems, architectural design, structural stability.</li>
+                    <li>**Skills:** Following detailed instructions, spatial reasoning, patience, and meticulous attention to detail.</li>
+                </ul>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#161b22] py-4 text-center text-sm text-gray-500">
+        &copy; 2025 Sukrut Mannari. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
