@@ -18,6 +18,7 @@
             --color-text-light: #e0e0e0;
             --color-accent: #00aaff; /* Electric Sky Blue */
             --color-accent-hover: #66ccff;
+            --color-success: #32cd32; /* Lime Green */
         }
 
         body {
@@ -105,7 +106,6 @@
         .nav-links a:hover {
             color: var(--color-accent);
             text-decoration: none;
-            /* Blue Contrail/Glow Effect on Hover */
             text-shadow: 0 0 5px var(--color-accent), 0 0 10px rgba(0, 170, 255, 0.5);
         }
 
@@ -129,17 +129,13 @@
         }
 
 
-        /* --- HERO SECTION (Glider Background - using download.png) --- */
+        /* --- HERO SECTION --- */
         .hero {
             background: linear-gradient(135deg, #0d1b2a 0%, #03080e 100%); 
-            
-            /* Image reference using download.png */
-            /* NOTE: If 'download.png' is not in the same folder, this will be blank! */
             background-image: url('download.png'); 
             background-size: cover; 
             background-position: center 30%; 
             background-repeat: no-repeat;
-            
             min-height: 450px;
             display: flex;
             align-items: center;
@@ -149,7 +145,6 @@
             position: relative; 
         }
 
-        /* Dark Overlay to Ensure Text Readability */
         .hero::before {
             content: "";
             position: absolute;
@@ -157,7 +152,7 @@
             right: 0;
             bottom: 0;
             left: 0;
-            background-color: rgba(0, 0, 0, 0.45); /* Slightly darker overlay */
+            background-color: rgba(0, 0, 0, 0.45); 
             z-index: 1;
         }
 
@@ -193,6 +188,7 @@
             font-weight: 700;
             letter-spacing: 1px;
             transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s;
+            border: none; /* Ensure buttons don't have default borders */
         }
 
         .button:hover {
@@ -210,7 +206,6 @@
 
         /* --- PROJECT CARDS --- */
         .project-grid {
-            /* Now using 5 items, adjust minmax for better spacing if needed */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
@@ -233,8 +228,8 @@
 
         .project-image {
             width: 100%;
-            height: 200px; /* Fixed height for consistent card size */
-            object-fit: cover; /* Ensures images cover the area without distortion */
+            height: 200px; 
+            object-fit: cover; 
             border-radius: 6px;
             margin-bottom: 15px;
             border: 1px solid #333;
@@ -250,58 +245,66 @@
             margin-top: 15px;
             font-weight: bold;
         }
-
-        /* --- LLM Interaction Styles --- */
-        .llm-output-box {
+        
+        /* --- DONATION SECTION STYLES --- */
+        #support-section {
+            background-color: #0d1b2a;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
             margin-top: 50px;
-            padding: 25px;
-            border-radius: 8px;
-            background-color: #1a1a1a;
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
             border: 2px solid var(--color-accent);
-            display: none; /* Initially hidden */
-            text-align: left;
-            box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
         }
-        .llm-output-box h4 {
-            color: var(--color-accent-hover);
-            margin-top: 0;
-            font-size: 1.2em;
+        #support-section h3 {
+            font-size: 1.8em;
+            color: var(--color-accent);
+            margin-bottom: 10px;
         }
-        .llm-button {
-            display: block;
-            width: 100%;
-            margin-top: 10px;
+        #support-section p {
+            font-size: 1.1em;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+        .donation-input-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .donation-input-group input {
             padding: 10px;
-            background-color: #183e60; /* Darker blue button */
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #1a1a1a;
+            color: var(--color-text-light);
+            font-size: 1.1em;
+            width: 100px;
+            text-align: right;
+        }
+        .donate-button {
+            background-color: var(--color-success); /* Green for donation */
             color: white;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             transition: background-color 0.3s, transform 0.1s;
         }
-        .llm-button:hover {
-            background-color: var(--color-accent);
-            color: var(--color-bg-dark);
+        .donate-button:hover {
+            background-color: #28a745;
             transform: translateY(-1px);
         }
-        .llm-loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--color-accent);
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            margin: 15px auto;
+        #donationMessage {
+            margin-top: 20px;
+            font-weight: 700;
+            color: var(--color-success);
             display: none;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .error-message {
-            color: #ff5555;
-            font-weight: bold;
+            padding: 10px;
+            background-color: rgba(50, 205, 50, 0.1);
+            border-radius: 5px;
         }
 
         /* --- CONTACT FORM --- */
@@ -367,16 +370,18 @@
         <div class="nav-links">
             <a href="#about"><i class="fas fa-user-circle"></i> About</a>
             <a href="#projects"><i class="fas fa-rocket"></i> Projects</a>
+            <!-- New Donation Link -->
+            <a href="#support-section" style="color: var(--color-success); font-weight: 700;"><i class="fas fa-hand-holding-usd"></i> Donate</a>
             <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
         </div>
     </nav>
 
-    <!-- Hero Section (Glider Background from download.png) -->
+    <!-- Hero Section -->
     <header id="hero" class="hero">
         <div class="hero-content">
             <h1>Sukrut Mannari</h1>
             <p class="tagline">Future Aeronautical Engineer | Robotics Enthusiast | Computer Science</p>
-            <p class="tagline-small">Ask my portfolio assistant for ideas!</p>
+            <p class="tagline-small">Supporting my projects helps fuel the next generation of engineers!</p>
             <a href="#projects" class="button">View My Key Projects</a>
         </div>
     </header>
@@ -397,18 +402,15 @@
 
             <div class="project-grid">
                 
-                <!-- PROJECT 5: FLL Team Founding (GEMINI PITCH GENERATOR) -->
+                <!-- Project 1: FLL Team Founding -->
                 <div class="project-card">
                     <h3>Founding a First Lego League (FLL) Team</h3>
                     <img src="https://placehold.co/400x250/00aaff/ffffff?text=FLL+Team+Initiative" alt="First Lego League logo/robot" class="project-image">
-                    <p class="description">Currently establishing a new FLL team with the mentorship of **Mr. Hahn**. This project involves leading the initial planning, administrative tasks, and actively managing the **fundraising phase** to secure necessary materials and registration fees, demonstrating early leadership and organizational skills.</p>
-                    
-                    <!-- LLM BUTTON -->
-                    <button class="llm-button" onclick="generatePitch('FLL Team Fundraising', 'Founding a First Lego League team with Mr. Hahn, currently fundraising for materials and registration.')">✨ Generate Fundraising Pitch</button>
-                    <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+                    <p class="description">Currently establishing a new FLL team with the mentorship of **Mr. Hahn**. This project involves leading the initial planning, administrative tasks, and securing necessary materials and registration fees through dedicated **fundraising** efforts.</p>
+                    <a href="#support-section" class="project-link">Help Fund This Project <i class="fas fa-hand-holding-usd"></i></a>
                 </div>
 
-                <!-- Project 1: Bluetooth-Controlled Lego EV3 Car -->
+                <!-- Project 2: Bluetooth-Controlled Lego EV3 Car -->
                 <div class="project-card">
                     <h3>Bluetooth-Controlled Lego EV3 Car</h3>
                     <img src="project-lego-rc-car.jpg" alt="Lego EV3 RC Car" class="project-image">
@@ -416,18 +418,15 @@
                     <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- PROJECT 2: Upcycled RC Glider Project (GEMINI BRAINSTORMER) -->
+                <!-- Project 3: Upcycled RC Glider Project -->
                 <div class="project-card">
                     <h3>Upcycled RC Glider Project</h3>
                     <img src="project-rc-glider.jpg" alt="Cardboard RC Glider" class="project-image">
                     <p class="description">Created a functional remote-controlled glider by repurposing motor and electronics components from an old RC car. The project involved custom-building the airframe from cardboard, focusing heavily on **aerodynamics** and lightweight construction principles.</p>
-                    
-                    <!-- LLM BUTTON -->
-                    <button class="llm-button" onclick="brainstormImprovements('Upcycled RC Glider', 'Functional RC glider from repurposed electronics and cardboard airframe. Focus on aerodynamics and lightweight build.')">✨ Brainstorm Next Steps</button>
                     <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Project 3: Arduino Controller System (Placeholder) -->
+                <!-- Project 4: Arduino Controller System (Placeholder) -->
                 <div class="project-card">
                     <h3>Arduino Steering Wheel (Unojoy)</h3>
                     <img src="https://placehold.co/400x250/00aaff/ffffff?text=Arduino+Project" alt="Arduino Placeholder" class="project-image">
@@ -435,7 +434,7 @@
                     <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <!-- Project 4: Lego Master Builds Collection -->
+                <!-- Project 5: Lego Master Builds Collection -->
                 <div class="project-card">
                     <h3>Lego Master Builds Collection</h3>
                     <img src="project-lego-collection.jpg" alt="Lego Build Collection" class="project-image">
@@ -445,11 +444,16 @@
 
             </div>
 
-            <!-- LLM Output Display Area -->
-            <div id="llmOutput" class="llm-output-box">
-                <h4>LLM Response:</h4>
-                <div id="llmText"></div>
-                <div id="llmLoading" class="llm-loading-spinner"></div>
+            <!-- New Support/Donation Section -->
+            <div id="support-section">
+                <h3><i class="fas fa-cogs"></i> Fuel My Next Project!</h3>
+                <p>Your generous contribution directly funds materials, parts, and competition fees for my robotics and engineering endeavors, like the FLL Team.</p>
+                <div class="donation-input-group">
+                    <label for="donationAmount" style="line-height: 2.2; color: #fff;">$</label>
+                    <input type="number" id="donationAmount" value="25" min="1" step="1" required>
+                    <button class="donate-button" onclick="handleDonation()">Donate Now</button>
+                </div>
+                <div id="donationMessage"></div>
             </div>
 
         </div>
@@ -491,151 +495,39 @@
     </footer>
 
     <script>
-        // --- Gemini API Configuration (Using secure, built-in access) ---
-        const API_KEY = ""; // MUST be an empty string to use the secure, internal access
-        const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=';
-        const MAX_RETRIES = 3;
-
-
-        // --- UI Elements ---
-        const llmOutputBox = document.getElementById('llmOutput');
-        const llmTextDiv = document.getElementById('llmText');
-        const llmLoadingDiv = document.getElementById('llmLoading');
-        
         /**
-         * Generic function to call the Gemini API with exponential backoff.
-         * @param {string} userQuery - The user's specific query.
-         * @param {string} systemPrompt - Instructions for the model's persona/behavior.
-         * @param {number} maxRetries - Maximum number of retry attempts.
-         * @param {number} delay - Initial delay in milliseconds for backoff.
-         * @returns {Promise<string>} The generated text response.
+         * Simulates a donation process. 
+         * NOTE: In a real-world scenario, you would integrate this with a payment processor (like PayPal, Stripe, etc.) 
+         * using their official API or embedded button code to securely handle transactions.
          */
-        async function fetchAIResponse(userQuery, systemPrompt, maxRetries = MAX_RETRIES, delay = 1000) {
-            
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                tools: [{ "google_search": {} }], // Enable Google Search for grounding
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-            };
+        function handleDonation() {
+            const amountInput = document.getElementById('donationAmount');
+            const messageDiv = document.getElementById('donationMessage');
+            const amount = parseFloat(amountInput.value);
 
-            const apiUrl = `${API_URL}${API_KEY}`; 
-
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    // Handle rate limiting or temporary network issues
-                    if (!response.ok && response.status === 429 && i < maxRetries - 1) {
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                        delay *= 2; 
-                        continue;
-                    }
-
-                    const result = await response.json();
-                    
-                    if (!response.ok) {
-                         // Check for API error details in the result object
-                        const errorMessage = result.error ? result.error.message : `API request failed with status: ${response.status}`;
-                        throw new Error(errorMessage);
-                    }
-
-                    // Extract text from Gemini's structure
-                    const candidate = result.candidates?.[0];
-
-                    if (candidate && candidate.content?.parts?.[0]?.text) {
-                        // Extract the generated text
-                        const text = candidate.content.parts[0].text;
-                        return text;
-                    } else {
-                        // Handle cases where the response is structured but empty (e.g., due to safety filter)
-                        throw new Error("Invalid or empty response from Gemini API.");
-                    }
-
-                } catch (error) {
-                    if (i === maxRetries - 1) {
-                        throw new Error(`Gemini API call failed after ${maxRetries} attempts. Last error: ${error.message}`);
-                    }
-                    // Continue to next retry (delay already handled above for 429)
-                }
+            // Basic validation
+            if (isNaN(amount) || amount <= 0) {
+                messageDiv.style.display = 'block';
+                messageDiv.style.color = '#ff5555';
+                messageDiv.style.backgroundColor = 'rgba(255, 85, 85, 0.1)';
+                messageDiv.innerHTML = 'Please enter a valid amount greater than $0.';
+                return;
             }
-            throw new Error("Exited retry loop unexpectedly.");
-        }
 
+            // Simulate transaction success
+            messageDiv.style.display = 'block';
+            messageDiv.style.color = 'var(--color-success)';
+            messageDiv.style.backgroundColor = 'rgba(50, 205, 50, 0.1)';
+            messageDiv.innerHTML = `Thank you for your generous $${amount.toFixed(2)} contribution! Your support directly fuels my next engineering project.`;
 
-        /**
-         * Clears and shows the loading spinner, hides the output box.
-         */
-        function startLoading(title) {
-            llmOutputBox.style.display = 'block';
-            llmOutputBox.querySelector('h4').textContent = title;
-            llmTextDiv.innerHTML = '';
-            llmLoadingDiv.style.display = 'block';
-             // Scroll to the output box
-            llmOutputBox.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        /**
-         * Hides the loading spinner and displays the result.
-         * @param {string} text - The generated text.
-         */
-        function displayResult(text) {
-            llmLoadingDiv.style.display = 'none';
-            // Use <br> for line breaks
-            llmTextDiv.innerHTML = text.replace(/\n/g, '<br>'); 
-        }
-        
-        /**
-         * Handles API errors gracefully.
-         */
-        function handleError(message) {
-            llmLoadingDiv.style.display = 'none';
-            llmTextDiv.innerHTML = `<p class="error-message"><strong>Error:</strong> ${message}</p>`;
-        }
-
-
-        // --- Feature 1: FLL Fundraising Pitch Generator ---
-        async function generatePitch(projectTitle, projectDescription) {
-            startLoading(`✨ Generating Pitch for ${projectTitle}...`);
+            // Clear message after a few seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
             
-            const systemPrompt = `You are a professional writing assistant for a young student (7th grade) who is fundraising for a robotics team. Draft a concise, one-paragraph pitch for a potential sponsor. The pitch should be persuasive, highlight the educational value (robotics, engineering, teamwork), and include a clear call to action for funding. Keep the tone enthusiastic and professional.`;
-
-            const userQuery = `Draft a fundraising pitch based on this project: ${projectTitle}. Description: ${projectDescription}. Ensure the pitch sounds appropriate for a 7th grader's robotics team (First Lego League).`;
-            
-            try {
-                const text = await fetchAIResponse(userQuery, systemPrompt);
-                displayResult(text);
-
-            } catch (error) {
-                console.error("Pitch generation error:", error);
-                handleError(`Could not generate pitch. Details: ${error.message}`);
-            }
+            // Scroll to the message
+            messageDiv.scrollIntoView({ behavior: 'smooth' });
         }
-
-
-        // --- Feature 2: Project Improvement Brainstormer ---
-        async function brainstormImprovements(projectTitle, projectDescription) {
-            startLoading(`✨ Brainstorming Improvements for ${projectTitle}...`);
-            
-            const systemPrompt = `You are an expert engineering mentor. Provide three concrete, logical 'next steps' or improvement ideas for the following student project. The ideas should be challenging but achievable for a motivated 7th grader and should focus on adding advanced engineering or programming concepts. Format the output as a numbered list, using simple Markdown formatting (like **bold**).`;
-
-            const userQuery = `Brainstorm next steps for the project: ${projectTitle}. Description: ${projectDescription}.`;
-
-            try {
-                const text = await fetchAIResponse(userQuery, systemPrompt);
-                displayResult(text);
-
-            } catch (error) {
-                console.error("Brainstorming error:", error);
-                handleError(`Could not generate improvement ideas. Details: ${error.message}`);
-            }
-        }
-
     </script>
 </body>
 </html>
