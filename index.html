@@ -397,18 +397,25 @@
             <p>I am always looking for new challenges and learning opportunities.</p>
             
             <div class="contact-form">
-                <form action="#" method="POST">
+                <!-- 
+                    FORM FIX: Using mailto: protocol as a reliable alternative to Formsubmit.
+                    NOTE: The recipient email must be changed from the placeholder to Sukrut's actual email address.
+                -->
+                <form action="mailto:YOUR_EMAIL@example.com" method="POST" enctype="text/plain">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <!-- Added 'Name' attribute to be included in the email body -->
+                        <input type="text" id="name" name="Name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <!-- Added 'Email' attribute to be included in the email body -->
+                        <input type="email" id="email" name="Email" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <!-- Added 'Message' attribute to be included in the email body -->
+                        <textarea id="message" name="Message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="button">Send Message</button>
                 </form>
