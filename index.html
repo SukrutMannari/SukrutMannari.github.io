@@ -19,6 +19,7 @@
             --color-accent: #00aaff; /* Electric Sky Blue */
             --color-accent-hover: #66ccff;
             --color-success: #32cd32; /* Lime Green */
+            --color-paypal: #0070BA; /* PayPal Blue */
         }
 
         body {
@@ -246,67 +247,6 @@
             font-weight: bold;
         }
         
-        /* --- DONATION SECTION STYLES --- */
-        #support-section {
-            background-color: #0d1b2a;
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 50px;
-            box-shadow: 0 0 20px rgba(0, 170, 255, 0.2);
-            border: 2px solid var(--color-accent);
-        }
-        #support-section h3 {
-            font-size: 1.8em;
-            color: var(--color-accent);
-            margin-bottom: 10px;
-        }
-        #support-section p {
-            font-size: 1.1em;
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-        .donation-input-group {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        .donation-input-group input {
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #333;
-            background-color: #1a1a1a;
-            color: var(--color-text-light);
-            font-size: 1.1em;
-            width: 100px;
-            text-align: right;
-        }
-        .donate-button {
-            background-color: var(--color-success); /* Green for donation */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: background-color 0.3s, transform 0.1s;
-        }
-        .donate-button:hover {
-            background-color: #28a745;
-            transform: translateY(-1px);
-        }
-        #donationMessage {
-            margin-top: 20px;
-            font-weight: 700;
-            color: var(--color-success);
-            display: none;
-            padding: 10px;
-            background-color: rgba(50, 205, 50, 0.1);
-            border-radius: 5px;
-        }
-
         /* --- CONTACT FORM --- */
         #contact {
             background: #000000;
@@ -370,8 +310,6 @@
         <div class="nav-links">
             <a href="#about"><i class="fas fa-user-circle"></i> About</a>
             <a href="#projects"><i class="fas fa-rocket"></i> Projects</a>
-            <!-- New Donation Link -->
-            <a href="#support-section" style="color: var(--color-success); font-weight: 700;"><i class="fas fa-hand-holding-usd"></i> Donate</a>
             <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
         </div>
     </nav>
@@ -381,7 +319,7 @@
         <div class="hero-content">
             <h1>Sukrut Mannari</h1>
             <p class="tagline">Future Aeronautical Engineer | Robotics Enthusiast | Computer Science</p>
-            <p class="tagline-small">Supporting my projects helps fuel the next generation of engineers!</p>
+            <p class="tagline-small">Building the next generation of remote and autonomous systems.</p>
             <a href="#projects" class="button">View My Key Projects</a>
         </div>
     </header>
@@ -406,8 +344,9 @@
                 <div class="project-card">
                     <h3>Founding a First Lego League (FLL) Team</h3>
                     <img src="https://placehold.co/400x250/00aaff/ffffff?text=FLL+Team+Initiative" alt="First Lego League logo/robot" class="project-image">
-                    <p class="description">Currently establishing a new FLL team with the mentorship of **Mr. Hahn**. This project involves leading the initial planning, administrative tasks, and securing necessary materials and registration fees through dedicated **fundraising** efforts.</p>
-                    <a href="#support-section" class="project-link">Help Fund This Project <i class="fas fa-hand-holding-usd"></i></a>
+                    <p class="description">Currently establishing a new FLL team with the mentorship of **Mr. Hahn**. This project involves leading the initial planning, administrative tasks, and securing necessary materials and registration fees.</p>
+                    <!-- Link changed from donation to standard View Details -->
+                    <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a> 
                 </div>
 
                 <!-- Project 2: Bluetooth-Controlled Lego EV3 Car -->
@@ -443,18 +382,7 @@
                 </div>
 
             </div>
-
-            <!-- New Support/Donation Section -->
-            <div id="support-section">
-                <h3><i class="fas fa-cogs"></i> Fuel My Next Project!</h3>
-                <p>Your generous contribution directly funds materials, parts, and competition fees for my robotics and engineering endeavors, like the FLL Team.</p>
-                <div class="donation-input-group">
-                    <label for="donationAmount" style="line-height: 2.2; color: #fff;">$</label>
-                    <input type="number" id="donationAmount" value="25" min="1" step="1" required>
-                    <button class="donate-button" onclick="handleDonation()">Donate Now</button>
-                </div>
-                <div id="donationMessage"></div>
-            </div>
+            <!-- Removed: The entire #support-section div was here. -->
 
         </div>
     </section>
@@ -494,40 +422,5 @@
         <p>&copy; 2025 Sukrut Mannari. All rights reserved.</p>
     </footer>
 
-    <script>
-        /**
-         * Simulates a donation process. 
-         * NOTE: In a real-world scenario, you would integrate this with a payment processor (like PayPal, Stripe, etc.) 
-         * using their official API or embedded button code to securely handle transactions.
-         */
-        function handleDonation() {
-            const amountInput = document.getElementById('donationAmount');
-            const messageDiv = document.getElementById('donationMessage');
-            const amount = parseFloat(amountInput.value);
-
-            // Basic validation
-            if (isNaN(amount) || amount <= 0) {
-                messageDiv.style.display = 'block';
-                messageDiv.style.color = '#ff5555';
-                messageDiv.style.backgroundColor = 'rgba(255, 85, 85, 0.1)';
-                messageDiv.innerHTML = 'Please enter a valid amount greater than $0.';
-                return;
-            }
-
-            // Simulate transaction success
-            messageDiv.style.display = 'block';
-            messageDiv.style.color = 'var(--color-success)';
-            messageDiv.style.backgroundColor = 'rgba(50, 205, 50, 0.1)';
-            messageDiv.innerHTML = `Thank you for your generous $${amount.toFixed(2)} contribution! Your support directly fuels my next engineering project.`;
-
-            // Clear message after a few seconds
-            setTimeout(() => {
-                messageDiv.style.display = 'none';
-            }, 5000);
-            
-            // Scroll to the message
-            messageDiv.scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
 </body>
 </html>
