@@ -1,11 +1,11 @@
-/* --- Global Styles (Makes text readable and sets background) --- */
+/* --- Global Styles (Dark Theme) --- */
 body {
-    font-family: 'Arial', sans-serif; /* A clean, universal font */
+    font-family: 'Segoe UI', Arial, sans-serif; /* A slightly more modern sans-serif font */
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    color: #333;
-    background-color: #f8f9fa; /* Light gray background */
+    color: #e0e0e0; /* Light gray text for dark background */
+    background-color: #1a1a1a; /* Very dark background */
 }
 
 .container {
@@ -17,111 +17,122 @@ body {
 }
 
 h1, h2, h3 {
-    color: #007bff; /* Blue heading color */
+    color: #ffffff; /* White headings */
 }
 
 a {
-    color: #007bff;
+    color: #00aaff; /* Bright blue for links */
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease; /* Smooth transition for link hover */
 }
 
 a:hover {
-    color: #0056b3;
+    color: #33bbff; /* Lighter blue on hover */
     text-decoration: underline;
 }
 
 /* --- Header/Hero Section (The main banner) --- */
 .hero {
-    background: #007bff; /* Primary blue background */
+    background: #000000; /* Pure black header */
     color: #fff;
-    min-height: 350px;
+    min-height: 380px; /* Slightly taller hero section */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Stronger shadow for depth */
 }
 
 .hero-content h1 {
-    font-size: 3em;
+    font-size: 3.8em; /* Slightly larger main title */
     margin-bottom: 0.1em;
     color: #fff;
 }
 
 .tagline {
-    font-size: 1.1em;
-    margin-bottom: 1.5em;
+    font-size: 1.2em; /* Slightly larger tagline */
+    margin-bottom: 2em; /* More space below tagline */
     font-weight: 300;
+    color: #bbbbbb; /* Slightly less bright tagline */
 }
 
 .button {
     display: inline-block;
-    background: #28a745; /* Green button */
+    background: #00aaff; /* Bright blue button */
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 25px; /* Larger padding for button */
     border-radius: 5px;
     text-decoration: none;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease; /* Smooth transitions for hover effects */
     font-weight: bold;
+    letter-spacing: 0.5px; /* Slight letter spacing for style */
 }
 
 .button:hover {
-    background: #1e7e34;
+    background: #0088cc; /* Darker blue on hover */
+    transform: translateY(-3px); /* Lifts the button slightly on hover */
     text-decoration: none;
 }
 
 /* --- About Section --- */
 #about {
-    background: #fff;
-    border-bottom: 1px solid #ddd;
+    background: #222222; /* Darker background for about section */
+    border-bottom: 1px solid #333333; /* Subtle border */
+    padding: 50px 0; /* More vertical padding */
 }
 
 /* --- Project Section (The grid layout) --- */
 .projects {
-    background: #f8f9fa;
+    background: #1a1a1a; /* Matches body background */
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted min-width for project cards */
     gap: 30px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .project-card {
-    background: #fff;
+    background: #2c2c2c; /* Dark gray card background */
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #007bff;
-    transition: transform 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Softer shadow */
+    border-left: 4px solid #00aaff; /* Blue accent border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover */
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px); /* Lifts the card more on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
 }
 
 .project-card h3 {
     margin-top: 0;
-    color: #333;
+    color: #ffffff; /* White heading in card */
+}
+
+.description {
+    color: #b0b0b0; /* Slightly lighter text for descriptions */
+    font-size: 0.95em;
 }
 
 .project-link {
     display: inline-block;
     margin-top: 15px;
     font-weight: bold;
+    color: #00aaff; /* Matches global link color */
 }
 
 /* --- Footer/Contact Section --- */
 #contact {
-    background: #343a40; /* Dark gray footer */
-    color: #fff;
+    background: #000000; /* Pure black footer */
+    color: #f0f0f0; /* Light text for footer */
     text-align: center;
-    padding: 30px 0;
+    padding: 35px 0; /* More padding */
+    border-top: 1px solid #333333;
 }
 
 #contact a {
-    color: #ffc107; /* Yellow links */
+    color: #ffcc00; /* Golden yellow links for contact */
 }
