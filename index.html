@@ -50,9 +50,12 @@
     <header class="sticky top-0 z-50 bg-[#0d1117]/95 backdrop-blur-sm shadow-md">
         <nav class="container flex justify-between items-center h-16">
             <div class="text-xl font-bold text-white tracking-wider">SUKRUT MANNARI</div>
+            <!-- UPDATED: New navigation structure pointing to different pages -->
             <div class="space-x-4 text-sm font-medium">
-                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
-                <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
+                <a href="index.html" class="text-blue-400 transition-colors">Home</a>
+                <a href="projects.html" class="hover:text-blue-400 transition-colors">Projects</a>
+                <a href="music.html" class="hover:text-blue-400 transition-colors">Music</a>
+                <a href="extracurriculars.html" class="hover:text-blue-400 transition-colors">Extracurriculars</a>
                 <a href="#connect" class="hover:text-blue-400 transition-colors">Connect</a>
             </div>
         </nav>
@@ -63,7 +66,7 @@
         <section id="hero" class="container text-center py-20 md:py-32">
             <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-4">Aspiring Aeronautical Engineer</h1>
             <p class="text-lg sm:text-xl text-gray-400 mb-8 max-w-3xl mx-auto">Hands-on experience in building, robotics, and coding with a focus on autonomous and remote-controlled systems.</p>
-            <a href="#projects" class="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors shadow-lg">View Key Projects</a>
+            <a href="projects.html" class="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors shadow-lg">View Detailed Projects</a>
         </section>
 
         <!-- About Me Section -->
@@ -72,11 +75,11 @@
                 <span class="mr-2 text-blue-400">💡</span> About Me
             </h2>
             <div class="text-gray-300 space-y-4 text-lg">
-                <p>I am a 7th-grade student with a strong passion for **Aeronautical Engineering**, constantly exploring how things fly, move, and are built. I enjoy the hands-on process of design, building, and coding.</p>
-                <p>In my free time, I focus on robotics, including working with **Arduino** and **Lego Mindstorms**, to create remote-controlled and autonomous systems. My goal is to combine the fields of engineering and computer science to build efficient and impactful solutions.</p>
+                <!-- FIXED: Removed the ** markdown which was rendering literally -->
+                <p>I am a 7th-grade student with a strong passion for Aeronautical Engineering, constantly exploring how things fly, move, and are built. I enjoy the hands-on process of design, building, and coding.</p>
+                <p>In my free time, I focus on robotics, including working with Arduino and Lego Mindstorms, to create remote-controlled and autonomous systems. My goal is to combine the fields of engineering and computer science to build efficient and impactful solutions.</p>
 
                 <p class="pt-4">
-                    <!-- Corrected link structure: starts with <a> and ends with </a> -->
                     <a href="sukrut_mannari_resume.pdf" download="Sukrut_Mannari_Resume.pdf" class="text-blue-400 hover:text-blue-200 font-medium transition-colors">
                         Download My Resume [PDF]
                     </a>
@@ -84,58 +87,82 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="container py-16">
+        <!-- Projects Summary Section -->
+        <section id="projects-summary" class="container py-16">
             <h2 class="section-title text-3xl font-bold mb-12">
-                Key Projects
+                Key Projects (Summary)
             </h2>
 
-            <p class="text-gray-400 mb-8">A snapshot of my hands-on experience in building and robotics.</p>
+            <p class="text-gray-400 mb-8">Click on a card for more detail, or navigate to the dedicated Projects page.</p>
 
             <div class="grid md:grid-cols-2 gap-8">
                 
                 <!-- Project 1: Bluetooth-Controlled Lego EV3 Car -->
-                <div class="card p-6 rounded-xl shadow-lg">
+                <a href="projects.html#lego-car" class="card p-6 rounded-xl shadow-lg block">
                     <h3 class="text-xl font-semibold text-white mb-2 flex items-center">
-                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=RC" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=RC';" alt="Placeholder for project-lego-rc-car.jpg">
+                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=RC" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=RC';" alt="Placeholder for RC Car">
                         Bluetooth-Controlled Lego EV3 Car
                     </h3>
-                    <p class="text-sm text-gray-400 mb-4">Built a remote-controlled vehicle using the Lego Mindstorms EV3 kit. I programmed it to connect to a custom **Bluetooth controller** for full remote operation, demonstrating proficiency in robotics and basic programming logic.</p>
-                    <a href="#" class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Details →</a>
-                </div>
+                    <!-- Summary description -->
+                    <p class="text-sm text-gray-400 mb-4">Built a remote-controlled vehicle using the Lego Mindstorms EV3 kit, programmed for full remote operation.</p>
+                    <span class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Detailed Page →</span>
+                </a>
 
                 <!-- Project 2: Upcycled RC Glider Project -->
-                <div class="card p-6 rounded-xl shadow-lg">
+                <a href="projects.html#glider" class="card p-6 rounded-xl shadow-lg block">
                     <h3 class="text-xl font-semibold text-white mb-2 flex items-center">
-                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=GL" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=GL';" alt="Placeholder for project-rc-glider.jpg">
+                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=GL" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=GL';" alt="Placeholder for Glider">
                         Upcycled RC Glider Project
                     </h3>
-                    <p class="text-sm text-gray-400 mb-4">Created a functional remote-controlled glider by repurposing motor and electronics components from an old RC car. The project involved custom-building the airframe from cardboard, focusing heavily on **aerodynamics** and lightweight construction principles.</p>
-                    <a href="#" class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Details →</a>
-                </div>
+                    <p class="text-sm text-gray-400 mb-4">Created a functional RC glider by repurposing electronics and custom-building the airframe from cardboard, focusing on aerodynamics.</p>
+                    <span class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Detailed Page →</span>
+                </a>
 
                 <!-- Project 3: Arduino Steering Wheel (Unojoy) -->
-                <div class="card p-6 rounded-xl shadow-lg">
+                <a href="projects.html#arduino" class="card p-6 rounded-xl shadow-lg block">
                     <h3 class="text-xl font-semibold text-white mb-2 flex items-center">
-                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=AD" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=AD';" alt="Placeholder for Arduino image">
+                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=AD" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=AD';" alt="Placeholder for Arduino">
                         Arduino Steering Wheel (Unojoy)
                     </h3>
-                    <p class="text-sm text-gray-400 mb-4">Developed a custom input device using an Arduino board and the Unojoy framework to simulate a steering wheel. This project showcases my understanding of **microcontrollers**, input mapping, and basic electronic interfacing.</p>
-                    <a href="#" class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Details →</a>
-                </div>
+                    <p class="text-sm text-gray-400 mb-4">Developed a custom steering wheel input device using an Arduino board and the Unojoy framework, showcasing microcontroller knowledge.</p>
+                    <span class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Detailed Page →</span>
+                </a>
 
                 <!-- Project 4: Lego Master Builds Collection -->
-                <div class="card p-6 rounded-xl shadow-lg">
+                <a href="projects.html#lego-collection" class="card p-6 rounded-xl shadow-lg block">
                     <h3 class="text-xl font-semibold text-white mb-2 flex items-center">
-                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=LG" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=LG';" alt="Placeholder for project-lego-collection.jpg">
+                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=LG" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=LG';" alt="Placeholder for Lego">
                         Lego Master Builds Collection
                     </h3>
-                    <p class="text-sm text-gray-400 mb-4">A diverse showcase of complex Lego builds from early childhood. This collection demonstrates an early and sustained passion for **engineering design**, following complex instructions, and attention to structural detail.</p>
-                    <a href="#" class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Details →</a>
-                </div>
+                    <p class="text-sm text-gray-400 mb-4">A diverse showcase of complex Lego builds demonstrating an early and sustained passion for engineering design and structural detail.</p>
+                    <span class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Detailed Page →</span>
+                </a>
 
             </div>
         </section>
+
+        <!-- Music Summary Section -->
+        <section id="music-summary" class="container py-16">
+            <h2 class="section-title text-3xl font-bold mb-8">
+                Music (Summary)
+            </h2>
+            <div class="bg-[#161b22] p-6 rounded-xl shadow-lg text-lg text-gray-300">
+                <p>I am actively involved in learning and performing music. I play the **piano** and **tabla**, and I am part of the school choir. Music helps me develop discipline, creativity, and teamwork skills that complement my engineering pursuits.</p>
+                <a href="music.html" class="mt-4 inline-block text-blue-400 hover:text-blue-200 font-medium transition-colors">View Detailed Music Activities →</a>
+            </div>
+        </section>
+
+        <!-- Extracurriculars Summary Section -->
+        <section id="extracurriculars-summary" class="container py-16">
+            <h2 class="section-title text-3xl font-bold mb-8">
+                Extracurriculars (Summary)
+            </h2>
+            <div class="bg-[#161b22] p-6 rounded-xl shadow-lg text-lg text-gray-300">
+                <p>Beyond engineering and music, I participate in the school's science club and debate team. These activities challenge me to think critically and communicate complex ideas clearly, skills crucial for a future engineer.</p>
+                <a href="extracurriculars.html" class="mt-4 inline-block text-blue-400 hover:text-blue-200 font-medium transition-colors">View Detailed Extracurriculars →</a>
+            </div>
+        </section>
+
 
         <!-- Let's Connect Section -->
         <section id="connect" class="container py-16">
