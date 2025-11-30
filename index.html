@@ -497,7 +497,8 @@
 
     <script>
         // --- Gemini API Configuration ---
-        const API_KEY = ""; // Placeholder, Canvas will provide key at runtime
+        // Leave API_KEY as an empty string. The environment will provide it at runtime.
+        const API_KEY = ""; 
         const API_URL_BASE = 'https://generativelanguage.googleapis.com/v1beta/models/';
         const MODEL = 'gemini-2.5-flash-preview-09-2025';
 
@@ -516,8 +517,9 @@
          * @returns {Promise<object>} The JSON response from the API.
          */
         async function fetchGemini(payload, useGrounding = false, maxRetries = 3, delay = 1000) {
-            // NOTE: The API_KEY will be injected by the environment if it's an empty string.
-            const endpoint = `${API_URL_BASE}${MODEL}:generateContent?key=${API_KEY}`;
+            
+            // CRITICAL FIX: The API URL must always use the MODEL and the API_KEY for injection.
+            const apiUrl = `${API_URL_BASE}${MODEL}:generateContent?key=${API_KEY}`;
             
             if (useGrounding) {
                  // Add Google Search grounding tool
@@ -526,7 +528,7 @@
 
             for (let i = 0; i < maxRetries; i++) {
                 try {
-                    const response = await fetch(endpoint, {
+                    const response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
@@ -539,10 +541,11 @@
                         continue;
                     }
                     
+                    // Always try to parse JSON to get error details
                     const result = await response.json();
 
                     if (!response.ok || !result.candidates || result.candidates.length === 0) {
-                        // Throw an error that includes the response status or a generic API failure message
+                        // Check for specific API error messages in the result object
                         const errorMessage = result.error ? result.error.message : `API request failed with status: ${response.status}`;
                         throw new Error(errorMessage);
                     }
