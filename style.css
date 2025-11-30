@@ -83,15 +83,58 @@ a:hover {
     text-shadow: 0 0 5px var(--color-accent), 0 0 10px rgba(0, 170, 255, 0.5);
 }
 
-/* --- HERO SECTION (Aero/Contrail Effect) --- */
+/* Responsive Nav Links for Mobile */
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    .nav-links {
+        margin-top: 10px;
+    }
+    .nav-links a {
+        padding: 5px 10px;
+        display: inline-block;
+    }
+}
+
+
+/* --- HERO SECTION (Updated with Glider Background using 'download.png') --- */
 .hero {
-    background: linear-gradient(135deg, #0d1b2a 0%, #03080e 100%);
+    /* Base dark gradient, ensures dark background if image fails to load */
+    background: linear-gradient(135deg, #0d1b2a 0%, #03080e 100%); 
+    
+    /* NEW: Glider Image Background - USES download.png */
+    background-image: url('download.png'); 
+    background-size: cover; /* Cover the entire hero area */
+    background-position: center 30%; /* Center image but shift up slightly */
+    background-repeat: no-repeat;
+    
     min-height: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    position: relative; /* Needed for the overlay */
+}
+
+/* Dark Overlay to Ensure Text Readability on Top of Image */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* 40% opaque black overlay */
+    z-index: 1;
+}
+
+/* Ensure content is above the overlay */
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content h1 {
@@ -180,6 +223,8 @@ a:hover {
 
 .mySlides img {
     border-radius: 8px;
+    width: 100%; /* Ensures images are fully responsive */
+    height: auto;
 }
 
 /* Next & previous buttons */
