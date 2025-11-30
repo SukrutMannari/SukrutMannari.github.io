@@ -4,11 +4,302 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sukrut Mannari - Aeronautical Engineering & Robotics Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Using Segoe UI or a modern sans-serif font -->
+    
+    <!-- External Resources -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- CRITICAL: ALL CSS IS NOW EMBEDDED HERE -->
+    <style>
+        /* --- Global Styles (Aero/Dark Theme) --- */
+        :root {
+            --color-bg-dark: #0a1118; /* Deep Space Blue/Black */
+            --color-bg-section: #0d1b2a; /* Slightly lighter dark blue */
+            --color-text-light: #e0e0e0;
+            --color-accent: #00aaff; /* Electric Sky Blue */
+            --color-accent-hover: #66ccff;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding-top: 60px; /* Space for the fixed navbar */
+            color: var(--color-text-light);
+            background-color: var(--color-bg-dark);
+            transition: background-color 0.3s;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 60px 0;
+        }
+
+        h1, h2, h3 {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .accent {
+            color: var(--color-accent);
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-accent-hover);
+            text-decoration: underline;
+        }
+
+        /* --- NAVIGATION BAR (Taskbar) --- */
+        #navbar {
+            background: #000000;
+            color: var(--color-text-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            height: 60px;
+        }
+
+        .nav-brand {
+            font-size: 1.2em;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: var(--color-text-light);
+            padding: 0 15px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+            text-decoration: none;
+            /* Blue Contrail/Glow Effect on Hover */
+            text-shadow: 0 0 5px var(--color-accent), 0 0 10px rgba(0, 170, 255, 0.5);
+        }
+
+        /* Responsive Nav Links for Mobile */
+        @media (max-width: 768px) {
+            #navbar {
+                flex-direction: column;
+                padding: 10px 0;
+                height: auto;
+            }
+            .nav-links {
+                margin-top: 5px;
+            }
+            .nav-links a {
+                padding: 5px 10px;
+                font-size: 0.8em;
+            }
+            body {
+                padding-top: 100px; /* Adjust for taller mobile nav */
+            }
+        }
+
+
+        /* --- HERO SECTION (Glider Background - using download.png) --- */
+        .hero {
+            background: linear-gradient(135deg, #0d1b2a 0%, #03080e 100%); 
+            
+            /* Image reference using download.png */
+            /* NOTE: Ensure you have an image named download.png in the same folder! */
+            background-image: url('download.png'); 
+            background-size: cover; 
+            background-position: center 30%; 
+            background-repeat: no-repeat;
+            
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            position: relative; 
+        }
+
+        /* Dark Overlay to Ensure Text Readability */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.45); /* Slightly darker overlay */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 0.1em;
+            text-shadow: 0 0 15px rgba(0, 170, 255, 0.4); 
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            margin-bottom: 2.5em;
+            color: #bbb;
+        }
+
+        .tagline-small {
+            color: #bbb;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-bg-dark);
+            padding: 12px 30px;
+            border-radius: 50px; 
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s;
+        }
+
+        .button:hover {
+            background: var(--color-accent-hover);
+            transform: scale(1.05); 
+            box-shadow: 0 0 20px var(--color-accent-hover); 
+            text-decoration: none;
+        }
+
+        /* --- SECTION STYLING --- */
+        .section-dark {
+            background-color: var(--color-bg-section);
+            border-top: 1px solid #1a2c3e;
+        }
+
+        /* --- PROJECT CARDS --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--color-bg-dark);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--color-bg-section);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 170, 255, 0.3); 
+            border-color: var(--color-accent);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px; /* Fixed height for consistent card size */
+            object-fit: cover; /* Ensures images cover the area without distortion */
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+        }
+
+        .description {
+            color: #b0b0b0;
+            font-size: 0.95em;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+
+        /* --- CONTACT FORM --- */
+        #contact {
+            background: #000000;
+            text-align: center;
+            padding: 80px 0;
+            border-top: 3px solid var(--color-accent);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 30px auto 0;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-text-light);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #1a1a1a;
+            color: var(--color-text-light);
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--color-accent);
+            outline: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000000;
+            color: #777;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8em;
+            border-top: 1px solid #1a2c3e;
+        }
+    </style>
 </head>
 <body>
 
@@ -22,7 +313,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section (Now with Glider Background) -->
+    <!-- Hero Section (Glider Background from download.png) -->
     <header id="hero" class="hero">
         <div class="hero-content">
             <h1>Sukrut Mannari</h1>
@@ -63,10 +354,9 @@
                     <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- Project 3: Arduino Controller System -->
+                <!-- Project 3: Arduino Controller System (Placeholder) -->
                 <div class="project-card">
                     <h3>Arduino Steering Wheel (Unojoy)</h3>
-                    <!-- Using a placeholder image since a dedicated photo wasn't provided for this specific project -->
                     <img src="https://placehold.co/400x250/00aaff/ffffff?text=Arduino+Project" alt="Arduino Placeholder" class="project-image">
                     <p class="description">Developed a custom input device using an Arduino board and the Unojoy framework to simulate a steering wheel. This project showcases my understanding of **microcontrollers**, input mapping, and basic electronic interfacing.</p>
                     <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
