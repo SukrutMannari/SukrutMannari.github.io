@@ -3,38 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sukrut Mannari | Portfolio</title>
-    <link rel="stylesheet" href="style.css"> 
+    <title>Sukrut Mannari | Aeronautical Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Sukrut Mannari</h1>
-            <p class="tagline">7th Grade Innovator | Exploring Robotics & Python | Future CS Student</p>
-            <a href="#projects" class="button">View My Projects</a>
+    <!-- STICKY TOP NAVIGATION BAR -->
+    <nav id="navbar">
+        <div class="nav-brand">SUKRUT MANNARI | <span class="accent">AERO PORTFOLIO</span></div>
+        <div class="nav-links">
+            <a href="#about"><i class="fas fa-user-circle"></i> About</a>
+            <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+            <a href="#gallery"><i class="fas fa-image"></i> Gallery</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION (Aero-Themed Landing) -->
+    <header class="hero" id="hero">
+        <div class="hero-content container">
+            <h1>Aeronautical Exploration in the 7th Grade</h1>
+            <p class="tagline">Designing, Coding, and Building the Future of Flight.</p>
+            <a href="#projects" class="button">See My Missions</a>
         </div>
     </header>
 
-    <section id="about" class="container">
-        <h2>👋 About Me</h2>
-        <p>I am a 7th grade middle schooler with a strong interest in **computer science and robotics**. I am currently learning Python and exploring how simple machines and coding work together to solve challenges.</p>
-        <p>I enjoy participating in my school's science club and building small projects. I am already preparing for my college applications by documenting my work and skills!</p>
-        <a href="resume.pdf" target="_blank" class="link-text">Download Resume (PDF)</a> 
+    <!-- 2. ABOUT ME SECTION -->
+    <section id="about" class="container section-dark">
+        <h2><i class="fas fa-rocket accent"></i> Mission Control: About Me</h2>
+        <p>I am a 7th grade middle schooler with an intense passion for **Aeronautical Engineering** and **coding**. I believe that understanding how things fly—from paper airplanes to gliders—is the first step to building advanced machines.</p>
+        <p>I am learning Python to calculate lift and drag, and I participate in the school's robotics club, focusing on stability and navigation. My goal is to use technology to master the principles of flight.</p>
+        <a href="resume.pdf" target="_blank" class="link-text">Download Resume (PDF)</a>
     </section>
 
-    <section id="projects" class="container projects">
-        <h2>🛠️ Key Projects</h2>
+    <!-- 3. PROJECTS SECTION -->
+    <section id="projects" class="container">
+        <h2><i class="fas fa-plane-departure accent"></i> Flight Log: Key Projects</h2>
         <div class="project-grid">
 
+            <!-- PROJECT 1: Example Coding Project -->
             <div class="project-card">
-                <h3>Project Title: Python Text Adventure Game</h3>
-                <p class="description">**SITUATION/TASK:** Learned the basics of Python to build a short, interactive story game for my classmates.</p>
-                <p class="description">**ACTION/RESULT:** Used 'if/else' statements and functions to create 10 different endings. My teacher featured it in the class newsletter! **[Link to GitHub Repo or Video Demo]**</p>
+                <h3>Code: Flight Path Simulator (Python)</h3>
+                <p class="description">**Mission:** To calculate the optimal glide slope for a paper airplane model using basic physics formulas in Python.</p>
+                <p class="description">**Outcome:** Built a tool that visualizes the trajectory based on launch angle and wind speed. **[Link to GitHub Repo]**</p>
                 <a href="#" target="_blank" class="project-link">View Details</a>
             </div>
 
+            <!-- PROJECT 2: Example Robotics/Building Project -->
             <div class="project-card">
-                <h3>Project Title: Efficient Wind Turbine Model</h3>
-                <p class="description">**SITUATION/TASK:** Designed and tested different blade shapes for my Science Fair project to maximize energy output.</p>
-                <p class="description">**ACTION/RESULT:** Used simple materials and measured output with a multimeter. The final design increased efficiency by 15% over the standard model. **
+                <h3>Build: Foam Board Glider Design</h3>
+                <p class="description">**Mission:** Designed and tested three different wing shapes (airfoils) out of foam board to see which provided the longest flight time.</p>
+                <p class="description">**Outcome:** Documented results showing the parabolic wing design increased flight duration by 35%. **[Link to Photos/Video]**</p>
+                <a href="#" target="_blank" class="project-link">View Details</a>
+            </div>
+
+            <!-- PROJECT 3: Example Science Club/General Project -->
+            <div class="project-card">
+                <h3>Analysis: Bernoulli's Principle Experiment</h3>
+                <p class="description">**Mission:** Created a demonstration to explain lift using a hairdryer and a ping-pong ball for the 6th grade science class.</p>
+                <p class="description">**Outcome:** Led the presentation, explaining the concept simply and receiving the 'Best Explainer' award from the club mentor. **[Link to Report]**</p>
+                <a href="#" target="_blank" class="project-link">View Details</a>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- 4. GALLERY / SLIDESHOW SECTION -->
+    <section id="gallery" class="container section-dark">
+        <h2><i class="fas fa-camera accent"></i> Aero-Gallery</h2>
+        <p class="tagline">A visual collection of gliders, designs, and science experiments.</p>
+        <div class="slideshow-container">
+            <!-- Slideshow Content (Replace these with your actual project images/photos!) -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="https://placehold.co/800x450/000033/00aaff?text=Glider+Design+Concept" alt="Glider Design Image" style="width:100%">
+                <div class="text">My initial foam board glider design (Photo 1)</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="https://placehold.co/800x450/0d1b2a/ffffff?text=Python+Code+Visualization" alt="Python Code Visualization" style="width:100%">
+                <div class="text">Screenshot of my Flight Path Simulation code</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="https://placehold.co/800x450/003366/00aaff?text=Science+Fair+Exhibit" alt="Science Fair Exhibit" style="width:100%">
+                <div class="text">My exhibit explaining the principles of lift (Photo 3)</div>
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </section>
+
+    <!-- 5. CONTACT SECTION (With Form) -->
+    <footer id="contact">
+        <div class="container">
+            <h2><i class="fas fa-satellite-dish accent"></i> Contact Command</h2>
+            <p>I would love to connect about Aeronautical Engineering or STEM projects. Send me a message below, or email me directly at: <a href="mailto:sukrutmannari2@gmail.com">sukrutmannari2@gmail.com</a></p>
+
+            <!-- CONTACT FORM (using FormSubmit to route messages to email) -->
+            <form action="https://formsubmit.co/sukrutmannari2@gmail.com" method="POST" class="contact-form">
+                <input type="hidden" name="_subject" value="New Portfolio Message from [Your Name]">
+                <input type="hidden" name="_template" value="box">
+
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="I'm interested in your glider project!"></textarea>
+                </div>
+
+                <button type="submit" class="button">Send Transmission</button>
+            </form>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR SLIDESHOW FUNCTIONALITY -->
+    <script>
+        let slideIndex = 1;
+        
+        // Function to show the slides
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            
+            // Loop back to the first slide if we go past the last one
+            if (n > slides.length) { slideIndex = 1 }
+            // Loop to the last slide if we go before the first one
+            if (n < 1) { slideIndex = slides.length }
+            
+            // Hide all slides
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            // Remove the "active" class from all dots
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            // Display the current slide and mark the current dot as active
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+        
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        // Initialize the slideshow when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlides(slideIndex);
+        });
+
+    </script>
+</body>
+</html>
