@@ -1,59 +1,63 @@
-/* --- Global Styles --- */
+/* --- Global Styles (Makes text readable and sets background) --- */
 body {
-    font-family: sans-serif;
+    font-family: 'Arial', sans-serif; /* A clean, universal font */
     line-height: 1.6;
     margin: 0;
     padding: 0;
     color: #333;
-    background-color: #f4f4f9;
+    background-color: #f8f9fa; /* Light gray background */
 }
 
 .container {
-    width: 80%;
+    width: 85%;
+    max-width: 1200px;
     margin: auto;
     overflow: hidden;
     padding: 40px 0;
 }
 
 h1, h2, h3 {
-    color: #2c3e50;
+    color: #007bff; /* Blue heading color */
 }
 
 a {
-    color: #3498db;
+    color: #007bff;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
+    color: #0056b3;
     text-decoration: underline;
 }
 
-/* --- Header/Hero Section --- */
+/* --- Header/Hero Section (The main banner) --- */
 .hero {
-    background: #3498db;
+    background: #007bff; /* Primary blue background */
     color: #fff;
-    min-height: 400px;
+    min-height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .hero-content h1 {
-    font-size: 3.5em;
+    font-size: 3em;
     margin-bottom: 0.1em;
     color: #fff;
 }
 
 .tagline {
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-bottom: 1.5em;
     font-weight: 300;
 }
 
 .button {
     display: inline-block;
-    background: #2c3e50;
+    background: #28a745; /* Green button */
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -63,53 +67,61 @@ a:hover {
 }
 
 .button:hover {
-    background: #1e2b38;
+    background: #1e7e34;
     text-decoration: none;
 }
 
-/* --- Project Section --- */
-.projects {
+/* --- About Section --- */
+#about {
     background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+/* --- Project Section (The grid layout) --- */
+.projects {
+    background: #f8f9fa;
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
     margin-top: 20px;
 }
 
 .project-card {
-    background: #fcfcfc;
-    padding: 20px;
+    background: #fff;
+    padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #3498db;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #007bff;
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .project-card h3 {
     margin-top: 0;
+    color: #333;
 }
 
 .project-link {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 15px;
     font-weight: bold;
-    color: #2c3e50;
 }
 
 /* --- Footer/Contact Section --- */
 #contact {
-    background: #2c3e50;
+    background: #343a40; /* Dark gray footer */
     color: #fff;
     text-align: center;
     padding: 30px 0;
 }
 
 #contact a {
-    color: #f39c12;
-}
-
-.link-text {
-    font-weight: bold;
+    color: #ffc107; /* Yellow links */
 }
