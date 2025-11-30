@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif; /* Using Inter font */
     line-height: 1.6;
     margin: 0;
     padding-top: 60px; /* Space for the fixed navbar */
@@ -30,6 +30,14 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
 .accent {
     color: var(--color-accent);
 }
@@ -49,7 +57,6 @@ a:hover {
 #navbar {
     background: #000000;
     color: var(--color-text-light);
-    padding: 15px 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -60,6 +67,7 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
+    height: 60px;
 }
 
 .nav-brand {
@@ -88,26 +96,29 @@ a:hover {
     #navbar {
         flex-direction: column;
         padding: 10px 0;
+        height: auto;
     }
     .nav-links {
-        margin-top: 10px;
+        margin-top: 5px;
     }
     .nav-links a {
         padding: 5px 10px;
-        display: inline-block;
+        font-size: 0.8em;
+    }
+    body {
+        padding-top: 100px; /* Adjust for taller mobile nav */
     }
 }
 
 
-/* --- HERO SECTION (Updated with Glider Background using 'download.png') --- */
+/* --- HERO SECTION (Glider Background - using download.png) --- */
 .hero {
-    /* Base dark gradient, ensures dark background if image fails to load */
     background: linear-gradient(135deg, #0d1b2a 0%, #03080e 100%); 
     
-    /* NEW: Glider Image Background - USES download.png */
+    /* Image reference using download.png */
     background-image: url('download.png'); 
-    background-size: cover; /* Cover the entire hero area */
-    background-position: center 30%; /* Center image but shift up slightly */
+    background-size: cover; 
+    background-position: center 30%; 
     background-repeat: no-repeat;
     
     min-height: 450px;
@@ -115,223 +126,4 @@ a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    position: relative; /* Needed for the overlay */
-}
-
-/* Dark Overlay to Ensure Text Readability on Top of Image */
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4); /* 40% opaque black overlay */
-    z-index: 1;
-}
-
-/* Ensure content is above the overlay */
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.hero-content h1 {
-    font-size: 4em;
-    margin-bottom: 0.1em;
-    text-shadow: 0 0 15px rgba(0, 170, 255, 0.4); /* Subtle glow effect */
-}
-
-.tagline {
-    font-size: 1.3em;
-    margin-bottom: 2.5em;
-    color: #bbb;
-}
-
-.button {
-    display: inline-block;
-    background: var(--color-accent);
-    color: var(--color-bg-dark);
-    padding: 12px 30px;
-    border-radius: 50px; /* Pill shape */
-    font-weight: 700;
-    letter-spacing: 1px;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s;
-}
-
-.button:hover {
-    background: var(--color-accent-hover);
-    transform: scale(1.05); /* Zoom in effect */
-    box-shadow: 0 0 20px var(--color-accent-hover); /* Stronger glow on hover */
-    text-decoration: none;
-}
-
-/* --- SECTION STYLING --- */
-.section-dark {
-    background-color: var(--color-bg-section);
-    border-top: 1px solid #1a2c3e;
-}
-
-/* --- PROJECT CARDS --- */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 25px;
-}
-
-.project-card {
-    background: var(--color-bg-dark);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--color-bg-section);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 170, 255, 0.3); /* Blue shadow trail effect */
-    border-color: var(--color-accent);
-}
-
-.description {
-    color: #b0b0b0;
-    font-size: 0.95em;
-}
-
-.project-link {
-    display: inline-block;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-/* --- SLIDESHOW / GALLERY STYLING --- */
-.slideshow-container {
-    max-width: 800px;
-    position: relative;
-    margin: auto;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0, 170, 255, 0.2);
-}
-
-.mySlides {
-    display: none;
-}
-
-.mySlides img {
-    border-radius: 8px;
-    width: 100%; /* Ensures images are fully responsive */
-    height: auto;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0, 170, 255, 0.8);
-}
-
-/* Caption text */
-.text {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-/* The dots/bullets/indicators */
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #555;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-    background-color: var(--color-accent);
-}
-
-/* Fade animation */
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
-}
-
-/* --- CONTACT FORM --- */
-#contact {
-    background: #000000;
-    text-align: center;
-    padding: 80px 0;
-    border-top: 3px solid var(--color-accent);
-}
-
-.contact-form {
-    max-width: 600px;
-    margin: 30px auto 0;
-    text-align: left;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--color-text-light);
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #1a1a1a;
-    color: var(--color-text-light);
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--color-accent);
-    outline: none;
-}
+    box-shadow: 0 4px 15px rgba(0, 0, 0
