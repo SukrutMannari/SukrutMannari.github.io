@@ -129,7 +129,7 @@
             background: linear-gradient(135deg, #0d1b2a 0%, #03080e 100%); 
             
             /* Image reference using download.png */
-            /* NOTE: Ensure you have an image named download.png in the same folder! */
+            /* NOTE: If 'download.png' is not in the same folder, this will be blank! */
             background-image: url('download.png'); 
             background-size: cover; 
             background-position: center 30%; 
@@ -516,6 +516,7 @@
          * @returns {Promise<object>} The JSON response from the API.
          */
         async function fetchGemini(payload, useGrounding = false, maxRetries = 3, delay = 1000) {
+            // NOTE: The API_KEY will be injected by the environment if it's an empty string.
             const endpoint = `${API_URL_BASE}${MODEL}:generateContent?key=${API_KEY}`;
             
             if (useGrounding) {
