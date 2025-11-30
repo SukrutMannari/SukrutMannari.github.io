@@ -205,8 +205,9 @@
 
         /* --- PROJECT CARDS --- */
         .project-grid {
+            /* Now using 5 items, adjust minmax for better spacing if needed */
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
 
@@ -337,6 +338,14 @@
             <p class="tagline-small">A snapshot of my hands-on experience in building and robotics.</p>
 
             <div class="project-grid">
+                
+                <!-- NEW PROJECT 5: FLL Team Founding (Added First to show latest achievement) -->
+                <div class="project-card">
+                    <h3>Founding a First Lego League (FLL) Team</h3>
+                    <img src="https://placehold.co/400x250/00aaff/ffffff?text=FLL+Team+Initiative" alt="First Lego League logo/robot" class="project-image">
+                    <p class="description">Currently establishing a new FLL team with the mentorship of **Mr. Hahn**. This project involves leading the initial planning, administrative tasks, and actively managing the **fundraising phase** to secure necessary materials and registration fees, demonstrating early leadership and organizational skills.</p>
+                    <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
 
                 <!-- Project 1: Bluetooth-Controlled Lego EV3 Car -->
                 <div class="project-card">
