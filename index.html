@@ -89,9 +89,14 @@
             letter-spacing: 1px;
         }
 
+        .nav-links {
+             display: flex;
+             gap: 15px;
+        }
+
         .nav-links a {
             color: var(--color-text-light);
-            padding: 0 15px;
+            padding: 0 5px;
             font-size: 0.9em;
             font-weight: 600;
             transition: color 0.3s, text-shadow 0.3s;
@@ -392,13 +397,13 @@
 
             <div class="project-grid">
                 
-                <!-- PROJECT 5: FLL Team Founding (OpenAI PITCH GENERATOR) -->
+                <!-- PROJECT 5: FLL Team Founding (GEMINI PITCH GENERATOR) -->
                 <div class="project-card">
                     <h3>Founding a First Lego League (FLL) Team</h3>
                     <img src="https://placehold.co/400x250/00aaff/ffffff?text=FLL+Team+Initiative" alt="First Lego League logo/robot" class="project-image">
                     <p class="description">Currently establishing a new FLL team with the mentorship of **Mr. Hahn**. This project involves leading the initial planning, administrative tasks, and actively managing the **fundraising phase** to secure necessary materials and registration fees, demonstrating early leadership and organizational skills.</p>
                     
-                    <!-- NEW LLM BUTTON -->
+                    <!-- LLM BUTTON -->
                     <button class="llm-button" onclick="generatePitch('FLL Team Fundraising', 'Founding a First Lego League team with Mr. Hahn, currently fundraising for materials and registration.')">✨ Generate Fundraising Pitch</button>
                     <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -411,13 +416,13 @@
                     <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- PROJECT 2: Upcycled RC Glider Project (OpenAI BRAINSTORMER) -->
+                <!-- PROJECT 2: Upcycled RC Glider Project (GEMINI BRAINSTORMER) -->
                 <div class="project-card">
                     <h3>Upcycled RC Glider Project</h3>
                     <img src="project-rc-glider.jpg" alt="Cardboard RC Glider" class="project-image">
                     <p class="description">Created a functional remote-controlled glider by repurposing motor and electronics components from an old RC car. The project involved custom-building the airframe from cardboard, focusing heavily on **aerodynamics** and lightweight construction principles.</p>
                     
-                    <!-- NEW LLM BUTTON -->
+                    <!-- LLM BUTTON -->
                     <button class="llm-button" onclick="brainstormImprovements('Upcycled RC Glider', 'Functional RC glider from repurposed electronics and cardboard airframe. Focus on aerodynamics and lightweight build.')">✨ Brainstorm Next Steps</button>
                     <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -486,11 +491,9 @@
     </footer>
 
     <script>
-        // --- OpenAI API Configuration ---
-        // CRITICAL: Using the API Key provided by the user.
-        const API_KEY = "sk-proj-Z37pfWPJ37xAymQ4Xq_ojobp9iCGlC2fvp4bhJpzK6zxiA6cxuM9Rbqyqlb76QYszDTmO8XRbT3BlbkFJ-RRFkUdni121N3mBKP9nApk3GQNQMW0Tw8N_l3M4B5W2txfXdAjf3uze_FpHBNvietuEA7jiIA"; 
-        const API_URL = 'https://api.openai.com/v1/chat/completions';
-        const MODEL = 'gpt-3.5-turbo';
+        // --- Gemini API Configuration (Using secure, built-in access) ---
+        const API_KEY = ""; // MUST be an empty string to use the secure, internal access
+        const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=';
         const MAX_RETRIES = 3;
 
 
@@ -499,32 +502,31 @@
         const llmTextDiv = document.getElementById('llmText');
         const llmLoadingDiv = document.getElementById('llmLoading');
         
-        // Removed llmSourcesDiv as OpenAI does not support built-in grounding/citation
-
         /**
-         * Generic function to call the OpenAI API with exponential backoff.
-         * @param {Array<object>} messages - The chat messages array (System and User).
+         * Generic function to call the Gemini API with exponential backoff.
+         * @param {string} userQuery - The user's specific query.
+         * @param {string} systemPrompt - Instructions for the model's persona/behavior.
          * @param {number} maxRetries - Maximum number of retry attempts.
          * @param {number} delay - Initial delay in milliseconds for backoff.
          * @returns {Promise<string>} The generated text response.
          */
-        async function fetchAIResponse(messages, maxRetries = MAX_RETRIES, delay = 1000) {
+        async function fetchAIResponse(userQuery, systemPrompt, maxRetries = MAX_RETRIES, delay = 1000) {
             
             const payload = {
-                model: MODEL,
-                messages: messages,
-                temperature: 0.7,
-                max_tokens: 500
+                contents: [{ parts: [{ text: userQuery }] }],
+                tools: [{ "google_search": {} }], // Enable Google Search for grounding
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
             };
+
+            const apiUrl = `${API_URL}${API_KEY}`; 
 
             for (let i = 0; i < maxRetries; i++) {
                 try {
-                    const response = await fetch(API_URL, {
+                    const response = await fetch(apiUrl, {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${API_KEY}` // CRITICAL: Authorization header
-                        },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
 
@@ -543,22 +545,28 @@
                         throw new Error(errorMessage);
                     }
 
-                    // Extract text from OpenAI's structure
-                    if (result.choices && result.choices.length > 0 && result.choices[0].message && result.choices[0].message.content) {
-                        return result.choices[0].message.content;
+                    // Extract text from Gemini's structure
+                    const candidate = result.candidates?.[0];
+
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        // Extract the generated text
+                        const text = candidate.content.parts[0].text;
+                        return text;
                     } else {
-                        throw new Error("Invalid response structure from OpenAI API.");
+                        // Handle cases where the response is structured but empty (e.g., due to safety filter)
+                        throw new Error("Invalid or empty response from Gemini API.");
                     }
 
                 } catch (error) {
                     if (i === maxRetries - 1) {
-                        throw new Error(`OpenAI API call failed after ${maxRetries} attempts. Last error: ${error.message}`);
+                        throw new Error(`Gemini API call failed after ${maxRetries} attempts. Last error: ${error.message}`);
                     }
-                    // Continue to next retry
+                    // Continue to next retry (delay already handled above for 429)
                 }
             }
             throw new Error("Exited retry loop unexpectedly.");
         }
+
 
         /**
          * Clears and shows the loading spinner, hides the output box.
@@ -599,13 +607,8 @@
 
             const userQuery = `Draft a fundraising pitch based on this project: ${projectTitle}. Description: ${projectDescription}. Ensure the pitch sounds appropriate for a 7th grader's robotics team (First Lego League).`;
             
-            const messages = [
-                { role: "system", content: systemPrompt },
-                { role: "user", content: userQuery }
-            ];
-
             try {
-                const text = await fetchAIResponse(messages);
+                const text = await fetchAIResponse(userQuery, systemPrompt);
                 displayResult(text);
 
             } catch (error) {
@@ -623,13 +626,8 @@
 
             const userQuery = `Brainstorm next steps for the project: ${projectTitle}. Description: ${projectDescription}.`;
 
-            const messages = [
-                { role: "system", content: systemPrompt },
-                { role: "user", content: userQuery }
-            ];
-
             try {
-                const text = await fetchAIResponse(messages);
+                const text = await fetchAIResponse(userQuery, systemPrompt);
                 displayResult(text);
 
             } catch (error) {
