@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music | Sukrut Mannari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+            height: 3px;
+            background-color: #38bdf8;
+            border-radius: 9999px;
+        }
+        .activity-card {
+            background-color: #161b22;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar (Identical to index.html) -->
+    <header class="sticky top-0 z-50 bg-[#0d1117]/95 backdrop-blur-sm shadow-md">
+        <nav class="container flex justify-between items-center h-16">
+            <div class="text-xl font-bold text-white tracking-wider">SUKRUT MANNARI</div>
+            <div class="space-x-4 text-sm font-medium">
+                <a href="index.html" class="hover:text-blue-400 transition-colors">Home</a>
+                <a href="projects.html" class="hover:text-blue-400 transition-colors">Projects</a>
+                <a href="music.html" class="text-blue-400 transition-colors">Music</a>
+                <a href="extracurriculars.html" class="hover:text-blue-400 transition-colors">Extracurriculars</a>
+                <a href="index.html#connect" class="hover:text-blue-400 transition-colors">Connect</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="py-12">
+        <section class="container">
+            <h1 class="text-4xl font-extrabold text-white mb-4">Music Activities and Achievements</h1>
+            <p class="text-xl text-gray-400 mb-12">Music is a passion that helps develop creativity, discipline, and complex pattern recognition.</p>
+
+            <!-- Carnatic Flute Section (New) -->
+            <div class="activity-card">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4">Carnatic Flute Performance</h2>
+                <p class="text-gray-300 mb-4">
+                    I am trained in playing the Carnatic Flute (Venu), which is central to South Indian classical music. This requires a deep understanding of complex **Ragas** (melodic frameworks) and **Taalas** (rhythmic cycles). The precision and technique needed for this instrument directly strengthen my focus and detail-orientation, similar to the demands of engineering.
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-400 pl-4">
+                    <li>**Style:** Dedicated training in Carnatic (South Indian Classical) music.</li>
+                    <li>**Skills:** Improvisation (Manodharma) within Raga structures, mastery of complicated fingerings and breath control.</li>
+                    <li>**Performances:** Participate in local cultural events and school assemblies.</li>
+                </ul>
+            </div>
+
+            <!-- Saxophone Section (New) -->
+            <div class="activity-card">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4">Saxophone Family Mastery</h2>
+                <p class="text-gray-300 mb-4">
+                    I have developed proficiency across the saxophone family, starting with the **Alto Saxophone** and currently advancing my skills through the **Tenor** and eventually maturing to the **Baritone Saxophone**. Playing multiple instruments in this family requires adaptive embouchure and transposing knowledge, applying a systematic approach to technical execution.
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-400 pl-4">
+                    <li>**Instruments:** Alto Saxophone (primary), Tenor Saxophone (intermediate), Baritone Saxophone (target).</li>
+                    <li>**Ensembles:** Member of the school band, focusing on classical and jazz repertoire.</li>
+                    <li>**Skills:** Transposition, ensemble collaboration, advanced breath support, and dynamic control.</li>
+                </ul>
+            </div>
+
+            <!-- Choir Section (Retained) -->
+            <div class="activity-card">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4">School Choir</h2>
+                <p class="text-gray-300 mb-4">
+                    I participate in the school choir. This is a great exercise in teamwork, listening, and adjusting my performance to fit within a larger system—similar to integrating components in an engineering project.
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-400 pl-4">
+                    <li>**Role:** Tenor section.</li>
+                    <li>**Events:** Performed at the annual Winter and Spring concerts.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#161b22] py-4 text-center text-sm text-gray-500">
+        &copy; 2025 Sukrut Mannari. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
