@@ -3,435 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sukrut Mannari - Aeronautical Engineering & Robotics Portfolio</title>
-    
-    <!-- Favicon Link -->
-    <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- External Resources -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- CRITICAL: ALL CSS IS NOW EMBEDDED HERE -->
+    <title>Sukrut Mannari | Aeronautical Engineer & Robotics</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- Global Styles (Aero/Dark Theme) --- */
-        :root {
-            --color-bg-dark: #0a1118; /* Deep Space Blue/Black */
-            --color-bg-section: #0d1b2a; /* Slightly lighter dark blue */
-            --color-text-light: #e0e0e0;
-            --color-accent: #00aaff; /* Electric Sky Blue */
-            --color-accent-hover: #66ccff;
-            --color-success: #32cd32; /* Lime Green */
-            --color-paypal: #0070BA; /* PayPal Blue */
-        }
-
+        /* Custom styles for the dark theme and responsive layout */
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding-top: 60px; /* Space for the fixed navbar */
-            color: var(--color-text-light);
-            background-color: var(--color-bg-dark);
-            transition: background-color 0.3s;
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Dark background matching the screenshots */
+            color: #c9d1d9; /* Light text */
         }
-
         .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-            overflow: hidden;
-            padding: 60px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
-
-        h1, h2, h3 {
-            color: #ffffff;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-size: 2.2em;
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--color-accent);
-            padding-bottom: 5px;
-            display: inline-block;
-        }
-
-        .accent {
-            color: var(--color-accent);
-        }
-
-        a {
-            color: var(--color-accent);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--color-accent-hover);
-            text-decoration: underline;
-        }
-
-        /* --- NAVIGATION BAR (Taskbar) --- */
-        #navbar {
-            background: #000000;
-            color: var(--color-text-light);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
-            height: 60px;
-        }
-
-        .nav-brand {
-            font-size: 1.2em;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-             display: flex;
-             gap: 15px;
-        }
-
-        .nav-links a {
-            color: var(--color-text-light);
-            padding: 0 5px;
-            font-size: 0.9em;
-            font-weight: 600;
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-accent);
-            text-decoration: none;
-            text-shadow: 0 0 5px var(--color-accent), 0 0 10px rgba(0, 170, 255, 0.5);
-        }
-
-        /* Responsive Nav Links for Mobile */
-        @media (max-width: 768px) {
-            #navbar {
-                flex-direction: column;
-                padding: 10px 0;
-                height: auto;
-            }
-            .nav-links {
-                margin-top: 5px;
-            }
-            .nav-links a {
-                padding: 5px 10px;
-                font-size: 0.8em;
-            }
-            body {
-                padding-top: 100px; /* Adjust for taller mobile nav */
-            }
-        }
-
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(135deg, #0d1b2a 0%, #03080e 100%); 
-            background-image: url('download.png'); 
-            background-size: cover; 
-            background-position: center 30%; 
-            background-repeat: no-repeat;
-            min-height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            position: relative; 
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.45); 
-            z-index: 1;
-        }
-
-        .hero-content {
+        .section-title {
             position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 4em;
-            margin-bottom: 0.1em;
-            text-shadow: 0 0 15px rgba(0, 170, 255, 0.4); 
-        }
-
-        .tagline {
-            font-size: 1.3em;
-            margin-bottom: 2.5em;
-            color: #bbb;
-        }
-
-        .tagline-small {
-            color: #bbb;
-            margin-bottom: 40px;
-            font-style: italic;
-        }
-
-        .button {
+            padding-bottom: 0.5rem;
             display: inline-block;
-            background: var(--color-accent);
-            color: var(--color-bg-dark);
-            padding: 12px 30px;
-            border-radius: 50px; 
-            font-weight: 700;
-            letter-spacing: 1px;
-            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s;
-            border: none; /* Ensure buttons don't have default borders */
-            cursor: pointer;
         }
-
-        .button:hover {
-            background: var(--color-accent-hover);
-            transform: scale(1.05); 
-            box-shadow: 0 0 20px var(--color-accent-hover); 
-            text-decoration: none;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+            height: 3px;
+            background-color: #38bdf8; /* Sky Blue accent */
+            border-radius: 9999px;
         }
-
-        /* --- SECTION STYLING --- */
-        .section-dark {
-            background-color: var(--color-bg-section);
-            border-top: 1px solid #1a2c3e;
+        .card {
+            background-color: #161b22;
+            transition: all 0.3s ease;
         }
-
-        /* --- PROJECT CARDS --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: var(--color-bg-dark);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--color-bg-section);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 170, 255, 0.3); 
-            border-color: var(--color-accent);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px; 
-            object-fit: cover; 
-            border-radius: 6px;
-            margin-bottom: 15px;
-            border: 1px solid #333;
-        }
-
-        .description {
-            color: #b0b0b0;
-            font-size: 0.95em;
-        }
-
-        .project-link {
-            display: inline-block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        
-        /* --- CONTACT FORM --- */
-        #contact {
-            background: #000000;
-            text-align: center;
-            padding: 80px 0;
-            border-top: 3px solid var(--color-accent);
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 30px auto 0;
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--color-text-light);
-        }
-
-        .contact-form input[type="text"],
-        .contact-form input[type="email"],
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            background-color: #1a1a1a;
-            color: var(--color-text-light);
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: var(--color-accent);
-            outline: none;
-        }
-
-        /* Removed Message Box and Copy Button styles */
-
-        /* --- FOOTER --- */
-        footer {
-            background: #000000;
-            color: #777;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 0.8em;
-            border-top: 1px solid #1a2c3e;
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar (Fixed at Top) -->
-    <nav id="navbar">
-        <div class="nav-brand">SUKRUT MANNARI</div>
-        <div class="nav-links">
-            <a href="#about"><i class="fas fa-user-circle"></i> About</a>
-            <a href="#projects"><i class="fas fa-rocket"></i> Projects</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="hero" class="hero">
-        <div class="hero-content">
-            <h1>Sukrut Mannari</h1>
-            <p class="tagline">Future Aeronautical Engineer | Robotics Enthusiast | Computer Science</p>
-            <p class="tagline-small">Building the next generation of remote and autonomous systems.</p>
-            <a href="#projects" class="button">View My Key Projects</a>
-        </div>
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-[#0d1117]/95 backdrop-blur-sm shadow-md">
+        <nav class="container flex justify-between items-center h-16">
+            <div class="text-xl font-bold text-white tracking-wider">SUKRUT MANNARI</div>
+            <div class="space-x-4 text-sm font-medium">
+                <a href="#about" class="hover:text-blue-400 transition-colors">About</a>
+                <a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a>
+                <a href="#connect" class="hover:text-blue-400 transition-colors">Connect</a>
+            </div>
+        </nav>
     </header>
 
-    <!-- About Me Section -->
-    <section id="about" class="container">
-        <h2><span class="accent"><i class="fas fa-lightbulb"></i></span> About Me</h2>
-        <p>I am a 7th-grade student with a strong passion for **Aeronautical Engineering**, constantly exploring how things fly, move, and are built. I enjoy the hands-on process of design, building, and coding.</p>
-        <p>In my free time, I focus on robotics, including working with **Arduino** and **Lego Mindstorms**, to create remote-controlled and autonomous systems. My goal is to combine the fields of engineering and computer science to build efficient and impactful solutions.</p>
-        <p><a href="sukrut_mannari_resume.pdf" download="Sukrut_Mannari_Resume.pdf" class="text-blue-400 hover:text-blue-200">Download My Resume [PDF]</a>a href="sukrut_mannari_resume.pdf" download="Sukrut_Mannari_Resume.pdf" class="text-blue-400 hover:text-blue-200">Download My Resume [PDF]</a></p>
-    </section>
+    <main class="py-8">
+        <!-- Hero Section -->
+        <section id="hero" class="container text-center py-20 md:py-32">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-4">Aspiring Aeronautical Engineer</h1>
+            <p class="text-lg sm:text-xl text-gray-400 mb-8 max-w-3xl mx-auto">Hands-on experience in building, robotics, and coding with a focus on autonomous and remote-controlled systems.</p>
+            <a href="#projects" class="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors shadow-lg">View Key Projects</a>
+        </section>
 
-    <!-- Key Projects Section -->
-    <section id="projects" class="section-dark">
-        <div class="container">
-            <h2><span class="accent"><i class="fas fa-cubes"></i></span> Key Projects</h2>
-            <p class="tagline-small">A snapshot of my hands-on experience in building and robotics.</p>
+        <!-- About Me Section -->
+        <section id="about" class="container py-16">
+            <h2 class="section-title text-3xl font-bold mb-8 flex items-center">
+                <span class="mr-2 text-blue-400">💡</span> About Me
+            </h2>
+            <div class="text-gray-300 space-y-4 text-lg">
+                <p>I am a 7th-grade student with a strong passion for **Aeronautical Engineering**, constantly exploring how things fly, move, and are built. I enjoy the hands-on process of design, building, and coding.</p>
+                <p>In my free time, I focus on robotics, including working with **Arduino** and **Lego Mindstorms**, to create remote-controlled and autonomous systems. My goal is to combine the fields of engineering and computer science to build efficient and impactful solutions.</p>
 
-            <div class="project-grid">
+                <!-- 
+                    *** THIS IS THE CRUCIAL LINE WITH THE FIXED RESUME LINK ***
+                    The link points to the PDF file you uploaded to GitHub 
+                    and includes the 'download' attribute to ensure the file is saved correctly.
+                -->
+                <p class="pt-4">
+                    <a href="sukrut_mannari_resume.pdf" download="Sukrut_Mannari_Resume.pdf" class="text-blue-400 hover:text-blue-200 font-medium transition-colors">
+                        Download My Resume [PDF]
+                    </a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="container py-16">
+            <h2 class="section-title text-3xl font-bold mb-12">
+                Key Projects
+            </h2>
+
+            <p class="text-gray-400 mb-8">A snapshot of my hands-on experience in building and robotics.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
                 
-                <!-- Project 1: FLL Team Founding -->
-                <div class="project-card">
-                    <h3>Founding a First Lego League (FLL) Team</h3>
-                    <img src="https://placehold.co/400x250/00aaff/ffffff?text=FLL+Team+Initiative" alt="First Lego League logo/robot" class="project-image">
-                    <p class="description">Currently establishing a new FLL team with the mentorship of **Mr. Hahn**. This project involves leading the initial planning, administrative tasks, and securing necessary materials and registration fees.</p>
-                    <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a> 
+                <!-- Project 1: Bluetooth-Controlled Lego EV3 Car -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold text-white mb-2 flex items-center">
+                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=RC" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=RC';" alt="Placeholder for project-lego-rc-car.jpg">
+                        Bluetooth-Controlled Lego EV3 Car
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-4">Built a remote-controlled vehicle using the Lego Mindstorms EV3 kit. I programmed it to connect to a custom **Bluetooth controller** for full remote operation, demonstrating proficiency in robotics and basic programming logic.</p>
+                    <a href="#" class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Details →</a>
                 </div>
 
-                <!-- Project 2: Bluetooth-Controlled Lego EV3 Car -->
-                <div class="project-card">
-                    <h3>Bluetooth-Controlled Lego EV3 Car</h3>
-                    <img src="https://placehold.co/400x250/00aaff/ffffff?text=Lego+EV3+Car" alt="Lego EV3 RC Car" class="project-image">
-                    <p class="description">Built a remote-controlled vehicle using the Lego Mindstorms EV3 kit. I programmed it to connect to a custom **Bluetooth controller** for full remote operation, demonstrating proficiency in robotics and basic programming logic.</p>
-                    <!-- Link updated to the actual GitHub repository -->
-                    <a href="https://github.com/SukrutMannari/LegoRcCar" target="_blank" class="project-link">View on GitHub <i class="fab fa-github"></i></a>
+                <!-- Project 2: Upcycled RC Glider Project -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold text-white mb-2 flex items-center">
+                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=GL" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=GL';" alt="Placeholder for project-rc-glider.jpg">
+                        Upcycled RC Glider Project
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-4">Created a functional remote-controlled glider by repurposing motor and electronics components from an old RC car. The project involved custom-building the airframe from cardboard, focusing heavily on **aerodynamics** and lightweight construction principles.</p>
+                    <a href="#" class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Details →</a>
                 </div>
 
-                <!-- Project 3: Upcycled RC Glider Project -->
-                <div class="project-card">
-                    <h3>Upcycled RC Glider Project</h3>
-                    <img src="project-rc-glider.jpg" alt="Cardboard RC Glider" class="project-image">
-                    <p class="description">Created a functional remote-controlled glider by repurposing motor and electronics components from an old RC car. The project involved custom-building the airframe from cardboard, focusing heavily on **aerodynamics** and lightweight construction principles.</p>
-                    <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+                <!-- Project 3: Arduino Steering Wheel (Unojoy) -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold text-white mb-2 flex items-center">
+                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=AD" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=AD';" alt="Placeholder for Arduino image">
+                        Arduino Steering Wheel (Unojoy)
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-4">Developed a custom input device using an Arduino board and the Unojoy framework to simulate a steering wheel. This project showcases my understanding of **microcontrollers**, input mapping, and basic electronic interfacing.</p>
+                    <a href="#" class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Details →</a>
                 </div>
 
-                <!-- Project 4: Arduino Controller System (Placeholder) -->
-                <div class="project-card">
-                    <h3>Arduino Steering Wheel (Unojoy)</h3>
-                    <img src="https://placehold.co/400x250/00aaff/ffffff?text=Arduino+Project" alt="Arduino Placeholder" class="project-image">
-                    <p class="description">Developed a custom input device using an Arduino board and the Unojoy framework to simulate a steering wheel. This project showcases my understanding of **microcontrollers**, input mapping, and basic electronic interfacing.</p>
-                    <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Project 5: Lego Master Builds Collection -->
-                <div class="project-card">
-                    <h3>Lego Master Builds Collection</h3>
-                    <img src="project-lego-collection.jpg" alt="Lego Build Collection" class="project-image">
-                    <p class="description">A diverse showcase of complex Lego builds from early childhood. This collection demonstrates an early and sustained passion for **engineering design**, following complex instructions, and attention to structural detail.</p>
-                    <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+                <!-- Project 4: Lego Master Builds Collection -->
+                <div class="card p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-semibold text-white mb-2 flex items-center">
+                        <img src="https://placehold.co/60x60/38bdf8/ffffff?text=LG" class="w-10 h-10 mr-3 rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/60x60/38bdf8/ffffff?text=LG';" alt="Placeholder for project-lego-collection.jpg">
+                        Lego Master Builds Collection
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-4">A diverse showcase of complex Lego builds from early childhood. This collection demonstrates an early and sustained passion for **engineering design**, following complex instructions, and attention to structural detail.</p>
+                    <a href="#" class="text-blue-400 hover:text-blue-200 text-sm font-medium transition-colors">View Details →</a>
                 </div>
 
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2><span class="accent"><i class="fas fa-headset"></i></span> Let's Connect!</h2>
-            <p>I am always looking for new challenges and learning opportunities.</p>
-            
-            <div class="contact-form">
-                <!-- FORM REVERTED: Using FormSubmit for reliable backend-less form submission -->
-                <form action="https://formsubmit.co/sukrutmannari2@gmail.com" method="POST">
-                    <!-- Hidden field for email subject line -->
-                    <input type="hidden" name="_subject" value="New Portfolio Inquiry from Sukrut Mannari Website">
-
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <!-- Note: Field names are capitalized for better email readability via FormSubmit -->
-                        <input type="text" id="name" name="Name" required>
+        <!-- Let's Connect Section -->
+        <section id="connect" class="container py-16">
+            <h2 class="section-title text-3xl font-bold mb-8">
+                Let's Connect!
+            </h2>
+            <div class="bg-[#161b22] p-8 rounded-xl shadow-lg max-w-xl mx-auto">
+                <p class="text-gray-400 mb-6 text-center">I am always looking for new challenges and learning opportunities.</p>
+                <form onsubmit="alert('Thank you for your message! This form is only a visual placeholder.'); return false;" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-1">Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-3 rounded-lg bg-[#0d1117] border border-gray-700 focus:border-blue-400 focus:ring-1 focus:ring-blue-400" required>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="Email" required>
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                        <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-[#0d1117] border border-gray-700 focus:border-blue-400 focus:ring-1 focus:ring-blue-400" required>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="Message" rows="5" required></textarea>
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-1">Message</label>
+                        <textarea id="message" name="message" rows="4" class="w-full p-3 rounded-lg bg-[#0d1117] border border-gray-700 focus:border-blue-400 focus:ring-1 focus:ring-blue-400" required></textarea>
                     </div>
-                    <button type="submit" class="button">Send Message</button>
+                    <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+                        Send Message
+                    </button>
                 </form>
+                <p class="text-center text-sm mt-6">
+                    Find me on 
+                    <a href="https://github.com/SukrutMannari" target="_blank" class="text-blue-400 hover:text-blue-200 font-medium transition-colors flex items-center justify-center">
+                        GitHub <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-1" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2.0-2.2-.21.43.37.5.94-.05 5.47-4.59 5.47-7.59C16 3.58 12.42 0 8 0"/>
+                        </svg>
+                    </a>
+                </p>
             </div>
+        </section>
 
-            <div style="margin-top: 40px;">
-                <p>Find me on <a href="https://github.com/SukrutMannari" target="_blank">GitHub <i class="fab fa-github"></i></a></p>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Sukrut Mannari. All rights reserved.</p>
+    <footer class="bg-[#161b22] py-4 text-center text-sm text-gray-500">
+        &copy; 2025 Sukrut Mannari. All Rights Reserved.
     </footer>
-
-    <!-- All custom JavaScript logic for manual email copying has been removed -->
 
 </body>
 </html>
