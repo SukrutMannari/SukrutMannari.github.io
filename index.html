@@ -262,16 +262,6 @@
             margin-top: 0;
             font-size: 1.2em;
         }
-        .llm-output-box a {
-            font-size: 0.8em;
-            display: block;
-            margin-top: 5px;
-            color: #888;
-            word-break: break-all;
-        }
-        .llm-output-box a:hover {
-            color: var(--color-accent);
-        }
         .llm-button {
             display: block;
             width: 100%;
@@ -381,6 +371,7 @@
         <div class="hero-content">
             <h1>Sukrut Mannari</h1>
             <p class="tagline">Future Aeronautical Engineer | Robotics Enthusiast | Computer Science</p>
+            <p class="tagline-small">Ask my portfolio assistant for ideas!</p>
             <a href="#projects" class="button">View My Key Projects</a>
         </div>
     </header>
@@ -401,7 +392,7 @@
 
             <div class="project-grid">
                 
-                <!-- PROJECT 5: FLL Team Founding (GEMINI PITCH GENERATOR) -->
+                <!-- PROJECT 5: FLL Team Founding (OpenAI PITCH GENERATOR) -->
                 <div class="project-card">
                     <h3>Founding a First Lego League (FLL) Team</h3>
                     <img src="https://placehold.co/400x250/00aaff/ffffff?text=FLL+Team+Initiative" alt="First Lego League logo/robot" class="project-image">
@@ -420,7 +411,7 @@
                     <a href="#" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- PROJECT 2: Upcycled RC Glider Project (GEMINI BRAINSTORMER) -->
+                <!-- PROJECT 2: Upcycled RC Glider Project (OpenAI BRAINSTORMER) -->
                 <div class="project-card">
                     <h3>Upcycled RC Glider Project</h3>
                     <img src="project-rc-glider.jpg" alt="Cardboard RC Glider" class="project-image">
@@ -454,7 +445,6 @@
                 <h4>LLM Response:</h4>
                 <div id="llmText"></div>
                 <div id="llmLoading" class="llm-loading-spinner"></div>
-                <div id="llmSources"></div>
             </div>
 
         </div>
@@ -496,66 +486,73 @@
     </footer>
 
     <script>
-        // --- Gemini API Configuration ---
-        // Leave API_KEY as an empty string. The environment will provide it at runtime.
-        const API_KEY = ""; 
-        const API_URL_BASE = 'https://generativelanguage.googleapis.com/v1beta/models/';
-        const MODEL = 'gemini-2.5-flash-preview-09-2025';
+        // --- OpenAI API Configuration ---
+        // CRITICAL: Using the API Key provided by the user.
+        const API_KEY = "sk-proj-Z37pfWPJ37xAymQ4Xq_ojobp9iCGlC2fvp4bhJpzK6zxiA6cxuM9Rbqyqlb76QYszDTmO8XRbT3BlbkFJ-RRFkUdni121N3mBKP9nApk3GQNQMW0Tw8N_l3M4B5W2txfXdAjf3uze_FpHBNvietuEA7jiIA"; 
+        const API_URL = 'https://api.openai.com/v1/chat/completions';
+        const MODEL = 'gpt-3.5-turbo';
+        const MAX_RETRIES = 3;
+
 
         // --- UI Elements ---
         const llmOutputBox = document.getElementById('llmOutput');
         const llmTextDiv = document.getElementById('llmText');
         const llmLoadingDiv = document.getElementById('llmLoading');
-        const llmSourcesDiv = document.getElementById('llmSources');
+        
+        // Removed llmSourcesDiv as OpenAI does not support built-in grounding/citation
 
         /**
-         * Generic function to call the Gemini API with exponential backoff.
-         * @param {object} payload - The API request body.
-         * @param {boolean} useGrounding - Whether to enable Google Search grounding.
+         * Generic function to call the OpenAI API with exponential backoff.
+         * @param {Array<object>} messages - The chat messages array (System and User).
          * @param {number} maxRetries - Maximum number of retry attempts.
          * @param {number} delay - Initial delay in milliseconds for backoff.
-         * @returns {Promise<object>} The JSON response from the API.
+         * @returns {Promise<string>} The generated text response.
          */
-        async function fetchGemini(payload, useGrounding = false, maxRetries = 3, delay = 1000) {
+        async function fetchAIResponse(messages, maxRetries = MAX_RETRIES, delay = 1000) {
             
-            // CRITICAL FIX: The API URL must always use the MODEL and the API_KEY for injection.
-            const apiUrl = `${API_URL_BASE}${MODEL}:generateContent?key=${API_KEY}`;
-            
-            if (useGrounding) {
-                 // Add Google Search grounding tool
-                 payload.tools = [{ "google_search": {} }];
-            }
+            const payload = {
+                model: MODEL,
+                messages: messages,
+                temperature: 0.7,
+                max_tokens: 500
+            };
 
             for (let i = 0; i < maxRetries; i++) {
                 try {
-                    const response = await fetch(apiUrl, {
+                    const response = await fetch(API_URL, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${API_KEY}` // CRITICAL: Authorization header
+                        },
                         body: JSON.stringify(payload)
                     });
 
-                    if (response.status === 429 && i < maxRetries - 1) {
-                        // Rate limit error (429), retry with exponential backoff
+                    // Handle rate limiting or temporary network issues
+                    if (!response.ok && response.status === 429 && i < maxRetries - 1) {
                         await new Promise(resolve => setTimeout(resolve, delay));
-                        delay *= 2; // Double the delay
+                        delay *= 2; 
                         continue;
                     }
-                    
-                    // Always try to parse JSON to get error details
-                    const result = await response.json();
 
-                    if (!response.ok || !result.candidates || result.candidates.length === 0) {
-                        // Check for specific API error messages in the result object
+                    const result = await response.json();
+                    
+                    if (!response.ok) {
+                         // Check for API error details in the result object
                         const errorMessage = result.error ? result.error.message : `API request failed with status: ${response.status}`;
                         throw new Error(errorMessage);
                     }
 
-                    return result;
+                    // Extract text from OpenAI's structure
+                    if (result.choices && result.choices.length > 0 && result.choices[0].message && result.choices[0].message.content) {
+                        return result.choices[0].message.content;
+                    } else {
+                        throw new Error("Invalid response structure from OpenAI API.");
+                    }
 
                 } catch (error) {
                     if (i === maxRetries - 1) {
-                        // If it's the last retry, re-throw the final error
-                        throw new Error(`Gemini API call failed after ${maxRetries} attempts. Last error: ${error.message}`);
+                        throw new Error(`OpenAI API call failed after ${maxRetries} attempts. Last error: ${error.message}`);
                     }
                     // Continue to next retry
                 }
@@ -570,7 +567,6 @@
             llmOutputBox.style.display = 'block';
             llmOutputBox.querySelector('h4').textContent = title;
             llmTextDiv.innerHTML = '';
-            llmSourcesDiv.innerHTML = '';
             llmLoadingDiv.style.display = 'block';
              // Scroll to the output box
             llmOutputBox.scrollIntoView({ behavior: 'smooth' });
@@ -579,21 +575,11 @@
         /**
          * Hides the loading spinner and displays the result.
          * @param {string} text - The generated text.
-         * @param {Array<object>} sources - The grounding sources.
          */
-        function displayResult(text, sources) {
+        function displayResult(text) {
             llmLoadingDiv.style.display = 'none';
             // Use <br> for line breaks
             llmTextDiv.innerHTML = text.replace(/\n/g, '<br>'); 
-
-            if (sources && sources.length > 0) {
-                llmSourcesDiv.innerHTML = '<strong>Sources (for context):</strong>';
-                sources.forEach(source => {
-                    llmSourcesDiv.innerHTML += `<a href="${source.uri}" target="_blank" title="${source.title}">${source.title}</a>`;
-                });
-            } else {
-                 llmSourcesDiv.innerHTML = '<em>No external sources cited.</em>';
-            }
         }
         
         /**
@@ -602,42 +588,25 @@
         function handleError(message) {
             llmLoadingDiv.style.display = 'none';
             llmTextDiv.innerHTML = `<p class="error-message"><strong>Error:</strong> ${message}</p>`;
-            llmSourcesDiv.innerHTML = '';
         }
 
 
-        // --- Feature 1: FLL Fundraising Pitch Generator (Uses Grounding) ---
+        // --- Feature 1: FLL Fundraising Pitch Generator ---
         async function generatePitch(projectTitle, projectDescription) {
             startLoading(`✨ Generating Pitch for ${projectTitle}...`);
             
             const systemPrompt = `You are a professional writing assistant for a young student (7th grade) who is fundraising for a robotics team. Draft a concise, one-paragraph pitch for a potential sponsor. The pitch should be persuasive, highlight the educational value (robotics, engineering, teamwork), and include a clear call to action for funding. Keep the tone enthusiastic and professional.`;
 
             const userQuery = `Draft a fundraising pitch based on this project: ${projectTitle}. Description: ${projectDescription}. Ensure the pitch sounds appropriate for a 7th grader's robotics team (First Lego League).`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-            };
+            
+            const messages = [
+                { role: "system", content: systemPrompt },
+                { role: "user", content: userQuery }
+            ];
 
             try {
-                // Use Google Search grounding to inform the pitch with current FLL/robotics context
-                const result = await fetchGemini(payload, true); 
-                
-                const candidate = result.candidates?.[0];
-                const text = candidate?.content?.parts?.[0]?.text || "Generation failed. No text content received.";
-                
-                let sources = [];
-                const groundingMetadata = candidate?.groundingMetadata;
-                if (groundingMetadata && groundingMetadata.groundingAttributions) {
-                    sources = groundingMetadata.groundingAttributions
-                        .map(attribution => ({
-                            uri: attribution.web?.uri,
-                            title: attribution.web?.title,
-                        }))
-                        .filter(source => source.uri && source.title);
-                }
-
-                displayResult(text, sources);
+                const text = await fetchAIResponse(messages);
+                displayResult(text);
 
             } catch (error) {
                 console.error("Pitch generation error:", error);
@@ -646,26 +615,22 @@
         }
 
 
-        // --- Feature 2: Project Improvement Brainstormer (No Grounding Needed) ---
+        // --- Feature 2: Project Improvement Brainstormer ---
         async function brainstormImprovements(projectTitle, projectDescription) {
             startLoading(`✨ Brainstorming Improvements for ${projectTitle}...`);
             
-            const systemPrompt = `You are an expert engineering mentor. Provide three concrete, logical 'next steps' or improvement ideas for the following student project. The ideas should be challenging but achievable for a motivated 7th grader and should focus on adding advanced engineering or programming concepts. Format the output as a numbered list.`;
+            const systemPrompt = `You are an expert engineering mentor. Provide three concrete, logical 'next steps' or improvement ideas for the following student project. The ideas should be challenging but achievable for a motivated 7th grader and should focus on adding advanced engineering or programming concepts. Format the output as a numbered list, using simple Markdown formatting (like **bold**).`;
 
             const userQuery = `Brainstorm next steps for the project: ${projectTitle}. Description: ${projectDescription}.`;
 
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-            };
+            const messages = [
+                { role: "system", content: systemPrompt },
+                { role: "user", content: userQuery }
+            ];
 
             try {
-                // No grounding needed, this is a creative/analytical task
-                const result = await fetchGemini(payload, false); 
-                
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "Generation failed. No text content received.";
-                
-                displayResult(text, null);
+                const text = await fetchAIResponse(messages);
+                displayResult(text);
 
             } catch (error) {
                 console.error("Brainstorming error:", error);
