@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games Corner | Sukrut Mannari</title>
+    <title>Interactive Apps Corner</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.png" type="image/png">
     
     <style>
-        /* General Portfolio Styles (Matching index.html) */
+        /* General Portfolio Styles */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0d1117;
@@ -37,8 +36,8 @@
             border-radius: 9999px;
         }
 
-        /* Custom Game Styles */
-        .game-canvas {
+        /* Custom App/Game Styles */
+        .app-canvas {
             display: block;
             border: 2px solid #38bdf8;
             border-radius: 0.5rem;
@@ -46,23 +45,29 @@
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.5); /* Blue glow */
             background-color: #000000;
         }
-        .game-info {
+        .control-button {
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .control-button:hover {
+            transform: translateY(-1px);
+        }
+        .control-button:active {
+            transform: translateY(0);
+        }
+
+        /* Info Bar for all apps */
+        .app-info {
             background-color: #1e293b;
             padding: 0.75rem;
             border-radius: 0.5rem;
             margin-bottom: 1rem;
             display: flex;
             justify-content: space-around;
+            flex-wrap: wrap; 
         }
-        .game-control-button {
-            transition: background-color 0.2s, transform 0.1s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-        .game-control-button:hover {
-            transform: translateY(-1px);
-        }
-        .game-control-button:active {
-            transform: translateY(0);
+        .app-info > div {
+            padding: 0 0.5rem;
         }
 
         /* Tab Styles */
@@ -90,14 +95,14 @@
 </head>
 <body>
 
-    <!-- Navigation Bar (Matching index.html) -->
+    <!-- Navigation Bar -->
     <header class="sticky top-0 z-50 bg-[#0d1117]/95 backdrop-blur-sm shadow-md">
         <nav class="container flex justify-between items-center h-16">
             <div class="text-xl font-bold text-white tracking-wider">SUKRUT MANNARI</div>
             <div class="space-x-4 text-sm font-medium">
                 <a href="index.html" class="hover:text-blue-400 transition-colors">Home</a>
                 <a href="projects.html" class="hover:text-blue-400 transition-colors">Projects</a>
-                <a href="games.html" class="text-blue-400 transition-colors">Games</a>
+                <a href="games.html" class="text-blue-400 transition-colors">Apps & Games</a>
                 <a href="music.html" class="hover:text-blue-400 transition-colors">Music</a>
                 <a href="extracurriculars.html" class="hover:text-blue-400 transition-colors">Extracurriculars</a>
                 <a href="index.html#connect" class="hover:text-blue-400 transition-colors">Connect</a>
@@ -107,100 +112,265 @@
 
     <main class="py-12">
         <section class="container">
-            <h1 class="text-4xl font-extrabold text-white mb-4">Interactive Games Corner</h1>
+            <h1 class="text-4xl font-extrabold text-white mb-4">Interactive Apps & Games Corner</h1>
             <p class="text-xl text-gray-400 mb-8">
-                A showcase of basic game development using vanilla JavaScript and Canvas.
+                A collection of interactive applications and games built with JavaScript and Canvas.
             </p>
 
-            <!-- Game Tabs -->
+            <!-- Game/App Tabs -->
             <div class="mb-4">
                 <button id="tab-astro" class="tab-button active bg-gray-700 text-blue-400">Astro Shooter</button>
                 <button id="tab-snake" class="tab-button bg-gray-700 text-gray-400">Classic Snake</button>
+                <button id="tab-defense" class="tab-button bg-gray-700 text-gray-400">Tower Defense</button>
+                <button id="tab-interstellar" class="tab-button bg-gray-700 text-gray-400">Interstellar Browser</button> <!-- NEW APP TAB -->
             </div>
 
             <!-- Game Content Area -->
             <div class="tab-content">
                 <!-- Astro Shooter Game -->
-                <div id="game-astro">
+                <div id="app-astro">
                     <h2 class="text-2xl font-bold text-blue-400 mb-4 section-title">Astro Shooter (Use WASD/Arrows and Space)</h2>
-                    <canvas id="astroCanvas" class="game-canvas" width="600" height="400"></canvas>
-                    <div class="game-info text-white">
+                    <canvas id="astroCanvas" class="app-canvas" width="600" height="400"></canvas>
+                    <div class="app-info text-white">
                         <div id="astroScore">Score: 0</div>
                         <div id="astroLives">Lives: 3</div>
                         <div id="astroMessage" class="text-red-400 font-bold"></div>
                     </div>
                     <div class="flex justify-center space-x-4 mt-4">
-                        <button id="astroStart" class="game-control-button bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg">Start Game</button>
+                        <button id="astroStart" class="control-button bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg">Start Game</button>
                     </div>
                 </div>
 
                 <!-- Classic Snake Game -->
-                <div id="game-snake" class="hidden">
+                <div id="app-snake" class="hidden">
                     <h2 class="text-2xl font-bold text-blue-400 mb-4 section-title">Classic Snake (Use WASD or Arrow Keys)</h2>
-                    <canvas id="snakeCanvas" class="game-canvas" width="400" height="400"></canvas>
-                    <div class="game-info text-white">
+                    <canvas id="snakeCanvas" class="app-canvas" width="400" height="400"></canvas>
+                    <div class="app-info text-white">
                         <div id="snakeScore">Score: 0</div>
                         <div id="snakeMessage" class="text-red-400 font-bold"></div>
                     </div>
                     <div class="flex justify-center space-x-4 mt-4">
-                        <button id="snakeStart" class="game-control-button bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg">Start Game</button>
+                        <button id="snakeStart" class="control-button bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg">Start Game</button>
                     </div>
                 </div>
-            </div>
+                
+                <!-- Tower Defense Game (Previously Interstellar Proxy Game) -->
+                <div id="app-defense" class="hidden">
+                    <h2 class="text-2xl font-bold text-blue-400 mb-4 section-title">Tower Defense (Click to Place Turrets - Cost: 50 points)</h2>
+                    <canvas id="defenseCanvas" class="app-canvas" width="600" height="400"></canvas>
+                    <div class="app-info text-white">
+                        <div id="defenseScore">Points: 0</div>
+                        <div id="defenseWave">Wave: 0</div>
+                        <div id="defenseBaseHealth">Base Health: 100%</div>
+                        <div id="defenseMessage" class="text-green-400 font-bold">Click START to begin defense!</div>
+                    </div>
+                    <div class="flex justify-center space-x-4 mt-4">
+                        <button id="defenseStart" class="control-button bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg">Start Defense</button>
+                    </div>
+                </div>
 
+                <!-- Interstellar Proxy Browser Simulation (NEW APP) -->
+                <div id="app-interstellar" class="hidden">
+                    <h2 class="text-2xl font-bold text-blue-400 mb-4 section-title">Interstellar Proxy Browser (Client-Side Interface)</h2>
+                    <p class="text-sm text-gray-400 mb-4">
+                        This interface simulates the client-side of a proxy browser by attempting to load a URL into an iframe. Note that **most websites prevent embedding** due to security headers (X-Frame-Options/CORS), which will cause a failure to load.
+                    </p>
+                    <div class="mb-4 flex space-x-2">
+                        <input type="text" id="interstellarUrlInput" value="https://example.com" placeholder="Enter URL (e.g., https://example.com)" 
+                               class="flex-grow p-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button id="interstellarGoButton" class="control-button bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">Go</button>
+                    </div>
+                    <div id="interstellarFrameContainer" class="app-canvas" style="height: 500px; padding: 0; overflow: hidden; position: relative; background-color: #1e293b;">
+                        <!-- The actual iframe will be loaded here -->
+                        <p id="interstellarPlaceholder" class="p-4 text-center text-gray-400 absolute inset-0 flex items-center justify-center">
+                            Enter a URL and click 'Go' to attempt loading the content in the embedded frame.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="bg-[#161b22] py-4 text-center text-sm text-gray-500 mt-8">
-        &copy; 2025 Sukrut Mannari. All Rights Reserved. | Game powered by JavaScript Canvas.
+        &copy; 2025 Sukrut Mannari. All Rights Reserved. | Powered by JavaScript Canvas.
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Tab Switching Logic ---
-            const astroTab = document.getElementById('tab-astro');
-            const snakeTab = document.getElementById('tab-snake');
-            const astroGame = document.getElementById('game-astro');
-            const snakeGame = document.getElementById('game-snake');
+            // --- Global Utility to Stop Games ---
+            let astroGameLoopId;
+            let snakeGameInterval;
+            let defenseGameLoopId;
 
-            function switchTab(gameId) {
-                if (gameId === 'astro') {
-                    astroGame.classList.remove('hidden');
-                    snakeGame.classList.add('hidden');
-                    astroTab.classList.add('active');
-                    snakeTab.classList.remove('active');
-                    snakeStart.textContent = 'Start Game'; // Reset snake button state
-                    clearInterval(snakeGameInterval);
-                } else if (gameId === 'snake') {
-                    snakeGame.classList.remove('hidden');
-                    astroGame.classList.add('hidden');
-                    snakeTab.classList.add('active');
-                    astroTab.classList.remove('active');
-                    // Stop Astro game loop when switching
-                    cancelAnimationFrame(astroGameLoopId);
-                    astroStart.textContent = 'Start Game'; // Reset astro button state
-                }
-            }
+            // --- Tab Element References ---
+            const tabAstro = document.getElementById('tab-astro');
+            const tabSnake = document.getElementById('tab-snake');
+            const tabDefense = document.getElementById('tab-defense');
+            const tabInterstellar = document.getElementById('tab-interstellar'); // NEW
 
-            astroTab.addEventListener('click', () => switchTab('astro'));
-            snakeTab.addEventListener('click', () => switchTab('snake'));
+            const appAstro = document.getElementById('app-astro');
+            const appSnake = document.getElementById('app-snake');
+            const appDefense = document.getElementById('app-defense');
+            const appInterstellar = document.getElementById('app-interstellar'); // NEW
 
-            // --- ASTRO SHOOTER GAME LOGIC ---
-
+            // --- Canvas & Control References (Renamed for clarity) ---
+            // Astro
             const astroCanvas = document.getElementById('astroCanvas');
             const astroCtx = astroCanvas.getContext('2d');
             const astroStart = document.getElementById('astroStart');
             const astroScoreDisplay = document.getElementById('astroScore');
             const astroLivesDisplay = document.getElementById('astroLives');
             const astroMessage = document.getElementById('astroMessage');
+            
+            // Snake
+            const snakeCanvas = document.getElementById('snakeCanvas');
+            const snakeCtx = snakeCanvas.getContext('2d');
+            const snakeStart = document.getElementById('snakeStart');
+            const snakeScoreDisplay = document.getElementById('snakeScore');
+            const snakeMessage = document.getElementById('snakeMessage');
 
-            let astroGameLoopId;
-            let player, asteroids, bullets, score, lives, keys, isPlayingAstro;
-            const ASTEROID_SPAWN_RATE = 150; // Frames per asteroid
+            // Defense
+            const defenseCanvas = document.getElementById('defenseCanvas');
+            const defenseCtx = defenseCanvas.getContext('2d');
+            const defenseStart = document.getElementById('defenseStart');
+            const defenseScoreDisplay = document.getElementById('defenseScore');
+            const defenseWaveDisplay = document.getElementById('defenseWave');
+            const defenseBaseHealthDisplay = document.getElementById('defenseBaseHealth');
+            const defenseMessage = document.getElementById('defenseMessage');
+            
+            // Interstellar Proxy Browser
+            const interstellarUrlInput = document.getElementById('interstellarUrlInput');
+            const interstellarGoButton = document.getElementById('interstellarGoButton');
+            const interstellarFrameContainer = document.getElementById('interstellarFrameContainer');
+            const interstellarPlaceholder = document.getElementById('interstellarPlaceholder');
+
+            let isPlayingAstro = false;
+            let isPlayingSnake = false;
+            let isPlayingDefense = false;
+            
+            // --- Tab Switching Logic ---
+
+            function switchTab(appId) {
+                // Stop all games and clean up loops
+                cancelAnimationFrame(astroGameLoopId);
+                clearInterval(snakeGameInterval);
+                cancelAnimationFrame(defenseGameLoopId); 
+                
+                isPlayingAstro = false;
+                isPlayingSnake = false;
+                isPlayingDefense = false;
+                
+                // Reset button texts
+                astroStart.textContent = 'Start Game';
+                snakeStart.textContent = 'Start Game';
+                defenseStart.textContent = 'Start Defense';
+
+                // Hide all apps
+                appAstro.classList.add('hidden');
+                appSnake.classList.add('hidden');
+                appDefense.classList.add('hidden'); 
+                appInterstellar.classList.add('hidden'); // Hide new app
+
+                // Deactivate all tabs
+                tabAstro.classList.remove('active');
+                tabSnake.classList.remove('active');
+                tabDefense.classList.remove('active'); 
+                tabInterstellar.classList.remove('active'); // Deactivate new tab
+
+                // Activate the selected app/game
+                if (appId === 'astro') {
+                    appAstro.classList.remove('hidden');
+                    tabAstro.classList.add('active');
+                    initAstro();
+                    drawAstro();
+                } else if (appId === 'snake') {
+                    appSnake.classList.remove('hidden');
+                    tabSnake.classList.add('active');
+                    initSnake();
+                    drawSnake();
+                } else if (appId === 'defense') { 
+                    appDefense.classList.remove('hidden');
+                    tabDefense.classList.add('active');
+                    initDefense();
+                    drawDefense();
+                } else if (appId === 'interstellar') {
+                    appInterstellar.classList.remove('hidden');
+                    tabInterstellar.classList.add('active');
+                    // No initialization needed for the browser interface, just ensure placeholder is visible initially
+                    if (interstellarFrameContainer.querySelector('iframe')) {
+                        interstellarFrameContainer.innerHTML = '';
+                        interstellarFrameContainer.appendChild(interstellarPlaceholder);
+                    }
+                }
+            }
+
+            tabAstro.addEventListener('click', () => switchTab('astro'));
+            tabSnake.addEventListener('click', () => switchTab('snake'));
+            tabDefense.addEventListener('click', () => switchTab('defense'));
+            tabInterstellar.addEventListener('click', () => switchTab('interstellar')); // NEW
+
+            // ------------------------------------------------------------------
+            // --- INTERSTELLAR PROXY BROWSER LOGIC (NEW) ---
+            // ------------------------------------------------------------------
+
+            interstellarGoButton.addEventListener('click', () => {
+                let url = interstellarUrlInput.value.trim();
+                
+                if (!url) return;
+
+                // Prepend protocol if missing
+                if (!/^https?:\/\//i.test(url)) {
+                    url = 'https://' + url;
+                }
+
+                // Clear container and remove existing frame
+                interstellarFrameContainer.innerHTML = '';
+
+                // Create iframe
+                const iframe = document.createElement('iframe');
+                iframe.src = url;
+                iframe.width = '100%';
+                iframe.height = '100%';
+                iframe.style.border = 'none';
+                iframe.style.backgroundColor = 'white';
+
+                // Create Loading Indicator (optional, but good practice)
+                const loadingDiv = document.createElement('div');
+                loadingDiv.textContent = `Attempting to load: ${url}`;
+                loadingDiv.className = 'p-4 text-center text-yellow-400 absolute inset-0 flex items-center justify-center bg-gray-900/80';
+                
+                interstellarFrameContainer.appendChild(loadingDiv);
+                
+                // Append iframe after loading indicator
+                interstellarFrameContainer.appendChild(iframe);
+
+                iframe.onload = () => {
+                    // Remove loading indicator on load
+                    if (interstellarFrameContainer.contains(loadingDiv)) {
+                        loadingDiv.remove();
+                    }
+                    console.log(`Frame load attempted for: ${url}`);
+                };
+                
+                iframe.onerror = () => {
+                     // On error, revert to placeholder with error message
+                     interstellarFrameContainer.innerHTML = '';
+                     interstellarPlaceholder.textContent = `Failed to load ${url}. Most sites block embedding via security policies (X-Frame-Options/CORS).`;
+                     interstellarFrameContainer.appendChild(interstellarPlaceholder);
+                };
+            });
+
+
+            // ------------------------------------------------------------------
+            // --- ASTRO SHOOTER GAME LOGIC (Restored and Cleaned) ---
+            // ------------------------------------------------------------------
+
+            let player, asteroids, bullets, score, lives, keys;
+            const ASTEROID_SPAWN_RATE = 150; 
             let spawnCounter = 0;
 
-            // Player Object
             class Player {
                 constructor() {
                     this.x = astroCanvas.width / 2;
@@ -209,7 +379,6 @@
                     this.speed = 5;
                     this.color = '#38bdf8';
                 }
-
                 draw() {
                     astroCtx.beginPath();
                     astroCtx.moveTo(this.x, this.y - this.size);
@@ -219,14 +388,12 @@
                     astroCtx.fillStyle = this.color;
                     astroCtx.fill();
                 }
-
                 update() {
                     if (keys['ArrowLeft'] || keys['a']) this.x -= this.speed;
                     if (keys['ArrowRight'] || keys['d']) this.x += this.speed;
                     if (keys['ArrowUp'] || keys['w']) this.y -= this.speed;
                     if (keys['ArrowDown'] || keys['s']) this.y += this.speed;
 
-                    // Boundary check
                     if (this.x < 0) this.x = 0;
                     if (this.x > astroCanvas.width) this.x = astroCanvas.width;
                     if (this.y < 0) this.y = 0;
@@ -234,7 +401,6 @@
                 }
             }
 
-            // Bullet Object
             class Bullet {
                 constructor(x, y) {
                     this.x = x;
@@ -243,44 +409,33 @@
                     this.speed = 7;
                     this.color = 'yellow';
                 }
-
                 draw() {
                     astroCtx.beginPath();
                     astroCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                     astroCtx.fillStyle = this.color;
                     astroCtx.fill();
                 }
-
                 update() {
                     this.y -= this.speed;
                 }
             }
 
-            // Asteroid Object (Drawn as a simple gray polygon for performance)
             class Asteroid {
                 constructor() {
                     this.x = Math.random() * astroCanvas.width;
                     this.y = -50;
-                    this.radius = Math.random() * 15 + 15; // 15 to 30
-                    this.speed = Math.random() * 1.5 + 1; // 1 to 2.5
-                    this.color = '#6b7280'; // Gray
+                    this.radius = Math.random() * 15 + 15; 
+                    this.speed = Math.random() * 1.5 + 1; 
+                    this.color = '#6b7280'; 
                 }
-
                 draw() {
                     astroCtx.beginPath();
-                    // Simple polygon shape to represent an asteroid
-                    astroCtx.moveTo(this.x + this.radius, this.y);
-                    for (let i = 0; i < 6; i++) {
-                        const angle = i * (Math.PI * 2) / 6;
-                        astroCtx.lineTo(this.x + this.radius * Math.cos(angle), this.y + this.radius * Math.sin(angle));
-                    }
-                    astroCtx.closePath();
+                    astroCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                     astroCtx.fillStyle = this.color;
                     astroCtx.fill();
                     astroCtx.strokeStyle = '#4b5563';
                     astroCtx.stroke();
                 }
-
                 update() {
                     this.y += this.speed;
                 }
@@ -300,21 +455,18 @@
                 astroLivesDisplay.textContent = `Lives: ${lives}`;
                 astroMessage.textContent = '';
                 astroStart.textContent = 'Start Game';
-                drawAstro(); // Draw initial state
             }
 
             function drawAstro() {
-                // Clear canvas
+                // Clear canvas and draw background
                 astroCtx.fillStyle = '#0d1117';
                 astroCtx.fillRect(0, 0, astroCanvas.width, astroCanvas.height);
 
-                // Draw starry background (simple dots)
                 astroCtx.fillStyle = '#ffffff';
                 for (let i = 0; i < 50; i++) {
                     astroCtx.fillRect(Math.random() * astroCanvas.width, Math.random() * astroCanvas.height, 1, 1);
                 }
 
-                // Draw objects
                 player.draw();
                 bullets.forEach(b => b.draw());
                 asteroids.forEach(a => a.draw());
@@ -324,12 +476,9 @@
                 if (!isPlayingAstro) return;
 
                 player.update();
-
-                // Bullet updates and cleanup
                 bullets.forEach(b => b.update());
                 bullets = bullets.filter(b => b.y > 0);
 
-                // Asteroid updates
                 spawnCounter++;
                 if (spawnCounter >= ASTEROID_SPAWN_RATE) {
                     asteroids.push(new Asteroid());
@@ -337,41 +486,26 @@
                 }
                 asteroids.forEach(a => a.update());
 
-                // Collision Detection
-                // 1. Bullet vs Asteroid
+                // 1. Bullet vs Asteroid Collision
                 for (let i = bullets.length - 1; i >= 0; i--) {
                     for (let j = asteroids.length - 1; j >= 0; j--) {
-                        const bullet = bullets[i];
-                        const asteroid = asteroids[j];
-                        const distance = Math.sqrt(
-                            (bullet.x - asteroid.x) ** 2 + (bullet.y - asteroid.y) ** 2
-                        );
-
-                        if (distance < asteroid.radius) {
-                            // Collision
+                        const distance = Math.hypot(bullets[i].x - asteroids[j].x, bullets[i].y - asteroids[j].y);
+                        if (distance < asteroids[j].radius) {
                             bullets.splice(i, 1);
                             asteroids.splice(j, 1);
                             score += 10;
                             astroScoreDisplay.textContent = `Score: ${score}`;
-                            break; // Bullet is gone, move to next bullet
+                            break; 
                         }
                     }
                 }
 
-                // 2. Player vs Asteroid
+                // 2. Player vs Asteroid Collision and Off-screen removal
                 for (let i = asteroids.length - 1; i >= 0; i--) {
                     const asteroid = asteroids[i];
-                    // Simple AABB collision check for player (approximate)
-                    const playerXMin = player.x - player.size / 2;
-                    const playerXMax = player.x + player.size / 2;
-                    const playerYMin = player.y - player.size;
-                    const playerYMax = player.y + player.size / 2;
+                    const distance = Math.hypot(player.x - asteroid.x, player.y - asteroid.y);
 
-                    // Check if asteroid center is within player box (simpler approach)
-                    const isCollision = (asteroid.x > playerXMin && asteroid.x < playerXMax &&
-                                         asteroid.y + asteroid.radius > playerYMin && asteroid.y - asteroid.radius < playerYMax);
-                    
-                    if (isCollision) {
+                    if (distance < player.size + asteroid.radius * 0.5) {
                         lives--;
                         asteroids.splice(i, 1);
                         astroLivesDisplay.textContent = `Lives: ${lives}`;
@@ -379,11 +513,11 @@
                             gameOverAstro();
                             return;
                         }
+                    } else if (asteroid.y > astroCanvas.height + asteroid.radius) {
+                        // Remove off-screen asteroid
+                        asteroids.splice(i, 1);
                     }
                 }
-
-                // Remove asteroids that pass off screen
-                asteroids = asteroids.filter(a => a.y < astroCanvas.height + a.radius);
             }
 
             function gameLoopAstro() {
@@ -397,7 +531,6 @@
 
             function shoot() {
                 if (!isPlayingAstro) return;
-                // Shoot from the tip of the ship
                 bullets.push(new Bullet(player.x, player.y - player.size));
             }
 
@@ -408,11 +541,13 @@
                 astroStart.textContent = 'Play Again';
             }
 
-            // Event Listeners for Astro Game
             document.addEventListener('keydown', (e) => {
+                // Only handle controls for the active game
+                if (appAstro.classList.contains('hidden')) return;
+
                 keys[e.key] = true;
                 if (isPlayingAstro && (e.key === ' ' || e.key === 'Spacebar')) {
-                    e.preventDefault(); // Prevent scrolling with spacebar
+                    e.preventDefault(); 
                     shoot();
                 }
             });
@@ -429,53 +564,41 @@
                 }
             });
 
-            // Initialize Astro game on load
-            initAstro();
-
-
-            // --- SNAKE GAME LOGIC ---
-
-            const snakeCanvas = document.getElementById('snakeCanvas');
-            const snakeCtx = snakeCanvas.getContext('2d');
-            const snakeStart = document.getElementById('snakeStart');
-            const snakeScoreDisplay = document.getElementById('snakeScore');
-            const snakeMessage = document.getElementById('snakeMessage');
+            // ------------------------------------------------------------------
+            // --- SNAKE GAME LOGIC (Restored and Cleaned) ---
+            // ------------------------------------------------------------------
 
             const TILE_SIZE = 20;
-            const GRID_SIZE = snakeCanvas.width / TILE_SIZE; // 20x20 grid
-            let snake, food, dx, dy, snakeScore, snakeGameInterval, isPlayingSnake;
+            const GRID_SIZE = snakeCanvas.width / TILE_SIZE; 
+            let snake, food, dx, dy, snakeScore;
 
             function initSnake() {
                 snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
                 food = generateFood();
-                dx = 1; // initial direction: right
+                dx = 1; 
                 dy = 0;
                 snakeScore = 0;
                 isPlayingSnake = false;
                 snakeScoreDisplay.textContent = `Score: ${snakeScore}`;
                 snakeMessage.textContent = '';
                 snakeStart.textContent = 'Start Game';
-                drawSnake(); // Draw initial state
             }
 
             function drawSquare(x, y, color) {
                 snakeCtx.fillStyle = color;
                 snakeCtx.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-                snakeCtx.strokeStyle = '#0d1117'; // Grid lines
+                snakeCtx.strokeStyle = '#0d1117'; 
                 snakeCtx.strokeRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
             }
 
             function drawSnake() {
-                // Clear canvas and draw grid background
                 snakeCtx.fillStyle = '#0d1117';
                 snakeCtx.fillRect(0, 0, snakeCanvas.width, snakeCanvas.height);
                 
-                // Draw food
-                drawSquare(food.x, food.y, '#ef4444'); // Red food
+                drawSquare(food.x, food.y, '#ef4444'); 
 
-                // Draw snake
                 snake.forEach((segment, index) => {
-                    const color = index === 0 ? '#38bdf8' : '#60a5fa'; // Head is brighter blue
+                    const color = index === 0 ? '#38bdf8' : '#60a5fa'; 
                     drawSquare(segment.x, segment.y, color);
                 });
             }
@@ -496,12 +619,10 @@
             function checkCollisionSnake() {
                 const head = snake[0];
                 
-                // 1. Wall collision
                 if (head.x < 0 || head.x >= GRID_SIZE || head.y < 0 || head.y >= GRID_SIZE) {
                     return true;
                 }
 
-                // 2. Self collision (start checking from the 4th segment)
                 for (let i = 1; i < snake.length; i++) {
                     if (head.x === snake[i].x && head.y === snake[i].y) {
                         return true;
@@ -514,21 +635,19 @@
                 if (!isPlayingSnake) return;
 
                 const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-                snake.unshift(head); // Add new head
+                snake.unshift(head); 
 
                 if (checkCollisionSnake()) {
                     gameOverSnake();
                     return;
                 }
 
-                // Check for eating food
                 if (head.x === food.x && head.y === food.y) {
                     snakeScore += 10;
                     snakeScoreDisplay.textContent = `Score: ${snakeScore}`;
-                    food = generateFood(); // Generate new food
-                    // DON'T remove tail (snake grows)
+                    food = generateFood(); 
                 } else {
-                    snake.pop(); // Remove tail (snake moves)
+                    snake.pop(); 
                 }
             }
 
@@ -544,9 +663,10 @@
                 snakeStart.textContent = 'Play Again';
             }
 
-            // Event Listeners for Snake Game Direction
             document.addEventListener('keydown', (e) => {
-                if (!isPlayingSnake) return;
+                // Only handle controls for the active game
+                if (appSnake.classList.contains('hidden')) return;
+                
                 const key = e.key;
 
                 const goingUp = dy === -1;
@@ -554,7 +674,6 @@
                 const goingRight = dx === 1;
                 const goingLeft = dx === -1;
 
-                // Prevent immediate reverse direction
                 if ((key === 'ArrowLeft' || key === 'a') && !goingRight) { dx = -1; dy = 0; }
                 else if ((key === 'ArrowUp' || key === 'w') && !goingDown) { dx = 0; dy = -1; }
                 else if ((key === 'ArrowRight' || key === 'd') && !goingLeft) { dx = 1; dy = 0; }
@@ -563,24 +682,155 @@
 
             snakeStart.addEventListener('click', () => {
                 if (!isPlayingSnake) {
-                    // Stop Astro game if it's running
-                    cancelAnimationFrame(astroGameLoopId);
-                    astroStart.textContent = 'Start Game';
-                    
                     initSnake();
                     isPlayingSnake = true;
                     snakeStart.textContent = 'Game Running...';
-                    // Start the interval for snake game
-                    snakeGameInterval = setInterval(gameLoopSnake, 150); // Speed: 150ms
+                    // Set interval for snake movement
+                    snakeGameInterval = setInterval(gameLoopSnake, 150); 
                 }
             });
 
-            // Initialize Snake game on load
-            initSnake();
+
+            // ------------------------------------------------------------------
+            // --- TOWER DEFENSE GAME LOGIC (Renamed) ---
+            // ------------------------------------------------------------------
+
+            const PROXY_COST = 50;
+            const BASE_Y_POS = defenseCanvas.height - 30; // Base line
+            const TURRET_RANGE_SQ = 100 * 100; // 100 pixel range squared
+            const ENEMY_SPAWN_RATE = 150; // Frames per enemy spawn
+
+            let defenseScore, defenseBaseHealth, defenseWave, defenseWaveProgress;
+            let defenseTurrets, defenseEnemies, defenseTurretBullets;
+
+            // Proxy Turret Class (Static Defense)
+            class ProxyTurret {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = 10;
+                    this.rangeSq = TURRET_RANGE_SQ;
+                    this.fireRate = 50; // Fire every 50 frames
+                    this.fireTimer = 0;
+                }
+
+                draw() {
+                    // Turret body (light blue square)
+                    defenseCtx.fillStyle = '#38bdf8';
+                    defenseCtx.fillRect(this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+                    
+                    // Center dot (white)
+                    defenseCtx.fillStyle = '#ffffff';
+                    defenseCtx.beginPath();
+                    defenseCtx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                    defenseCtx.fill();
+                }
+
+                update(enemies, bullets) {
+                    this.fireTimer++;
+                    if (this.fireTimer < this.fireRate) return;
+
+                    // Find nearest enemy in range
+                    let target = null;
+                    let nearestDistSq = this.rangeSq;
+
+                    enemies.forEach(enemy => {
+                        const distSq = (enemy.x - this.x) ** 2 + (enemy.y - this.y) ** 2;
+                        if (distSq < nearestDistSq) {
+                            nearestDistSq = distSq;
+                            target = enemy;
+                        }
+                    });
+
+                    if (target) {
+                        // Fire bullet
+                        bullets.push(new ProxyBullet(this.x, this.y, target.x, target.y));
+                        this.fireTimer = 0;
+                    }
+                }
+            }
+
+            // Enemy Class (Moves towards base)
+            class ProxyEnemy {
+                constructor(startX, startY, health) {
+                    this.x = startX;
+                    this.y = startY;
+                    this.size = 10;
+                    // Speed increases slightly with wave for difficulty
+                    this.speed = 0.5 + defenseWave * 0.05; 
+                    this.health = health;
+                    this.maxHealth = health;
+                    this.reward = 10;
+                }
+
+                draw() {
+                    // Enemy body (red square)
+                    defenseCtx.fillStyle = '#ef4444';
+                    defenseCtx.fillRect(this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+                    
+                    // Health bar (above enemy)
+                    const healthRatio = this.health / this.maxHealth;
+                    const barWidth = 20;
+                    defenseCtx.fillStyle = '#10b981'; // Green
+                    defenseCtx.fillRect(this.x - barWidth / 2, this.y - this.size - 8, barWidth * healthRatio, 3);
+                    defenseCtx.strokeStyle = '#fff';
+                    defenseCtx.strokeRect(this.x - barWidth / 2, this.y - this.size - 8, barWidth, 3);
+                }
+
+                update() {
+                    // Move straight down towards the base line
+                    this.y += this.speed;
+                }
+            }
+
+            // Bullet Class (Fired by Turret)
+            class ProxyBullet {
+                constructor(startX, startY, targetX, targetY) {
+                    this.x = startX;
+                    this.y = startY;
+                    this.radius = 2;
+                    this.speed = 5;
+                    this.damage = 10;
+
+                    // Calculate velocity towards target (normalized vector)
+                    const angle = Math.atan2(targetY - startY, targetX - startX);
+                    this.dx = Math.cos(angle) * this.speed;
+                    this.dy = Math.sin(angle) * this.speed;
+                }
+
+                draw() {
+                    defenseCtx.fillStyle = 'yellow';
+                    defenseCtx.beginPath();
+                    defenseCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    defenseCtx.fill();
+                }
+
+                update() {
+                    this.x += this.dx;
+                    this.y += this.dy;
+                }
+            }
+
+
+            function initDefense() {
+                defenseScore = 100; 
+                defenseBaseHealth = 100;
+                defenseWave = 0;
+                defenseWaveProgress = 0;
+                
+                defenseTurrets = [];
+                defenseEnemies = [];
+                defenseTurretBullets = [];
+                isPlayingDefense = false;
+
+                defenseScoreDisplay.textContent = `Points: ${defenseScore}`;
+                defenseWaveDisplay.textContent = `Wave: ${defenseWave}`;
+                defenseBaseHealthDisplay.textContent = `Base Health: ${defenseBaseHealth}%`;
+                defenseMessage.textContent = 'Click START to begin defense!';
+
+                drawDefense();
+            }
             
-            // Ensure only Astro is visible initially
-            switchTab('astro');
-        });
-    </script>
-</body>
-</html>
+            function drawDefense() {
+                // Clear canvas
+                defenseCtx.fillStyle =
