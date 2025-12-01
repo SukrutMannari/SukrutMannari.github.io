@@ -726,9 +726,9 @@
             // --- TOWER DEFENSE GAME LOGIC (Renamed) ---
             // ------------------------------------------------------------------
 
-            const PROXY_COST = 50;
+            const PROXY_COST = 25;
             const BASE_Y_POS = defenseCanvas.height - 30; // Base line
-            const TURRET_RANGE_SQ = 100 * 100; // 100 pixel range squared
+            const TURRET_RANGE_SQ = 200 * 200; // 100 pixel range squared
             const ENEMY_SPAWN_RATE_FRAMES = 150; // Frames per enemy spawn
 
             let defenseScore, defenseBaseHealth, defenseWave, defenseWaveProgress;
@@ -882,7 +882,7 @@
                 defenseCtx.fillRect(0, BASE_Y_POS, defenseCanvas.width, defenseCanvas.height - BASE_Y_POS);
                 
                 // Draw Base Health Overlay (Red/Green Bar)
-                const healthRatio = defenseBaseHealth / 100;
+                const healthRatio = defenseBaseHealth / 300;
                 const healthColor = healthRatio > 0.5 ? '#10b981' : (healthRatio > 0.2 ? '#f59e0b' : '#ef4444');
                 defenseCtx.fillStyle = healthColor;
                 defenseCtx.fillRect(0, BASE_Y_POS, defenseCanvas.width * healthRatio, 5);
