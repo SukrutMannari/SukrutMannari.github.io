@@ -79,13 +79,16 @@
             transition: background-color 0.2s, color 0.2s;
             border: 2px solid transparent;
             margin-right: 0.5rem;
+            background-color: #1e293b; /* Set base background */
         }
         .tab-button.active {
-            background-color: #1e293b;
-            color: #38bdf8;
-            border-color: #38bdf8;
+            /* Active state styles are now applied directly via JS using Tailwind classes */
+            color: #38bdf8; /* Blue text */
+            border-color: #38bdf8; /* Blue border */
             border-bottom: none;
         }
+        /* Default inactive color setup in JS */
+        
         .tab-content {
             background-color: #1e293b;
             padding: 1.5rem;
@@ -119,10 +122,11 @@
 
             <!-- Game/App Tabs -->
             <div class="mb-4">
-                <button id="tab-astro" class="tab-button active bg-gray-700 text-blue-400">Astro Shooter</button>
-                <button id="tab-snake" class="tab-button bg-gray-700 text-gray-400">Classic Snake</button>
-                <button id="tab-defense" class="tab-button bg-gray-700 text-gray-400">Tower Defense</button>
-                <button id="tab-interstellar" class="tab-button bg-gray-700 text-gray-400">Interstellar Browser</button> <!-- NEW APP TAB -->
+                <!-- Removed explicit Tailwind classes from HTML to be fully managed by JS for consistency -->
+                <button id="tab-astro" class="tab-button">Astro Shooter</button>
+                <button id="tab-snake" class="tab-button">Classic Snake</button>
+                <button id="tab-defense" class="tab-button">Tower Defense</button>
+                <button id="tab-interstellar" class="tab-button">Interstellar Browser</button> 
             </div>
 
             <!-- Game Content Area -->
@@ -208,12 +212,13 @@
             const tabAstro = document.getElementById('tab-astro');
             const tabSnake = document.getElementById('tab-snake');
             const tabDefense = document.getElementById('tab-defense');
-            const tabInterstellar = document.getElementById('tab-interstellar'); // NEW
+            const tabInterstellar = document.getElementById('tab-interstellar'); 
+            const tabButtons = [tabAstro, tabSnake, tabDefense, tabInterstellar];
 
             const appAstro = document.getElementById('app-astro');
             const appSnake = document.getElementById('app-snake');
             const appDefense = document.getElementById('app-defense');
-            const appInterstellar = document.getElementById('app-interstellar'); // NEW
+            const appInterstellar = document.getElementById('app-interstellar'); 
 
             // --- Canvas & Control References (Renamed for clarity) ---
             // Astro
@@ -271,33 +276,38 @@
                 appAstro.classList.add('hidden');
                 appSnake.classList.add('hidden');
                 appDefense.classList.add('hidden'); 
-                appInterstellar.classList.add('hidden'); // Hide new app
+                appInterstellar.classList.add('hidden'); 
 
-                // Deactivate all tabs
-                tabAstro.classList.remove('active');
-                tabSnake.classList.remove('active');
-                tabDefense.classList.remove('active'); 
-                tabInterstellar.classList.remove('active'); // Deactivate new tab
+                // Deactivate all tabs visually
+                tabButtons.forEach(button => {
+                    button.classList.remove('active', 'text-blue-400');
+                    button.classList.add('text-gray-400');
+                });
+
 
                 // Activate the selected app/game
                 if (appId === 'astro') {
                     appAstro.classList.remove('hidden');
-                    tabAstro.classList.add('active');
+                    tabAstro.classList.add('active', 'text-blue-400');
+                    tabAstro.classList.remove('text-gray-400');
                     initAstro();
                     drawAstro();
                 } else if (appId === 'snake') {
                     appSnake.classList.remove('hidden');
-                    tabSnake.classList.add('active');
+                    tabSnake.classList.add('active', 'text-blue-400');
+                    tabSnake.classList.remove('text-gray-400');
                     initSnake();
                     drawSnake();
                 } else if (appId === 'defense') { 
                     appDefense.classList.remove('hidden');
-                    tabDefense.classList.add('active');
+                    tabDefense.classList.add('active', 'text-blue-400');
+                    tabDefense.classList.remove('text-gray-400');
                     initDefense();
                     drawDefense();
                 } else if (appId === 'interstellar') {
                     appInterstellar.classList.remove('hidden');
-                    tabInterstellar.classList.add('active');
+                    tabInterstellar.classList.add('active', 'text-blue-400');
+                    tabInterstellar.classList.remove('text-gray-400');
                     // No initialization needed for the browser interface, just ensure placeholder is visible initially
                     if (interstellarFrameContainer.querySelector('iframe')) {
                         interstellarFrameContainer.innerHTML = '';
@@ -309,7 +319,7 @@
             tabAstro.addEventListener('click', () => switchTab('astro'));
             tabSnake.addEventListener('click', () => switchTab('snake'));
             tabDefense.addEventListener('click', () => switchTab('defense'));
-            tabInterstellar.addEventListener('click', () => switchTab('interstellar')); // NEW
+            tabInterstellar.addEventListener('click', () => switchTab('interstellar')); 
 
             // ------------------------------------------------------------------
             // --- INTERSTELLAR PROXY BROWSER LOGIC (NEW) ---
@@ -335,6 +345,9 @@
                 iframe.height = '100%';
                 iframe.style.border = 'none';
                 iframe.style.backgroundColor = 'white';
+                iframe.style.position = 'absolute'; // Position relative to parent container
+                iframe.style.top = '0';
+                iframe.style.left = '0';
 
                 // Create Loading Indicator (optional, but good practice)
                 const loadingDiv = document.createElement('div');
@@ -354,12 +367,19 @@
                     console.log(`Frame load attempted for: ${url}`);
                 };
                 
-                iframe.onerror = () => {
-                     // On error, revert to placeholder with error message
-                     interstellarFrameContainer.innerHTML = '';
-                     interstellarPlaceholder.textContent = `Failed to load ${url}. Most sites block embedding via security policies (X-Frame-Options/CORS).`;
-                     interstellarFrameContainer.appendChild(interstellarPlaceholder);
-                };
+                // Note: onerror for iframe often doesn't fire correctly for X-Frame-Options/CORS blocks
+                // The frame will typically just remain blank/show a browser error without triggering onerror.
+                // We keep the placeholder fallback as a simple way to indicate failure.
+                const checkTimeout = setTimeout(() => {
+                    if (interstellarFrameContainer.contains(loadingDiv)) {
+                        loadingDiv.remove();
+                        // Assume failure if loading takes too long
+                        interstellarFrameContainer.innerHTML = '';
+                        interstellarPlaceholder.textContent = `Load attempt timed out for ${url}. Most sites block embedding via security policies (X-Frame-Options/CORS).`;
+                        interstellarFrameContainer.appendChild(interstellarPlaceholder);
+                    }
+                }, 5000); // 5 second timeout
+                
             });
 
 
@@ -462,6 +482,7 @@
                 astroCtx.fillStyle = '#0d1117';
                 astroCtx.fillRect(0, 0, astroCanvas.width, astroCanvas.height);
 
+                // Draw simple stars in the background
                 astroCtx.fillStyle = '#ffffff';
                 for (let i = 0; i < 50; i++) {
                     astroCtx.fillRect(Math.random() * astroCanvas.width, Math.random() * astroCanvas.height, 1, 1);
@@ -531,6 +552,8 @@
 
             function shoot() {
                 if (!isPlayingAstro) return;
+                // Add a small delay/cooldown to prevent rapid fire
+                if (bullets.length > 0 && (player.y - bullets[bullets.length - 1].y) < 20) return;
                 bullets.push(new Bullet(player.x, player.y - player.size));
             }
 
@@ -652,13 +675,20 @@
             }
 
             function gameLoopSnake() {
+                if (!isPlayingSnake) return; // Added guard just in case
+
                 updateSnake();
                 drawSnake();
+                
+                // Re-queue the loop to maintain continuous movement if the game is still running
+                if (isPlayingSnake) {
+                    snakeGameInterval = setTimeout(gameLoopSnake, 150);
+                }
             }
 
             function gameOverSnake() {
                 isPlayingSnake = false;
-                clearInterval(snakeGameInterval);
+                clearTimeout(snakeGameInterval);
                 snakeMessage.textContent = `GAME OVER! Final Score: ${snakeScore}`;
                 snakeStart.textContent = 'Play Again';
             }
@@ -674,6 +704,7 @@
                 const goingRight = dx === 1;
                 const goingLeft = dx === -1;
 
+                // Prevent immediate reverse direction
                 if ((key === 'ArrowLeft' || key === 'a') && !goingRight) { dx = -1; dy = 0; }
                 else if ((key === 'ArrowUp' || key === 'w') && !goingDown) { dx = 0; dy = -1; }
                 else if ((key === 'ArrowRight' || key === 'd') && !goingLeft) { dx = 1; dy = 0; }
@@ -685,8 +716,8 @@
                     initSnake();
                     isPlayingSnake = true;
                     snakeStart.textContent = 'Game Running...';
-                    // Set interval for snake movement
-                    snakeGameInterval = setInterval(gameLoopSnake, 150); 
+                    // Use setTimeout and recursion instead of setInterval for better game loop control
+                    snakeGameInterval = setTimeout(gameLoopSnake, 150); 
                 }
             });
 
@@ -698,10 +729,11 @@
             const PROXY_COST = 50;
             const BASE_Y_POS = defenseCanvas.height - 30; // Base line
             const TURRET_RANGE_SQ = 100 * 100; // 100 pixel range squared
-            const ENEMY_SPAWN_RATE = 150; // Frames per enemy spawn
+            const ENEMY_SPAWN_RATE_FRAMES = 150; // Frames per enemy spawn
 
             let defenseScore, defenseBaseHealth, defenseWave, defenseWaveProgress;
             let defenseTurrets, defenseEnemies, defenseTurretBullets;
+            let enemySpawnTimer; // Timer ID for wave spawning
 
             // Proxy Turret Class (Static Defense)
             class ProxyTurret {
@@ -711,10 +743,16 @@
                     this.size = 10;
                     this.rangeSq = TURRET_RANGE_SQ;
                     this.fireRate = 50; // Fire every 50 frames
-                    this.fireTimer = 0;
+                    this.fireTimer = Math.floor(Math.random() * this.fireRate); // Stagger initial firing
                 }
 
                 draw() {
+                    // Draw Range Circle (semi-transparent gray)
+                    defenseCtx.beginPath();
+                    defenseCtx.arc(this.x, this.y, Math.sqrt(this.rangeSq), 0, Math.PI * 2);
+                    defenseCtx.fillStyle = 'rgba(56, 189, 248, 0.05)'; 
+                    defenseCtx.fill();
+                    
                     // Turret body (light blue square)
                     defenseCtx.fillStyle = '#38bdf8';
                     defenseCtx.fillRect(this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
@@ -813,6 +851,9 @@
 
 
             function initDefense() {
+                // Clear any running spawn timers
+                if (enemySpawnTimer) clearInterval(enemySpawnTimer);
+
                 defenseScore = 100; 
                 defenseBaseHealth = 100;
                 defenseWave = 0;
@@ -833,4 +874,186 @@
             
             function drawDefense() {
                 // Clear canvas
-                defenseCtx.fillStyle =
+                defenseCtx.fillStyle = '#0d1117';
+                defenseCtx.fillRect(0, 0, defenseCanvas.width, defenseCanvas.height);
+                
+                // Draw Base (Blue Strip at the bottom)
+                defenseCtx.fillStyle = '#1e3a8a'; // Dark blue
+                defenseCtx.fillRect(0, BASE_Y_POS, defenseCanvas.width, defenseCanvas.height - BASE_Y_POS);
+                
+                // Draw Base Health Overlay (Red/Green Bar)
+                const healthRatio = defenseBaseHealth / 100;
+                const healthColor = healthRatio > 0.5 ? '#10b981' : (healthRatio > 0.2 ? '#f59e0b' : '#ef4444');
+                defenseCtx.fillStyle = healthColor;
+                defenseCtx.fillRect(0, BASE_Y_POS, defenseCanvas.width * healthRatio, 5);
+
+                // Draw all game objects
+                defenseTurrets.forEach(t => t.draw());
+                defenseEnemies.forEach(e => e.draw());
+                defenseTurretBullets.forEach(b => b.draw());
+            }
+
+            function startNextWave() {
+                if (!isPlayingDefense) return;
+
+                defenseWave++;
+                defenseMessage.textContent = `WAVE ${defenseWave} INCOMING!`;
+                defenseWaveDisplay.textContent = `Wave: ${defenseWave}`;
+
+                // Total enemies scale with wave
+                const totalEnemies = 5 + defenseWave * 3; 
+
+                // Use a counter to track enemies spawned in this wave
+                let enemiesSpawned = 0;
+                let enemiesDefeatedInWave = 0;
+                defenseWaveProgress = totalEnemies; // Set total expected enemies for this wave
+
+                // Start the spawn interval
+                enemySpawnTimer = setInterval(() => {
+                    if (enemiesSpawned >= totalEnemies) {
+                        clearInterval(enemySpawnTimer);
+                        enemySpawnTimer = null;
+                        return;
+                    }
+                    
+                    const enemyHealth = 50 + defenseWave * 15;
+                    const startX = Math.random() * (defenseCanvas.width - 40) + 20;
+                    defenseEnemies.push(new ProxyEnemy(startX, -50, enemyHealth));
+                    enemiesSpawned++;
+
+                }, 1000); // 1-second delay between enemies
+
+            }
+
+            function updateDefense() {
+                if (!isPlayingDefense) return;
+
+                // 1. Update Game Objects
+                defenseTurrets.forEach(t => t.update(defenseEnemies, defenseTurretBullets));
+                defenseEnemies.forEach(e => e.update());
+                defenseTurretBullets.forEach(b => b.update());
+
+                // 2. Collision Detection: Bullet vs Enemy
+                let enemiesDefeatedThisFrame = 0;
+                for (let i = defenseTurretBullets.length - 1; i >= 0; i--) {
+                    for (let j = defenseEnemies.length - 1; j >= 0; j--) {
+                        const bullet = defenseTurretBullets[i];
+                        const enemy = defenseEnemies[j];
+                        const distance = Math.hypot(bullet.x - enemy.x, bullet.y - enemy.y);
+
+                        if (distance < enemy.size) {
+                            enemy.health -= bullet.damage;
+                            defenseTurretBullets.splice(i, 1); // Remove bullet
+                            
+                            if (enemy.health <= 0) {
+                                defenseScore += enemy.reward;
+                                defenseEnemies.splice(j, 1); // Remove enemy
+                                enemiesDefeatedThisFrame++;
+                                defenseScoreDisplay.textContent = `Points: ${defenseScore}`;
+                            }
+                            break;
+                        }
+                    }
+                }
+                
+                // 3. Enemy Reaches Base / Off-screen check
+                for (let i = defenseEnemies.length - 1; i >= 0; i--) {
+                    const enemy = defenseEnemies[i];
+                    if (enemy.y >= BASE_Y_POS) {
+                        defenseBaseHealth -= 10; // Base takes damage
+                        defenseBaseHealth = Math.max(0, defenseBaseHealth);
+                        defenseEnemies.splice(i, 1); // Remove enemy
+                        defenseBaseHealthDisplay.textContent = `Base Health: ${defenseBaseHealth}%`;
+
+                        if (defenseBaseHealth <= 0) {
+                            gameOverDefense();
+                            return;
+                        }
+                    }
+                }
+
+                // 4. Cleanup bullets that are off-screen
+                defenseTurretBullets = defenseTurretBullets.filter(b => 
+                    b.x > -10 && b.x < defenseCanvas.width + 10 && b.y > -10 && b.y < BASE_Y_POS + 10 // Increased boundary check
+                );
+
+                // 5. Check Wave completion
+                // The wave is complete if all enemies are defeated AND the spawn timer is inactive
+                if (defenseWaveProgress > 0 && defenseEnemies.length === 0 && enemySpawnTimer === null) {
+                    defenseMessage.textContent = `Wave ${defenseWave} Complete! Preparing next wave... (+25 Points bonus)`;
+                    defenseScore += 25;
+                    defenseScoreDisplay.textContent = `Points: ${defenseScore}`;
+                    defenseWaveProgress = 0; // Reset progress until next wave starts
+                    setTimeout(startNextWave, 3000); // 3-second break between waves
+                }
+            }
+
+            function gameLoopDefense() {
+                if (!isPlayingDefense) return;
+
+                updateDefense();
+                drawDefense();
+
+                defenseGameLoopId = requestAnimationFrame(gameLoopDefense);
+            }
+
+            function gameOverDefense() {
+                isPlayingDefense = false;
+                cancelAnimationFrame(defenseGameLoopId);
+                if (enemySpawnTimer) clearInterval(enemySpawnTimer);
+                defenseMessage.textContent = `DEFENSE FAILED! Final Wave: ${defenseWave}`;
+                defenseStart.textContent = 'Restart Defense';
+            }
+
+            defenseStart.addEventListener('click', () => {
+                if (!isPlayingDefense) {
+                    initDefense();
+                    isPlayingDefense = true;
+                    defenseStart.textContent = 'Defense Running...';
+                    gameLoopDefense();
+                    startNextWave(); // Start the first wave
+                }
+            });
+
+            // Handle turret placement via canvas click
+            defenseCanvas.addEventListener('click', (e) => {
+                if (!isPlayingDefense) return;
+
+                const rect = defenseCanvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Check if the click is above the base line
+                if (y < BASE_Y_POS) {
+                    if (defenseScore >= PROXY_COST) {
+                        // Check for collision with existing turrets (simple check)
+                        const tooClose = defenseTurrets.some(t => Math.hypot(t.x - x, t.y - y) < 40);
+                        
+                        if (!tooClose) {
+                            defenseTurrets.push(new ProxyTurret(x, y));
+                            defenseScore -= PROXY_COST;
+                            defenseScoreDisplay.textContent = `Points: ${defenseScore}`;
+                            defenseMessage.textContent = `Turret placed. Points: ${defenseScore}`;
+                        } else {
+                            defenseMessage.textContent = "Too close to another turret! Need 40px spacing.";
+                        }
+                    } else {
+                        defenseMessage.textContent = `Not enough points! Need ${PROXY_COST}.`;
+                    }
+                } else {
+                    defenseMessage.textContent = "Cannot place turrets on the base defense zone!";
+                }
+            });
+
+
+            // --- Initialization and Default View ---
+            initAstro();
+            initSnake();
+            initDefense();
+            
+            // Ensure only Astro is visible initially and has the active styling
+            switchTab('astro');
+        });
+    </script>
+</body>
+</html>
