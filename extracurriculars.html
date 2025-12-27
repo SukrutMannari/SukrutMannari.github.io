@@ -11,65 +11,48 @@
             font-family: 'Inter', sans-serif;
             background-color: #0d1117;
             color: #c9d1d9;
-            overflow-x: hidden;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
         }
         .activity-card {
             background-color: #161b22;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            border-radius: 12px;
             border: 1px solid #30363d;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+            margin-bottom: 2rem;
         }
+        .activity-card:hover {
+            border-color: #58a6ff;
+        }
+        
         .carousel-container {
             position: relative;
             width: 100%;
-            max-width: 800px;
-            margin: 2rem auto;
-            overflow: hidden;
-            border-radius: 0.75rem;
             background: #000;
-            border: 1px solid #30363d;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
         }
         .carousel-track {
             display: flex;
+            height: 100%;
             transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .carousel-item {
             min-width: 100%;
-            height: 550px;
+            height: 100%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: #000;
             position: relative;
         }
         .carousel-item img, .carousel-item video {
             max-width: 100%;
-            max-height: 85%;
+            max-height: 100%;
             object-fit: contain;
-            border-radius: 4px;
-        }
-        .file-label {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(13, 17, 23, 0.85);
-            backdrop-filter: blur(8px);
-            color: #58a6ff;
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.7rem;
-            font-family: 'SFMono-Regular', Consolas, monospace;
-            border: 1px solid #30363d;
-            letter-spacing: 0.05em;
         }
         .nav-btn {
             position: absolute;
@@ -77,131 +60,171 @@
             transform: translateY(-50%);
             background: rgba(22, 27, 34, 0.8);
             color: white;
-            border: 1px solid #30363d;
+            border: none;
             cursor: pointer;
             z-index: 10;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
+            padding: 1rem 0.5rem;
+            font-size: 1.25rem;
         }
-        .nav-btn:hover { background: #1f6feb; border-color: #58a6ff; }
-        .prev-btn { left: 15px; }
-        .next-btn { right: 15px; }
+        .prev-btn { left: 0; border-radius: 0 8px 8px 0; }
+        .next-btn { right: 0; border-radius: 8px 0 0 8px; }
         
-        .dots-container {
+        .dots {
             display: flex;
             justify-content: center;
             gap: 6px;
-            margin-top: 1rem;
+            padding: 1rem;
+            background: #0d1117;
             flex-wrap: wrap;
-            padding: 0 20px;
         }
         .dot {
-            width: 6px;
-            height: 6px;
-            background: #30363d;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
+            background: #30363d;
             cursor: pointer;
-            transition: all 0.3s;
         }
-        .dot.active { background: #58a6ff; transform: scale(1.4); }
+        .dot.active { background: #58a6ff; }
     </style>
 </head>
 <body>
 
-    <header class="sticky top-0 z-50 bg-[#0d1117]/95 backdrop-blur-sm border-b border-[#30363d]">
+    <header class="sticky top-0 z-50 bg-[#0d1117]/90 backdrop-blur-md border-b border-[#30363d]">
         <nav class="container flex justify-between items-center h-16">
-            <div class="text-xl font-bold text-white tracking-wider">SUKRUT MANNARI</div>
-            <div class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="index.html" class="hover:text-blue-400">Home</a>
-                <a href="projects.html" class="hover:text-blue-400">Projects</a>
-                <a href="music.html" class="hover:text-blue-400">Music</a>
+            <div class="text-xl font-bold text-white tracking-tight">SUKRUT MANNARI</div>
+            <div class="flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+                <a href="projects.html" class="hover:text-blue-400 transition">Projects</a>
+                <a href="music.html" class="hover:text-blue-400 transition">Music</a>
                 <a href="extracurriculars.html" class="text-blue-400 border-b-2 border-blue-400 pb-1">Extracurriculars</a>
             </div>
         </nav>
     </header>
 
     <main class="py-12">
-        <section class="container">
-            <h1 class="text-4xl font-extrabold text-white mb-2">Taekwondo Journey</h1>
-            <p class="text-xl text-gray-400 mb-8">Martial Arts Training & Competition Media</p>
+        <div class="container">
+            <div class="mb-12">
+                <h1 class="text-4xl font-extrabold text-white mb-3">Extracurricular Activities</h1>
+                <p class="text-gray-400 text-lg max-w-2xl">A collection of my interests, leadership roles, and community involvement outside the classroom.</p>
+            </div>
 
-            <div class="activity-card">
-                <div class="carousel-container">
-                    <button class="nav-btn prev-btn" onclick="moveSlide(-1)" aria-label="Previous slide">&#10094;</button>
-                    
-                    <div class="carousel-track" id="carouselTrack">
-                        <!-- Videos first or mixed - placing videos as Vid1 and Vid2 -->
-                        <div class="carousel-item">
-                            <video controls preload="metadata">
-                                <source src="Taekwondovid1.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <span class="file-label">Taekwondovid1.mp4</span>
-                        </div>
-
-                        <div class="carousel-item">
-                            <video controls preload="metadata">
-                                <source src="Taekwondovid2.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <span class="file-label">Taekwondovid2.mp4</span>
-                        </div>
-
-                        <!-- Images Taekwondo1 to Taekwondo13 -->
-                        <!-- Generating programmatically in JS for cleaner HTML, 
-                             but hardcoded here for the carousel structure -->
-                        <div class="carousel-item"><img src="Taekwondo1.jpeg" alt="Taekwondo 1"><span class="file-label">Taekwondo1.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo2.jpeg" alt="Taekwondo 2"><span class="file-label">Taekwondo2.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo3.jpeg" alt="Taekwondo 3"><span class="file-label">Taekwondo3.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo4.jpeg" alt="Taekwondo 4"><span class="file-label">Taekwondo4.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo5.jpeg" alt="Taekwondo 5"><span class="file-label">Taekwondo5.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo6.jpeg" alt="Taekwondo 6"><span class="file-label">Taekwondo6.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo7.jpeg" alt="Taekwondo 7"><span class="file-label">Taekwondo7.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo8.jpeg" alt="Taekwondo 8"><span class="file-label">Taekwondo8.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo9.jpeg" alt="Taekwondo 9"><span class="file-label">Taekwondo9.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo10.jpeg" alt="Taekwondo 10"><span class="file-label">Taekwondo10.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo11.jpeg" alt="Taekwondo 11"><span class="file-label">Taekwondo11.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo12.jpeg" alt="Taekwondo 12"><span class="file-label">Taekwondo12.jpeg</span></div>
-                        <div class="carousel-item"><img src="Taekwondo13.jpeg" alt="Taekwondo 13"><span class="file-label">Taekwondo13.jpeg</span></div>
-                    </div>
-
-                    <button class="nav-btn next-btn" onclick="moveSlide(1)" aria-label="Next slide">&#10095;</button>
+            <!-- Taekwondo Section -->
+            <section class="activity-card">
+                <div class="p-6 border-b border-[#30363d]">
+                    <h2 class="text-2xl font-bold text-white flex items-center">
+                        <span class="mr-3">🥋</span> Taekwondo
+                    </h2>
+                    <p class="text-blue-400 font-medium">1st Degree Black Belt</p>
                 </div>
                 
-                <div class="dots-container" id="dotsContainer"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-                <div class="activity-card mb-0">
-                    <h2 class="text-xl font-bold text-white mb-4">Black Belt Certification</h2>
-                    <p class="text-gray-400 leading-relaxed">
-                        Achieved First Degree Black Belt through rigorous training in World Taekwondo (WT) style poomsae, sparring, and discipline.
-                    </p>
+                <div class="carousel-container">
+                    <button class="nav-btn prev-btn" onclick="moveSlide(-1)">❮</button>
+                    <div class="carousel-track" id="tkdTrack">
+                        <!-- Videos first as requested in previous logic -->
+                        <div class="carousel-item"><video controls class="w-full h-full"><source src="Taekwondovid1.mp4" type="video/mp4"></video></div>
+                        <div class="carousel-item"><video controls class="w-full h-full"><source src="Taekwondovid2.mp4" type="video/mp4"></video></div>
+                        <!-- 13 Images -->
+                        <div class="carousel-item"><img src="Taekwondo1.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo2.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo3.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo4.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo5.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo6.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo7.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo8.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo9.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo10.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo11.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo12.jpeg" alt="Taekwondo"></div>
+                        <div class="carousel-item"><img src="Taekwondo13.jpeg" alt="Taekwondo"></div>
+                    </div>
+                    <button class="nav-btn next-btn" onclick="moveSlide(1)">❯</button>
                 </div>
-                <div class="activity-card mb-0">
-                    <h2 class="text-xl font-bold text-white mb-4">Competitions</h2>
-                    <p class="text-gray-400 leading-relaxed">
-                        Actively participated in regional sparring tournaments, focusing on agility, precision kicking, and strategic defense.
-                    </p>
+                <div class="dots" id="tkdDots"></div>
+                <div class="p-6 text-gray-400 leading-relaxed">
+                    Over six years of training, culminating in a 1st Degree Black Belt. Focuses on discipline, physical fitness, and the art of poomsae and sparring.
                 </div>
+            </section>
+
+            <!-- Grid for other activities -->
+            <div class="grid md:grid-cols-2 gap-6">
+                
+                <!-- FLL CLUB -->
+                <div class="activity-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">🤖</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">First Lego League Club</h3>
+                                <p class="text-blue-400 text-sm">Founder • With Mr. Hahn</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Founded and organized the school's FLL club in collaboration with Mr. Hahn. Focused on designing and programming robots to solve complex tasks and developing innovative solutions for the yearly theme's research project.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BAND -->
+                <div class="activity-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">🎷</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Music & Band</h3>
+                                <p class="text-blue-400 text-sm">Baritone Saxophonist</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Active member of both the Concert Band and the Jazz Band. I play the Baritone Saxophone, providing the deep harmonic foundation for the ensemble in both classical and jazz arrangements.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- COMPUTER CLUB -->
+                <div class="activity-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">💻</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Computer Club</h3>
+                                <p class="text-blue-400 text-sm">Member • Mr. Hahn</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Exploring software development, hardware, and collaborative coding projects under the guidance of Mr. Hahn. A space for technical problem solving and learning new programming languages.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- LIBRARY SERVICE -->
+                <div class="activity-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <span class="text-3xl mr-4">🏛️</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Community Service</h3>
+                                <p class="text-blue-400 text-sm">Public Library Volunteer</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Volunteering at the local public library, assisting with organizational tasks, supporting community events, and helping maintain the library's resources for local residents.
+                        </p>
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
     </main>
 
     <script>
         let currentSlide = 0;
-        const track = document.getElementById('carouselTrack');
-        const slides = document.querySelectorAll('.carousel-item');
-        const totalSlides = slides.length;
-        const dotsContainer = document.getElementById('dotsContainer');
+        const track = document.getElementById('tkdTrack');
+        const items = document.querySelectorAll('.carousel-item');
+        const dotsContainer = document.getElementById('tkdDots');
 
         // Create dots
-        slides.forEach((_, i) => {
+        items.forEach((_, i) => {
             const dot = document.createElement('div');
             dot.className = `dot ${i === 0 ? 'active' : ''}`;
             dot.onclick = () => goToSlide(i);
@@ -210,35 +233,22 @@
 
         function updateDots() {
             const dots = document.querySelectorAll('.dot');
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
             });
         }
 
         function moveSlide(direction) {
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            updateCarousel();
+            currentSlide = (currentSlide + direction + items.length) % items.length;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            updateDots();
         }
 
         function goToSlide(index) {
             currentSlide = index;
-            updateCarousel();
-        }
-
-        function updateCarousel() {
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
             updateDots();
-            
-            // Pause all videos when moving away from them
-            const videos = document.querySelectorAll('video');
-            videos.forEach(v => v.pause());
         }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') moveSlide(-1);
-            if (e.key === 'ArrowRight') moveSlide(1);
-        });
     </script>
 </body>
 </html>
