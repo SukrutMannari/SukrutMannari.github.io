@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroHandhelds | PSP Specialty Store</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #003087; /* Classic Sony Blue */
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        nav {
+            background: #222;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .btn {
+            display: inline-block;
+            background: #003087;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>RetroHandhelds: PSP Shop</h1>
+    <p>Premium Refurbished PlayStation Portables</p>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#inventory">Inventory</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container" id="inventory">
+    <h2>Available Consoles</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <h3>PSP 1000 - Piano Black</h3>
+            <p>The Original Powerhouse. Fully refurbished with new battery.</p>
+            <p><strong>$85.00</strong></p>
+            <a href="#" class="btn">Inquire to Buy</a>
+        </div>
+
+        <div class="product-card">
+            <h3>PSP 3000 - Radiant Red</h3>
+            <p>Vibrant screen and slim design. Great condition.</p>
+            <p><strong>$110.00</strong></p>
+            <a href="#" class="btn">Inquire to Buy</a>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="contact">
+    <h2>Contact Us</h2>
+    <p>Interested in a console? DM us on our social channels or email us at: <strong>support@yourstore.com</strong></p>
+</div>
+
+<footer>
+    &copy; 2026 RetroHandhelds Shop. All rights reserved.
+</footer>
+
+</body>
+</html>
