@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NJSLA Science Mock Exam - 50 Questions</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f0f2f5; }
+        .test-container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .header { border-bottom: 3px solid #004a99; margin-bottom: 30px; padding-bottom: 10px; color: #004a99; }
+        .cluster { background: #f9fbff; border: 1px solid #d1d9e6; padding: 20px; border-radius: 8px; margin-bottom: 40px; }
+        .stimulus { background: #fff; border-left: 5px solid #004a99; padding: 15px; margin-bottom: 20px; font-style: italic; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
+        .question { margin-bottom: 25px; padding: 10px; transition: 0.3s; }
+        .question:hover { background: #f1f4f8; border-radius: 5px; }
+        .options { list-style: none; padding-left: 0; }
+        .options li { margin: 10px 0; }
+        .submit-btn { background: #004a99; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; border-radius: 8px; cursor: pointer; display: block; margin: 30px auto; }
+        .submit-btn:hover { background: #003366; }
+        #results { display: none; margin-top: 30px; padding: 20px; border-radius: 8px; text-align: center; border: 2px solid #004a99; background: #e7f3ff; }
+        .math { font-family: "Courier New", Courier, monospace; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="test-container">
+    <div class="header">
+        <h1>NJSLA Science: 8th Grade Comprehensive Practice</h1>
+        <p>This test covers Physical Science, Life Science, and Earth/Space Science.</p>
+    </div>
+
+    <form id="scienceTest">
+        
+        <div class="cluster">
+            <h2>Part 1: Physical Science (Matter, Forces, Energy)</h2>
+            <div class="stimulus">
+                <strong>Phenomenon: Chemical Reactions in a Closed System.</strong> A student mixes 100g of a 10% saltwater solution with 50g of silver nitrate. A white solid (precipitate) forms.
+            </div>
+            <div class="question">
+                <p>1. What is the total mass of the system after the precipitate forms?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q1" value="B"> 150g</li>
+                    <li><input type="radio" name="q1" value="A"> 140g</li>
+                    <li><input type="radio" name="q1" value="C"> 160g</li>
+                    <li><input type="radio" name="q1" value="D"> 100g</li>
+                </ul>
+            </div>
+            <div class="question">
+                <p>2. Which evidence best proves a chemical reaction occurred?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q2" value="A"> The mass stayed the same.</li>
+                    <li><input type="radio" name="q2" value="B"> A new solid substance was formed.</li>
+                    <li><input type="radio" name="q2" value="C"> The substances were mixed together.</li>
+                    <li><input type="radio" name="q2" value="D"> The liquid turned clear.</li>
+                </ul>
+            </div>
+            <div class="question"><p>3. If you increase the temperature of a gas in a fixed container, the pressure increases because:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q3" value="A"> Molecules get larger.</li>
+                    <li><input type="radio" name="q3" value="B"> Molecules move faster and hit walls harder.</li>
+                    <li><input type="radio" name="q3" value="C"> New molecules are created.</li>
+                    <li><input type="radio" name="q3" value="D"> The container shrinks.</li>
+                </ul>
+            </div>
+            <div class="question"><p>4. Newton's 3rd Law states that if a person pushes a wall with 50 N of force, the wall pushes back with:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q4" value="A"> 0 N</li>
+                    <li><input type="radio" name="q4" value="B"> 25 N</li>
+                    <li><input type="radio" name="q4" value="C"> 50 N</li>
+                    <li><input type="radio" name="q4" value="D"> 100 N</li>
+                </ul>
+            </div>
+            <div class="question"><p>5. An object has a mass of 10kg and an acceleration of 2 m/s². What is the Net Force?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q5" value="A"> 5 N</li>
+                    <li><input type="radio" name="q5" value="B"> 12 N</li>
+                    <li><input type="radio" name="q5" value="C"> 20 N</li>
+                    <li><input type="radio" name="q5" value="D"> 0.2 N</li>
+                </ul>
+            </div>
+            <div class="question"><p>6. Which of these is a pure substance (element)?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q6" value="A"> Saltwater</li>
+                    <li><input type="radio" name="q6" value="B"> Air</li>
+                    <li><input type="radio" name="q6" value="C"> Oxygen (O2)</li>
+                    <li><input type="radio" name="q6" value="D"> Milk</li>
+                </ul>
+            </div>
+            <div class="question"><p>7. Potential energy is highest when an object is:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q7" value="A"> At its highest point</li>
+                    <li><input type="radio" name="q7" value="B"> Moving at its fastest speed</li>
+                    <li><input type="radio" name="q7" value="C"> On the ground</li>
+                    <li><input type="radio" name="q7" value="D"> Changing direction</li>
+                </ul>
+            </div>
+            <div class="question"><p>8. Kinetic energy depends on which two factors?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q8" value="A"> Mass and Height</li>
+                    <li><input type="radio" name="q8" value="B"> Mass and Speed</li>
+                    <li><input type="radio" name="q8" value="C"> Speed and Gravity</li>
+                    <li><input type="radio" name="q8" value="D"> Volume and Density</li>
+                </ul>
+            </div>
+            <div class="question"><p>9. A circuit with one path for electricity is called a:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q9" value="A"> Parallel circuit</li>
+                    <li><input type="radio" name="q9" value="B"> Short circuit</li>
+                    <li><input type="radio" name="q9" value="C"> Series circuit</li>
+                    <li><input type="radio" name="q9" value="D"> Open circuit</li>
+                </ul>
+            </div>
+            <div class="question"><p>10. Sound waves travel fastest through:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q10" value="A"> Vacuum</li>
+                    <li><input type="radio" name="q10" value="B"> Air</li>
+                    <li><input type="radio" name="q10" value="C"> Water</li>
+                    <li><input type="radio" name="q10" value="D"> Steel (Solid)</li>
+                </ul>
+            </div>
+            <div class="question"><p>11. The amplitude of a wave determines its:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q11" value="A"> Pitch</li>
+                    <li><input type="radio" name="q11" value="B"> Color</li>
+                    <li><input type="radio" name="q11" value="C"> Volume/Intensity</li>
+                    <li><input type="radio" name="q11" value="D"> Speed</li>
+                </ul>
+            </div>
+            <div class="question"><p>12. Density is calculated as:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q12" value="A"> Mass x Volume</li>
+                    <li><input type="radio" name="q12" value="B"> Mass / Volume</li>
+                    <li><input type="radio" name="q12" value="C"> Volume / Mass</li>
+                    <li><input type="radio" name="q12" value="D"> Mass + Volume</li>
+                </ul>
+            </div>
+            <div class="question"><p>13. Which is a physical change?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q13" value="A"> Burning wood</li>
+                    <li><input type="radio" name="q13" value="B"> Melting ice</li>
+                    <li><input type="radio" name="q13" value="C"> Digestion</li>
+                    <li><input type="radio" name="q13" value="D"> Rusting</li>
+                </ul>
+            </div>
+            <div class="question"><p>14. An electromagnet can be made stronger by:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q14" value="A"> Removing the iron core</li>
+                    <li><input type="radio" name="q14" value="B"> Increasing the number of wire coils</li>
+                    <li><input type="radio" name="q14" value="C"> Using a smaller battery</li>
+                    <li><input type="radio" name="q14" value="D"> Using a longer wire</li>
+                </ul>
+            </div>
+            <div class="question"><p>15. A balloon sticks to a wall because of:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q15" value="A"> Gravity</li>
+                    <li><input type="radio" name="q15" value="B"> Static Electricity</li>
+                    <li><input type="radio" name="q15" value="C"> Friction</li>
+                    <li><input type="radio" name="q15" value="D"> Magnetism</li>
+                </ul>
+            </div>
+            <div class="question"><p>16. When white light passes through a prism, it:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q16" value="A"> Reflects</li>
+                    <li><input type="radio" name="q16" value="B"> Refracts</li>
+                    <li><input type="radio" name="q16" value="C"> Absorbs</li>
+                    <li><input type="radio" name="q16" value="D"> Disappears</li>
+                </ul>
+            </div>
+            <div class="question"><p>17. Thermal energy always moves from:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q17" value="A"> Cold to Hot</li>
+                    <li><input type="radio" name="q17" value="B"> High pressure to Low</li>
+                    <li><input type="radio" name="q17" value="C"> Hot to Cold</li>
+                    <li><input type="radio" name="q17" value="D"> Solid to Liquid</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cluster">
+            <h2>Part 2: Life Science (Cells, Genetics, Evolution)</h2>
+            <div class="stimulus">
+                <strong>Phenomenon: Genetic Inheritance.</strong> In pea plants, purple flowers (P) are dominant over white flowers (p).
+            </div>
+            <div class="question">
+                <p>18. If you cross a homozygous purple plant (PP) with a white plant (pp), what percentage of offspring will be white?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q18" value="A"> 0%</li>
+                    <li><input type="radio" name="q18" value="B"> 25%</li>
+                    <li><input type="radio" name="q18" value="C"> 50%</li>
+                    <li><input type="radio" name="q18" value="D"> 100%</li>
+                </ul>
+            </div>
+            <div class="question">
+                <p>19. The genetic makeup of an organism (like Pp) is its:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q19" value="A"> Phenotype</li>
+                    <li><input type="radio" name="q19" value="B"> Genotype</li>
+                    <li><input type="radio" name="q19" value="C"> Mutation</li>
+                    <li><input type="radio" name="q19" value="D"> Hybrid</li>
+                </ul>
+            </div>
+            <div class="question"><p>20. Which organelle is the site of photosynthesis?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q20" value="A"> Mitochondria</li>
+                    <li><input type="radio" name="q20" value="B"> Chloroplast</li>
+                    <li><input type="radio" name="q20" value="C"> Nucleus</li>
+                    <li><input type="radio" name="q20" value="D"> Ribosome</li>
+                </ul>
+            </div>
+            <div class="question"><p>21. The "Powerhouse of the Cell" that performs cellular respiration is:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q21" value="A"> Mitochondria</li>
+                    <li><input type="radio" name="q21" value="B"> Vacuole</li>
+                    <li><input type="radio" name="q21" value="C"> Cell Wall</li>
+                    <li><input type="radio" name="q21" value="D"> Golgi Body</li>
+                </ul>
+            </div>
+            <div class="question"><p>22. Mitosis results in how many daughter cells?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q22" value="A"> 1</li>
+                    <li><input type="radio" name="q22" value="B"> 2</li>
+                    <li><input type="radio" name="q22" value="C"> 4</li>
+                    <li><input type="radio" name="q22" value="D"> 8</li>
+                </ul>
+            </div>
+            <div class="question"><p>23. DNA is located in which part of the eukaryotic cell?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q23" value="A"> Cytoplasm</li>
+                    <li><input type="radio" name="q23" value="B"> Nucleus</li>
+                    <li><input type="radio" name="q23" value="C"> Cell Membrane</li>
+                    <li><input type="radio" name="q23" value="D"> Endoplasmic Reticulum</li>
+                </ul>
+            </div>
+            <div class="question"><p>24. Natural selection implies that organisms with favorable traits:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q24" value="A"> Die sooner</li>
+                    <li><input type="radio" name="q24" value="B"> Are more likely to survive and reproduce</li>
+                    <li><input type="radio" name="q24" value="C"> Do not change over time</li>
+                    <li><input type="radio" name="q24" value="D"> Are always stronger</li>
+                </ul>
+            </div>
+            <div class="question"><p>25. A group of similar cells working together is a(n):</p>
+                <ul class="options">
+                    <li><input type="radio" name="q25" value="A"> Organ</li>
+                    <li><input type="radio" name="q25" value="B"> Tissue</li>
+                    <li><input type="radio" name="q25" value="C"> System</li>
+                    <li><input type="radio" name="q25" value="D"> Organism</li>
+                </ul>
+            </div>
+            <div class="question"><p>26. Which of these is a biotic factor in an ecosystem?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q26" value="A"> Sunlight</li>
+                    <li><input type="radio" name="q26" value="B"> Water</li>
+                    <li><input type="radio" name="q26" value="C"> Bacteria</li>
+                    <li><input type="radio" name="q26" value="D"> Soil</li>
+                </ul>
+            </div>
+            <div class="question"><p>27. Decomposers are important because they:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q27" value="A"> Hunt prey</li>
+                    <li><input type="radio" name="q27" value="B"> Recycle nutrients back into the soil</li>
+                    <li><input type="radio" name="q27" value="C"> Produce oxygen</li>
+                    <li><input type="radio" name="q27" value="D"> Store solar energy</li>
+                </ul>
+            </div>
+            <div class="question"><p>28. In a food web, the primary source of energy is:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q28" value="A"> Grass</li>
+                    <li><input type="radio" name="q28" value="B"> The Sun</li>
+                    <li><input type="radio" name="q28" value="C"> Predators</li>
+                    <li><input type="radio" name="q28" value="D"> Soil</li>
+                </ul>
+            </div>
+            <div class="question"><p>29. The process by which water leaves a plant's leaves is:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q29" value="A"> Condensation</li>
+                    <li><input type="radio" name="q29" value="B"> Photosynthesis</li>
+                    <li><input type="radio" name="q29" value="C"> Transpiration</li>
+                    <li><input type="radio" name="q29" value="D"> Precipitation</li>
+                </ul>
+            </div>
+            <div class="question"><p>30. Homologous structures (like human arms and whale flippers) suggest:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q30" value="A"> Common ancestry</li>
+                    <li><input type="radio" name="q30" value="B"> No relationship</li>
+                    <li><input type="radio" name="q30" value="C"> Identical DNA</li>
+                    <li><input type="radio" name="q30" value="D"> Constant environment</li>
+                </ul>
+            </div>
+            <div class="question"><p>31. Which system transports nutrients and oxygen in humans?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q31" value="A"> Respiratory</li>
+                    <li><input type="radio" name="q31" value="B"> Digestive</li>
+                    <li><input type="radio" name="q31" value="C"> Circulatory</li>
+                    <li><input type="radio" name="q31" value="D"> Nervous</li>
+                </ul>
+            </div>
+            <div class="question"><p>32. Sexual reproduction increases genetic:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q32" value="A"> Stability</li>
+                    <li><input type="radio" name="q32" value="B"> Diversity</li>
+                    <li><input type="radio" name="q32" value="C"> Cloning</li>
+                    <li><input type="radio" name="q32" value="D"> Weakness</li>
+                </ul>
+            </div>
+            <div class="question"><p>33. The basic unit of structure and function in living things is:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q33" value="A"> Atom</li>
+                    <li><input type="radio" name="q33" value="B"> Molecule</li>
+                    <li><input type="radio" name="q33" value="C"> Cell</li>
+                    <li><input type="radio" name="q33" value="D"> Organ</li>
+                </ul>
+            </div>
+            <div class="question"><p>34. Antibiotic resistance in bacteria is an example of:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q34" value="A"> Artificial selection</li>
+                    <li><input type="radio" name="q34" value="B"> Evolution by natural selection</li>
+                    <li><input type="radio" name="q34" value="C"> Spontaneous generation</li>
+                    <li><input type="radio" name="q34" value="D"> Extinction</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cluster">
+            <h2>Part 3: Earth & Space Science</h2>
+            <div class="stimulus">
+                <strong>Phenomenon: Earth's Cycles.</strong> Earth revolves around the sun while rotating on a tilted axis.
+            </div>
+            <div class="question">
+                <p>35. What is the primary cause of Earth's seasons?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q35" value="A"> Earth's distance from the sun</li>
+                    <li><input type="radio" name="q35" value="B"> The tilt of Earth's axis</li>
+                    <li><input type="radio" name="q35" value="C"> The sun's brightness</li>
+                    <li><input type="radio" name="q35" value="D"> Moon phases</li>
+                </ul>
+            </div>
+            <div class="question"><p>36. Tides are primarily caused by the gravitational pull of:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q36" value="A"> The Sun</li>
+                    <li><input type="radio" name="q36" value="B"> The Moon</li>
+                    <li><input type="radio" name="q36" value="C"> Mars</li>
+                    <li><input type="radio" name="q36" value="D"> Earth's core</li>
+                </ul>
+            </div>
+            <div class="question"><p>37. A lunar eclipse occurs when:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q37" value="A"> The Moon is between Earth and Sun</li>
+                    <li><input type="radio" name="q37" value="B"> The Sun is between Moon and Earth</li>
+                    <li><input type="radio" name="q37" value="C"> Earth is between Sun and Moon</li>
+                    <li><input type="radio" name="q37" value="D"> The Moon disappears</li>
+                </ul>
+            </div>
+            <div class="question"><p>38. Which layer of Earth is composed of liquid iron and nickel?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q38" value="A"> Crust</li>
+                    <li><input type="radio" name="q38" value="B"> Mantle</li>
+                    <li><input type="radio" name="q38" value="C"> Outer Core</li>
+                    <li><input type="radio" name="q38" value="D"> Inner Core</li>
+                </ul>
+            </div>
+            <div class="question"><p>39. Tectonic plates move due to convection currents in the:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q39" value="A"> Crust</li>
+                    <li><input type="radio" name="q39" value="B"> Mantle</li>
+                    <li><input type="radio" name="q39" value="C"> Atmosphere</li>
+                    <li><input type="radio" name="q39" value="D"> Ocean</li>
+                </ul>
+            </div>
+            <div class="question"><p>40. At a subduction zone, one plate:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q40" value="A"> Slides past another</li>
+                    <li><input type="radio" name="q40" value="B"> Rises above another</li>
+                    <li><input type="radio" name="q40" value="C"> Sinks beneath another</li>
+                    <li><input type="radio" name="q40" value="D"> Splits in half</li>
+                </ul>
+            </div>
+            <div class="question"><p>41. Sedimentary rock is formed through:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q41" value="A"> Cooling lava</li>
+                    <li><input type="radio" name="q41" value="B"> Heat and pressure</li>
+                    <li><input type="radio" name="q41" value="C"> Compaction and cementation</li>
+                    <li><input type="radio" name="q41" value="D"> Melting</li>
+                </ul>
+            </div>
+            <div class="question"><p>42. The process that breaks down rocks into smaller pieces is:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q42" value="A"> Erosion</li>
+                    <li><input type="radio" name="q42" value="B"> Weathering</li>
+                    <li><input type="radio" name="q42" value="C"> Deposition</li>
+                    <li><input type="radio" name="q42" value="D"> Solidification</li>
+                </ul>
+            </div>
+            <div class="question"><p>43. Which is a renewable energy source?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q43" value="A"> Coal</li>
+                    <li><input type="radio" name="q43" value="B"> Natural Gas</li>
+                    <li><input type="radio" name="q43" value="C"> Wind</li>
+                    <li><input type="radio" name="q43" value="D"> Nuclear</li>
+                </ul>
+            </div>
+            <div class="question"><p>44. Our Sun is a medium-sized star located in the:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q44" value="A"> Andromeda Galaxy</li>
+                    <li><input type="radio" name="q44" value="B"> Milky Way Galaxy</li>
+                    <li><input type="radio" name="q44" value="C"> Center of the Universe</li>
+                    <li><input type="radio" name="q44" value="D"> Oort Cloud</li>
+                </ul>
+            </div>
+            <div class="question"><p>45. Global warming is primarily caused by an increase in:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q45" value="A"> Oxygen</li>
+                    <li><input type="radio" name="q45" value="B"> Nitrogen</li>
+                    <li><input type="radio" name="q45" value="C"> Greenhouse gases (CO2, Methane)</li>
+                    <li><input type="radio" name="q45" value="D"> Solar flares</li>
+                </ul>
+            </div>
+            <div class="question"><p>46. The Rock Cycle shows that:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q46" value="A"> Rocks never change</li>
+                    <li><input type="radio" name="q46" value="B"> Any rock can become any other rock</li>
+                    <li><input type="radio" name="q46" value="C"> Sedimentary rock is the final stage</li>
+                    <li><input type="radio" name="q46" value="D"> Rocks only melt</li>
+                </ul>
+            </div>
+            <div class="question"><p>47. Which planet is known as the "Red Planet"?</p>
+                <ul class="options">
+                    <li><input type="radio" name="q47" value="A"> Venus</li>
+                    <li><input type="radio" name="q47" value="B"> Mars</li>
+                    <li><input type="radio" name="q47" value="C"> Jupiter</li>
+                    <li><input type="radio" name="q47" value="D"> Saturn</li>
+                </ul>
+            </div>
+            <div class="question"><p>48. The most abundant gas in Earth's atmosphere is:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q48" value="A"> Oxygen</li>
+                    <li><input type="radio" name="q48" value="B"> Carbon Dioxide</li>
+                    <li><input type="radio" name="q48" value="C"> Nitrogen</li>
+                    <li><input type="radio" name="q48" value="D"> Argon</li>
+                </ul>
+            </div>
+            <div class="question"><p>49. Index fossils are useful because they tell us:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q49" value="A"> The exact diet of the animal</li>
+                    <li><input type="radio" name="q49" value="B"> The relative age of rock layers</li>
+                    <li><input type="radio" name="q49" value="C"> How the animal died</li>
+                    <li><input type="radio" name="q49" value="D"> The color of the skin</li>
+                </ul>
+            </div>
+            <div class="question"><p>50. The Big Bang Theory explains the origin of:</p>
+                <ul class="options">
+                    <li><input type="radio" name="q50" value="A"> The Earth</li>
+                    <li><input type="radio" name="q50" value="B"> The Universe</li>
+                    <li><input type="radio" name="q50" value="C"> Human Life</li>
+                    <li><input type="radio" name="q50" value="D"> Fossils</li>
+                </ul>
+            </div>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="scoreTest()">Submit Exam</button>
+    </form>
+
+    <div id="results">
+        <h2>Your Result</h2>
+        <p id="finalScore" style="font-size: 2rem; font-weight: bold;"></p>
+        <p id="feedback"></p>
+    </div>
+</div>
+
+<script>
+    function scoreTest() {
+        const key = {
+            q1:"B", q2:"B", q3:"B", q4:"C", q5:"C", q6:"C", q7:"A", q8:"B", q9:"C", q10:"D",
+            q11:"C", q12:"B", q13:"B", q14:"B", q15:"B", q16:"B", q17:"C", q18:"A", q19:"B", q20:"B",
+            q21:"A", q22:"B", q23:"B", q24:"B", q25:"B", q26:"C", q27:"B", q28:"B", q29:"C", q30:"A",
+            q31:"C", q32:"B", q33:"C", q34:"B", q35:"B", q36:"B", q37:"C", q38:"C", q39:"B", q40:"C",
+            q41:"C", q42:"B", q43:"C", q44:"B", q45:"C", q46:"B", q47:"B", q48:"C", q49:"B", q50:"B"
+        };
+
+        let score = 0;
+        let total = 50;
+        const form = document.getElementById('scienceTest');
+        const formData = new FormData(form);
+
+        for (let i = 1; i <= total; i++) {
+            if (formData.get('q' + i) === key['q' + i]) {
+                score++;
+            }
+        }
+
+        const percent = (score / total) * 100;
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('finalScore').innerText = score + " / " + total + " (" + percent + "%)";
+        
+        let feedback = "";
+        if (percent >= 90) feedback = "Excellent! You are ready for Enriched Science.";
+        else if (percent >= 80) feedback = "Great job! Review any missed physical science questions.";
+        else if (percent >= 70) feedback = "Good effort. Review Earth Science and Genetics concepts.";
+        else feedback = "Keep studying! Focus on the scientific phenomena and data analysis.";
+        
+        document.getElementById('feedback').innerText = feedback;
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+</script>
+
+</body>
+</html>
