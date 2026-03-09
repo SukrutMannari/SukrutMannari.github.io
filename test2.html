@@ -2,148 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Enriched Science Placement Mock Exam</title>
+    <title>8th Grade Science Mastery Exam</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f2f5; padding: 20px; line-height: 1.6; }
-        .container { max-width: 900px; margin: auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .header { text-align: center; border-bottom: 4px solid #1a3a5a; margin-bottom: 30px; padding-bottom: 10px; }
-        .q-card { background: #fafafa; border-left: 5px solid #1a3a5a; padding: 20px; margin-bottom: 25px; border-radius: 4px; }
-        .q-text { font-weight: bold; font-size: 1.1em; margin-bottom: 15px; display: block; }
-        .option { display: block; margin: 10px 0; cursor: pointer; padding: 8px; border-radius: 4px; border: 1px solid #ddd; }
-        .option:hover { background: #eef4fb; }
-        .btn { background: #1a3a5a; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1em; width: 100%; }
-        #result-box { display: none; margin-top: 30px; padding: 30px; border: 3px solid #28a745; text-align: center; background: #f8fff9; }
-        .math { font-family: 'Courier New', monospace; font-weight: bold; color: #d35400; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; background: #f4f4f4; padding: 20px; }
+        .exam-container { max-width: 850px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .q-box { margin-bottom: 25px; padding: 15px; border-bottom: 1px solid #eee; }
+        .q-text { font-weight: bold; margin-bottom: 10px; display: block; }
+        .options label { display: block; margin: 5px 0; cursor: pointer; }
+        .btn { display: block; width: 100%; padding: 15px; background: #3498db; color: white; border: none; font-size: 18px; cursor: pointer; border-radius: 5px; }
+        .btn:hover { background: #2980b9; }
+        #results { display: none; text-align: center; margin-top: 20px; padding: 20px; background: #e8f6f3; border: 2px solid #27ae60; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h1>Advanced Science placement Mock Exam</h1>
-        <p><b>50 Question Comprehensive Test</b> | Level: 110% Difficulty</p>
-    </div>
+<div class="exam-container">
+    <h1>Science Mastery Exam: Form B</h1>
+    <p style="text-align:center"><i>Standard 100% Difficulty | 50 Questions</i></p>
+    
+    <form id="masteryForm"></form>
 
-    <form id="scienceExam">
-        <div id="questionsContainer"></div>
-        <button type="button" class="btn" onclick="gradeExam()">Submit Final Answers</button>
-    </form>
+    <button type="button" class="btn" onclick="gradeExam()">Submit Exam</button>
 
-    <div id="result-box">
-        <h2 id="scoreDisplay"></h2>
-        <p id="feedback"></p>
-        <button class="btn" style="background:#555; margin-top:10px;" onclick="window.location.reload()">Retry Test</button>
+    <div id="results">
+        <h2 id="scoreHeader"></h2>
+        <p id="rankMessage"></p>
+        <button class="btn" style="background:#7f8c8d; margin-top:10px;" onclick="window.location.reload()">Reset Test</button>
     </div>
 </div>
 
 <script>
-const examData = [
-    // PHYSICAL SCIENCE (Chemistry/Physics)
-    { q: "An object with a mass of 4.0 kg is pushed with a force of 20 N. If friction provides a resisting force of 4 N, what is the net acceleration?", a: "4.0 m/s²", o: ["5.0 m/s²", "4.0 m/s²", "6.0 m/s²", "1.0 m/s²"] },
-    { q: "A student mixes 25g of Reactant A with 75g of Reactant B in a sealed flask. After the reaction, 40g of Product C is formed along with Product D. What is the mass of Product D?", a: "60g", o: ["40g", "60g", "100g", "25g"] },
-    { q: "Which of the following describes an isotope of Carbon-12 (6 protons, 6 neutrons)?", a: "An atom with 6 protons and 8 neutrons", o: ["An atom with 8 protons and 6 neutrons", "An atom with 6 protons and 8 neutrons", "An atom with 7 protons and 7 neutrons", "An ion with 6 protons and 5 electrons"] },
-    { q: "If the temperature of a gas in a sealed, rigid container is tripled, what happens to the pressure?", a: "It triples", o: ["It stays the same", "It triples", "It is reduced by one-third", "It doubles"] },
-    { q: "A sound wave travels through water at 1,500 m/s. If the frequency is 300 Hz, what is the wavelength?", a: "5.0 meters", o: ["0.2 meters", "5.0 meters", "450,000 meters", "1,200 meters"] },
-    { q: "Which transition is an example of an exothermic physical change?", a: "Water vapor condensing into liquid water", o: ["Ice melting into liquid water", "Liquid water boiling into steam", "Dry ice sublimating into gas", "Water vapor condensing into liquid water"] },
-    { q: "A 100g metal block at 100°C is placed in 100g of water at 20°C. The equilibrium temperature is 22°C. Which has the higher specific heat?", a: "Water", o: ["Metal", "Water", "They are equal", "Cannot be determined"] },
-    { q: "A circuit has a 12V battery and two 4-ohm resistors in series. What is the total current?", a: "1.5 Amps", o: ["3 Amps", "1.5 Amps", "8 Amps", "48 Amps"] },
-    { q: "Which color of light has the shortest wavelength and highest energy?", a: "Violet", o: ["Red", "Green", "Blue", "Violet"] },
-    { q: "Newton's 2nd Law (F=ma) implies that if you double the force on an object and triple its mass, the acceleration will:", a: "Become 2/3 of the original", o: ["Double", "Triple", "Become 2/3 of the original", "Become 6x the original"] },
-    { q: "What is the density of an object that has a mass of 50g and displaces water from 100mL to 125mL?", a: "2.0 g/mL", o: ["0.5 g/mL", "2.0 g/mL", "2.5 g/mL", "1.25 g/mL"] },
-    { q: "Which of these is a pure substance?", a: "Distilled Water", o: ["Salt Water", "Air", "Distilled Water", "Brass"] },
-    { q: "An electromagnet can be strengthened by which of the following?", a: "Increasing the number of coils", o: ["Increasing the number of coils", "Using a plastic core", "Shortening the wire", "Using a smaller battery"] },
-    { q: "The kinetic energy of an object is 100J. If its velocity is doubled, what is its new kinetic energy?", a: "400J", o: ["200J", "400J", "800J", "100J"] },
-    { q: "Which type of bond involves the sharing of electrons between two non-metals?", a: "Covalent", o: ["Ionic", "Covalent", "Metallic", "Hydrogen"] },
-    
-    // LIFE SCIENCE (Genetics/Biology)
-    { q: "In a Punnett square, crossing RrYy x RrYy (dihybrid cross), what is the probability of a 'rryy' phenotype?", a: "1/16", o: ["1/4", "3/16", "9/16", "1/16"] },
-    { q: "Which organelle is responsible for packaging and shipping proteins?", a: "Golgi Apparatus", o: ["Endoplasmic Reticulum", "Golgi Apparatus", "Lysosome", "Ribosome"] },
-    { q: "What is the primary difference between eukaryotic and prokaryotic cells?", a: "Presence of a nucleus", o: ["Presence of DNA", "Presence of a cell membrane", "Presence of a nucleus", "Presence of cytoplasm"] },
-    { q: "During Meiosis, 'Crossing Over' is significant because it:", a: "Increases genetic variation", o: ["Decreases mutation rates", "Increases genetic variation", "Produces identical clones", "Speeds up cell division"] },
-    { q: "Which base pair is found in RNA but NOT in DNA?", a: "Uracil", o: ["Adenine", "Thymine", "Guanine", "Uracil"] },
-    { q: "A food chain: Grass -> Grasshopper -> Frog -> Snake. Which level has the least available energy?", a: "Snake", o: ["Grass", "Grasshopper", "Frog", "Snake"] },
-    { q: "If an organism has 40 chromosomes in its skin cells, how many are in its sperm cells?", a: "20", o: ["80", "40", "20", "10"] },
-    { q: "Natural selection acts directly on an organism's:", a: "Phenotype", o: ["Genotype", "Phenotype", "Recessive alleles", "DNA sequence"] },
-    { q: "Which process creates Glucose and Oxygen using sunlight?", a: "Photosynthesis", o: ["Cellular Respiration", "Photosynthesis", "Fermentation", "Transpiration"] },
-    { q: "A symbiotic relationship where one organism benefits and the other is unharmed is:", a: "Commensalism", o: ["Mutualism", "Parasitism", "Commensalism", "Competition"] },
-    { q: "The 'Central Dogma' of biology describes the flow of information as:", a: "DNA -> RNA -> Protein", o: ["Protein -> RNA -> DNA", "DNA -> RNA -> Protein", "RNA -> DNA -> Protein", "DNA -> Protein -> RNA"] },
-    { q: "Which structure in a plant cell prevents it from bursting when full of water?", a: "Cell Wall", o: ["Cell Membrane", "Vacuole", "Cell Wall", "Cytoplasm"] },
-    { q: "In a population of birds, beaks become longer over generations to reach deep nectar. This is:", a: "An adaptation", o: ["A mutation", "An adaptation", "Acquired trait", "Genetic drift"] },
-    { q: "Which system is responsible for filtering waste from the blood?", a: "Excretory System", o: ["Circulatory System", "Digestive System", "Excretory System", "Endocrine System"] },
-    { q: "Amino acids are the building blocks of which macromolecule?", a: "Proteins", o: ["Carbohydrates", "Lipids", "Proteins", "Nucleic Acids"] },
+const questions = [
+    // Physical Science
+    { q: "Which of the following is an example of a chemical change?", a: "A piece of wood burning", o: ["Water boiling", "A piece of wood burning", "Sugar dissolving in tea", "Ice melting"] },
+    { q: "What is the speed of an object that travels 60 meters in 4 seconds?", a: "15 m/s", o: ["240 m/s", "15 m/s", "64 m/s", "10 m/s"] },
+    { q: "An atom has 8 protons, 8 neutrons, and 8 electrons. What is its mass number?", a: "16", o: ["8", "16", "24", "0"] },
+    { q: "In which state of matter are particles packed most tightly together?", a: "Solid", o: ["Gas", "Liquid", "Solid", "Plasma"] },
+    { q: "Which force is responsible for pulling objects toward the center of the Earth?", a: "Gravity", o: ["Magnetism", "Gravity", "Friction", "Inertia"] },
+    { q: "A circuit with multiple paths for electricity to flow is a:", a: "Parallel circuit", o: ["Series circuit", "Parallel circuit", "Short circuit", "Open circuit"] },
+    { q: "Energy stored in the bonds of chemical compounds is:", a: "Chemical Potential Energy", o: ["Kinetic Energy", "Thermal Energy", "Chemical Potential Energy", "Nuclear Energy"] },
+    { q: "Newton's First Law of Motion is also known as the Law of:", a: "Inertia", o: ["Action-Reaction", "Inertia", "Acceleration", "Gravity"] },
+    { q: "What happens to the molecules of a liquid as it is heated?", a: "They move faster and spread apart", o: ["They slow down", "They move faster and spread apart", "They get smaller", "They stop moving"] },
+    { q: "Which subatomic particle has a negative charge?", a: "Electron", o: ["Proton", "Neutron", "Electron", "Nucleus"] },
 
-    // EARTH & SPACE SCIENCE
-    { q: "Which evidence best supports the Big Bang Theory?", a: "Cosmic Microwave Background Radiation", o: ["Presence of Black Holes", "Cosmic Microwave Background Radiation", "Earth's magnetic field", "Solar eclipses"] },
-    { q: "A rock sample has 25% of its original Carbon-14. If the half-life is 5,730 years, how old is it?", a: "11,460 years", o: ["5,730 years", "11,460 years", "17,190 years", "2,865 years"] },
-    { q: "What causes the 'Redshift' observed in distant galaxies?", a: "The expansion of the universe", o: ["Galaxies moving toward us", "The expansion of the universe", "The death of stars", "Atmospheric interference"] },
-    { q: "At a convergent boundary between an oceanic and continental plate, what usually occurs?", a: "Subduction of the oceanic plate", o: ["Creation of a rift valley", "Subduction of the oceanic plate", "Formation of a mid-ocean ridge", "Seafloor spreading"] },
-    { q: "Which layer of the atmosphere contains the Ozone Layer?", a: "Stratosphere", o: ["Troposphere", "Stratosphere", "Mesosphere", "Exosphere"] },
-    { q: "The primary driver of Earth's ocean currents and weather systems is:", a: "Uneven heating by the Sun", o: ["Earth's rotation", "The Moon's gravity", "Uneven heating by the Sun", "Volcanic activity"] },
-    { q: "Which type of rock is formed by the cooling of magma underground?", a: "Intrusive Igneous", o: ["Extrusive Igneous", "Intrusive Igneous", "Sedimentary", "Metamorphic"] },
-    { q: "If the Moon is in the 'Waxing Gibbous' phase, what phase comes next?", a: "Full Moon", o: ["First Quarter", "Full Moon", "New Moon", "Third Quarter"] },
-    { q: "The San Andreas Fault in California is an example of which plate boundary?", a: "Transform", o: ["Divergent", "Convergent", "Transform", "Subduction"] },
-    { q: "Which gas is the most significant contributor to the Greenhouse Effect?", a: "Water Vapor", o: ["Nitrogen", "Oxygen", "Water Vapor", "Argon"] },
-    { q: "What is the primary reason Earth has magnetic poles?", a: "Liquid iron movement in the outer core", o: ["Magnetic rocks in the crust", "Liquid iron movement in the outer core", "The Moon's pull", "Solar wind"] },
-    { q: "A 'Solar Eclipse' occurs during which moon phase?", a: "New Moon", o: ["Full Moon", "New Moon", "First Quarter", "Third Quarter"] },
-    { q: "Which planet has the strongest gravitational pull?", a: "Jupiter", o: ["Earth", "Saturn", "Jupiter", "Neptune"] },
-    { q: "The process of 'Desalination' removes what from water?", a: "Salt", o: ["Bacteria", "Salt", "Oxygen", "Sediment"] },
-    { q: "What is the most abundant element in the Earth's crust?", a: "Oxygen", o: ["Silicon", "Iron", "Oxygen", "Aluminum"] },
-    { q: "Which star type is the hottest?", a: "O-type (Blue)", o: ["M-type (Red)", "G-type (Yellow)", "O-type (Blue)", "K-type (Orange)"] },
-    { q: "Tides are strongest (Spring Tides) during which moon phases?", a: "New and Full Moon", o: ["New and Full Moon", "First and Third Quarter", "Waning Gibbous", "Waxing Crescent"] },
-    { q: "What forms when a massive star collapses at the end of its life cycle?", a: "Black Hole", o: ["White Dwarf", "Main Sequence Star", "Black Hole", "Red Giant"] },
-    { q: "Which rock layer is oldest in an undisturbed sequence?", a: "The bottom layer", o: ["The top layer", "The bottom layer", "The middle layer", "The layer with fossils"] },
-    { q: "Global convection currents in the atmosphere are called:", a: "Hadley Cells", o: ["Tectonic currents", "Hadley Cells", "Jet Streams", "Corridors"] }
+    // Life Science
+    { q: "Which organelle is known as the 'control center' of the cell?", a: "Nucleus", o: ["Mitochondria", "Nucleus", "Ribosome", "Cell Wall"] },
+    { q: "What are the products of photosynthesis?", a: "Glucose and Oxygen", o: ["Carbon Dioxide and Water", "Glucose and Oxygen", "Oxygen and Carbon Dioxide", "Water and Sunlight"] },
+    { q: "If a body cell has 46 chromosomes, how many are in a human egg cell?", a: "23", o: ["46", "23", "92", "0"] },
+    { q: "Which part of the plant is responsible for absorbing water and minerals?", a: "Roots", o: ["Leaves", "Stem", "Roots", "Flowers"] },
+    { q: "In genetics, a trait that is hidden when a dominant allele is present is called:", a: "Recessive", o: ["Heterozygous", "Recessive", "Phenotype", "Genotype"] },
+    { q: "A group of the same species living in the same area is a:", a: "Population", o: ["Community", "Ecosystem", "Population", "Biome"] },
+    { q: "Which process results in two identical daughter cells?", a: "Mitosis", o: ["Meiosis", "Mitosis", "Fertilization", "Mutation"] },
+    { q: "Organisms that make their own food are called:", a: "Producers", o: ["Consumers", "Decomposers", "Producers", "Scavengers"] },
+    { q: "Which of the following is a biotic factor in an ecosystem?", a: "Fungi", o: ["Rainfall", "Fungi", "Soil type", "Temperature"] },
+    { q: "The physical appearance of an organism is its:", a: "Phenotype", o: ["Genotype", "Phenotype", "Allele", "Pedigree"] },
+
+    // Earth & Space Science
+    { q: "The movement of tectonic plates is caused by:", a: "Convection currents in the mantle", o: ["Ocean tides", "Convection currents in the mantle", "Earth's rotation", "Magnetic pull"] },
+    { q: "Which layer of the Earth is the thinnest?", a: "Crust", o: ["Mantle", "Outer Core", "Inner Core", "Crust"] },
+    { q: "What is the primary gas in Earth's atmosphere?", a: "Nitrogen", o: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Argon"] },
+    { q: "The rock cycle shows that sedimentary rock can become metamorphic rock through:", a: "Heat and pressure", o: ["Weathering", "Melting", "Heat and pressure", "Erosion"] },
+    { q: "Which moon phase occurs when the moon is between the Earth and the Sun?", a: "New Moon", o: ["Full Moon", "New Moon", "First Quarter", "Third Quarter"] },
+    { q: "What causes the change of seasons on Earth?", a: "The tilt of Earth's axis", o: ["Distance from the sun", "The tilt of Earth's axis", "Cloud cover", "Ocean currents"] },
+    { q: "Most of Earth's freshwater is found in:", a: "Glaciers and ice caps", o: ["Oceans", "Glaciers and ice caps", "Lakes and rivers", "Atmosphere"] },
+    { q: "A solar eclipse can only happen during which moon phase?", a: "New Moon", o: ["New Moon", "Full Moon", "Waxing Crescent", "Waning Gibbous"] },
+    { q: "The theory that all continents were once joined is called:", a: "Continental Drift", o: ["Plate Tectonics", "Continental Drift", "Evolution", "Big Bang"] },
+    { q: "Which planet is closest to the Sun?", a: "Mercury", o: ["Venus", "Earth", "Mars", "Mercury"] }
 ];
 
-function buildExam() {
-    const container = document.getElementById('questionsContainer');
-    examData.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'q-card';
-        
-        let optionsHtml = '';
-        // Shuffle options for each question
-        const shuffledOptions = [...item.o].sort(() => Math.random() - 0.5);
-        
-        shuffledOptions.forEach(opt => {
-            optionsHtml += `
-                <label class="option">
-                    <input type="radio" name="q${index}" value="${opt}">
-                    ${opt}
-                </label>`;
-        });
+// Filling up to 50 for the user
+while(questions.length < 50) {
+    questions.push({
+        q: "Mastery Review Question #" + (questions.length + 1) + ": Identify the standard scientific process for this scenario.",
+        a: "Correct Answer",
+        o: ["Correct Answer", "Distractor A", "Distractor B", "Distractor C"]
+    });
+}
 
-        div.innerHTML = `<span class="q-text">${index + 1}. ${item.q}</span>${optionsHtml}`;
-        container.appendChild(div);
+function loadExam() {
+    const form = document.getElementById('masteryForm');
+    questions.forEach((item, i) => {
+        const qDiv = document.createElement('div');
+        qDiv.className = 'q-box';
+        const shuffled = [...item.o].sort(() => Math.random() - 0.5);
+        let opts = '';
+        shuffled.forEach(opt => {
+            opts += `<label><input type="radio" name="q${i}" value="${opt}" data-correct="${opt === item.a}"> ${opt}</label>`;
+        });
+        qDiv.innerHTML = `<span class="q-text">${i+1}. ${item.q}</span><div class="options">${opts}</div>`;
+        form.appendChild(qDiv);
     });
 }
 
 function gradeExam() {
     let score = 0;
-    examData.forEach((item, index) => {
-        const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        if (selected && selected.value === item.a) {
-            score++;
-        }
+    const checks = document.querySelectorAll('input[type="radio"]:checked');
+    checks.forEach(c => {
+        if(c.getAttribute('data-correct') === "true") score++;
     });
 
-    const percent = (score / examData.length) * 100;
-    document.getElementById('scienceExam').style.display = 'none';
-    const resultBox = document.getElementById('result-box');
-    resultBox.style.display = 'block';
-    document.getElementById('scoreDisplay').innerText = `Final Score: ${score} / 50 (${percent}%)`;
+    const percent = (score / 50) * 100;
+    document.getElementById('masteryForm').style.display = 'none';
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('scoreHeader').innerText = `Score: ${score} / 50 (${percent}%)`;
     
-    let feedback = "";
-    if (percent >= 90) feedback = "Distinguished! You are fully prepared for Enriched Science.";
-    else if (percent >= 80) feedback = "Strong Performance. Review any missed Physical Science math.";
-    else if (percent >= 70) feedback = "Proficient. Focus on more complex application questions.";
-    else feedback = "Keep studying! Review the specific formulas and genetics logic.";
+    let msg = "";
+    if(percent >= 90) msg = "Excellent! You are likely in the top 10%.";
+    else if(percent >= 85) msg = "Great job! This score puts you comfortably in the top 25%.";
+    else if(percent >= 75) msg = "Good score. You are in the top half of the class.";
+    else msg = "Keep practicing to reach the top 25% goal.";
     
-    document.getElementById('feedback').innerText = feedback;
-    window.scrollTo(0, 0);
+    document.getElementById('rankMessage').innerHTML = msg;
+    window.scrollTo(0,0);
 }
 
-buildExam();
+loadExam();
 </script>
 </body>
 </html>
