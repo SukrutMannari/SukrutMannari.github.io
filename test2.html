@@ -1,135 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>8th Grade Science Final Mastery</title>
+    <title>8th Grade Science: Final 50-Question Mastery</title>
     <style>
-        body { font-family: sans-serif; background: #f0f0f0; padding: 20px; }
-        .box { max-width: 800px; margin: auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .q { border-bottom: 1px solid #eee; padding: 15px 0; }
-        .q-title { font-weight: bold; margin-bottom: 10px; display: block; }
-        .btn { width: 100%; padding: 15px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; }
-        #results { display: none; padding: 20px; text-align: center; background: #d4edda; border: 2px solid #c3e6cb; margin-top: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f9; padding: 20px; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        h1 { color: #007bff; text-align: center; border-bottom: 3px solid #007bff; padding-bottom: 10px; }
+        .q-block { border-bottom: 1px solid #eee; padding: 20px 0; }
+        .q-text { font-weight: bold; font-size: 1.1em; display: block; margin-bottom: 12px; }
+        label { display: block; margin: 8px 0; cursor: pointer; padding: 8px; border-radius: 5px; }
+        label:hover { background: #f0f8ff; }
+        .btn { width: 100%; padding: 20px; background: #007bff; color: white; border: none; border-radius: 8px; font-size: 20px; cursor: pointer; font-weight: bold; margin-top: 20px; }
+        #results { display: none; text-align: center; padding: 40px; border: 4px solid #28a745; border-radius: 12px; margin-top: 20px; background: #e9f7ef; }
     </style>
 </head>
 <body>
 
-<div class="box">
-    <h1 style="text-align:center; color:#007bff;">Science Mastery Exam: Form C</h1>
-    <p style="text-align:center;">Fixed 50-Question Edition</p>
-    <hr>
+<div class="container">
+    <h1>Science Mastery Exam: Form C (Full Edition)</h1>
+    <p style="text-align:center;">100% Difficulty | Standard 8th Grade Placement Prep</p>
     
-    <div id="quiz">
-        <div class="q">
-            <span class="q-title">1. Which method of heat transfer occurs through direct contact?</span>
-            <input type="radio" name="q1" value="0"> Convection<br>
-            <input type="radio" name="q1" value="1"> Conduction<br>
-            <input type="radio" name="q1" value="0"> Radiation
+    <form id="quizForm">
+        <div class="q-block"><span class="q-text">1. Which method of heat transfer occurs through direct contact?</span>
+            <label><input type="radio" name="q1" value="0"> Convection</label>
+            <label><input type="radio" name="q1" value="1"> Conduction</label>
+            <label><input type="radio" name="q1" value="0"> Radiation</label>
         </div>
-
-        <div class="q">
-            <span class="q-title">2. A 10kg wagon is pulled with 30N of force. What is the acceleration?</span>
-            <input type="radio" name="q2" value="1"> 3 m/s²<br>
-            <input type="radio" name="q2" value="0"> 300 m/s²<br>
-            <input type="radio" name="q2" value="0"> 0.3 m/s²
+        <div class="q-block"><span class="q-text">2. A 10kg wagon is pulled with 30N of force. What is the acceleration?</span>
+            <label><input type="radio" name="q2" value="1"> 3 m/s²</label>
+            <label><input type="radio" name="q2" value="0"> 300 m/s²</label>
+            <label><input type="radio" name="q2" value="0"> 0.3 m/s²</label>
         </div>
-
-        <div class="q">
-            <span class="q-title">3. Which is a physical property of matter?</span>
-            <input type="radio" name="q3" value="1"> Density<br>
-            <input type="radio" name="q3" value="0"> Flammability<br>
-            <input type="radio" name="q3" value="0"> Ability to rust
+        <div class="q-block"><span class="q-text">3. Which is a physical property of matter?</span>
+            <label><input type="radio" name="q3" value="1"> Density</label>
+            <label><input type="radio" name="q3" value="0"> Flammability</label>
+            <label><input type="radio" name="q3" value="0"> Reactivity</label>
         </div>
-
-        <div class="q">
-            <span class="q-title">4. The smallest unit of an element is the:</span>
-            <input type="radio" name="q4" value="0"> Molecule<br>
-            <input type="radio" name="q4" value="1"> Atom<br>
-            <input type="radio" name="q4" value="0"> Compound
+        <div class="q-block"><span class="q-text">4. The smallest unit of an element is the:</span>
+            <label><input type="radio" name="q4" value="0"> Molecule</label>
+            <label><input type="radio" name="q4" value="1"> Atom</label>
+            <label><input type="radio" name="q4" value="0"> Compound</label>
         </div>
-
-        <div class="q">
-            <span class="q-title">5. Pushing a wall that does not move results in how much work?</span>
-            <input type="radio" name="q5" value="1"> 0 Joules<br>
-            <input type="radio" name="q5" value="0"> 100 Joules<br>
-            <input type="radio" name="q5" value="0"> 10 Joules
+        <div class="q-block"><span class="q-text">5. Pushing a wall that does not move results in how much work?</span>
+            <label><input type="radio" name="q5" value="1"> 0 Joules</label>
+            <label><input type="radio" name="q5" value="0"> 100 Joules</label>
+            <label><input type="radio" name="q5" value="0"> 10 Joules</label>
         </div>
-
-        <div class="q">
-            <span class="q-title">6. Which group contains the Noble Gases?</span>
-            <input type="radio" name="q6" value="0"> Group 1<br>
-            <input type="radio" name="q6" value="1"> Group 18<br>
-            <input type="radio" name="q6" value="0"> Group 17
+        <div class="q-block"><span class="q-text">6. Which group contains the Noble Gases?</span>
+            <label><input type="radio" name="q6" value="1"> Group 18</label>
+            <label><input type="radio" name="q6" value="0"> Group 1</label>
+            <label><input type="radio" name="q6" value="0"> Group 17</label>
         </div>
-
-        <div class="q">
-            <span class="q-title">7. The pH of pure water is:</span>
-            <input type="radio" name="q7" value="0"> 0<br>
-            <input type="radio" name="q7" value="1"> 7<br>
-            <input type="radio" name="q7" value="0"> 14
+        <div class="q-block"><span class="q-text">7. The pH of pure water is:</span>
+            <label><input type="radio" name="q7" value="0"> 1</label>
+            <label><input type="radio" name="q7" value="1"> 7</label>
+            <label><input type="radio" name="q7" value="0"> 14</label>
         </div>
-
-        <div class="q">
-            <span class="q-title">8. Which organelle produces ATP energy?</span>
-            <input type="radio" name="q8" value="0"> Chloroplast<br>
-            <input type="radio" name="q8" value="1"> Mitochondria<br>
-            <input type="radio" name="q8" value="0"> Ribosome
-        </div>
-
-        <div class="q">
-            <span class="q-title">9. Prokaryotic cells lack a:</span>
-            <input type="radio" name="q9" value="1"> Nucleus<br>
-            <input type="radio" name="q9" value="0"> Cell Membrane<br>
-            <input type="radio" name="q9" value="0"> Cytoplasm
-        </div>
-
-        <div class="q">
-            <span class="q-title">10. Genetic code is carried to ribosomes by:</span>
-            <input type="radio" name="q10" value="0"> DNA<br>
-            <input type="radio" name="q10" value="1"> RNA<br>
-            <input type="radio" name="q10" value="0"> Protein
-        </div>
-
-        <p style="text-align:center; color: #666;">... Questions 11-50 are loaded in the full script below ...</p>
-    </div>
-
-    <br>
-    <button class="btn" onclick="checkScore()">SUBMIT FINAL ANSWERS</button>
-
-    <div id="results">
-        <h2 id="finalScore"></h2>
-        <p id="rank"></p>
-        <button onclick="location.reload()">Restart Test</button>
-    </div>
-</div>
-
-<script>
-    // Logic for all 50 questions
-    function checkScore() {
-        let score = 0;
-        let total = 50; 
-        
-        // This checks all radio buttons. For this fixed demo, 
-        // we'll simulate the grading based on the visible questions.
-        let answers = document.querySelectorAll('input[type="radio"]:checked');
-        answers.forEach(a => {
-            if(a.value === "1") score++;
-        });
-
-        // Simulating the rest of the 50 items for the full scale
-        let finalPercent = (score / answers.length) * 100;
-        if(isNaN(finalPercent)) finalPercent = 0;
-
-        document.getElementById('quiz').style.display = 'none';
-        document.getElementById('results').style.display = 'block';
-        document.getElementById('finalScore').innerText = "Score: " + Math.round(finalPercent) + "%";
-        
-        if(finalPercent >= 85) {
-            document.getElementById('rank').innerText = "Status: Top 25% Verified.";
-        } else {
-            document.getElementById('rank').innerText = "Status: Keep Practicing.";
-        }
-    }
-</script>
-
-</body>
-</html>
+        <div class="q-block"><span class="q-text">8. Which organelle
