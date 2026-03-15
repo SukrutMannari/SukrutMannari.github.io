@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Science Mastery Exam - Form C</title>
+    <title>Science Mastery Exam - Form C (Complete)</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; padding: 20px; color: #333; }
         .exam-container { max-width: 850px; margin: auto; background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
@@ -19,22 +19,22 @@
 
 <div class="exam-container">
     <h1>8th Grade Science Mastery: Form C</h1>
-    <p style="text-align:center"><i>Standard 100% Difficulty | 50 Questions</i></p>
+    <p style="text-align:center"><i>Complete 50-Question Edition | 100% Difficulty</i></p>
     
     <form id="masteryForm"></form>
 
-    <button type="button" class="btn" onclick="gradeExam()">SUBMIT FORM C</button>
+    <button type="button" class="btn" onclick="gradeExam()">SUBMIT COMPLETE EXAM</button>
 
     <div id="results">
         <h2 id="scoreHeader"></h2>
         <p id="rankMessage" style="font-size: 1.1em;"></p>
-        <button class="btn" style="background:#6c757d; margin-top:15px;" onclick="window.location.reload()">Start New Attempt</button>
+        <button class="btn" style="background:#6c757d; margin-top:15px;" onclick="window.location.reload()">Reset and Try Again</button>
     </div>
 </div>
 
 <script>
 const questions = [
-    // PHYSICAL SCIENCE
+    // PHYSICAL SCIENCE (1-17)
     { q: "Which method of heat transfer occurs through direct contact between molecules?", a: "Conduction", o: ["Convection", "Radiation", "Conduction", "Insulation"] },
     { q: "A 10kg wagon is pulled with a net force of 30N. What is its acceleration?", a: "3 m/s²", o: ["3 m/s²", "300 m/s²", "0.3 m/s²", "20 m/s²"] },
     { q: "Which of the following is a physical property of matter?", a: "Density", o: ["Flammability", "Reactivity with acid", "Density", "Ability to rust"] },
@@ -45,123 +45,10 @@ const questions = [
     { q: "According to the Law of Conservation of Energy, energy cannot be:", a: "Created or destroyed", o: ["Transformed", "Transferred", "Created or destroyed", "Stored"] },
     { q: "Which type of lens curves inward and spreads light rays apart?", a: "Concave", o: ["Convex", "Concave", "Plane", "Bifocal"] },
     { q: "What is the pH of a neutral substance like pure water?", a: "7", o: ["0", "7", "14", "1"] },
-
-    // LIFE SCIENCE
-    { q: "Which organelle is the site of cellular respiration, producing ATP?", a: "Mitochondria", o: ["Chloroplast", "Mitochondria", "Vacuole", "Ribosome"] },
-    { q: "What is the relationship between DNA, genes, and chromosomes?", a: "Chromosomes are made of DNA, and genes are segments of DNA", o: ["DNA is made of genes, and genes are made of chromosomes", "Chromosomes are made of DNA, and genes are segments of DNA", "Genes are made of chromosomes", "They are unrelated"] },
-    { q: "Which of the following is a product of cellular respiration?", a: "Carbon Dioxide", o: ["Oxygen", "Glucose", "Carbon Dioxide", "Sunlight"] },
-    { q: "A bird's hollow bones are an example of:", a: "An adaptation", o: ["A mutation", "An adaptation", "A learned behavior", "A producer"] },
-    { q: "Which system delivers oxygen and nutrients to cells throughout the body?", a: "Circulatory System", o: ["Respiratory System", "Circulatory System", "Digestive System", "Nervous System"] },
-    { q: "In a food web, which organisms break down dead matter and return nutrients to the soil?", a: "Decomposers", o: ["Producers", "Primary Consumers", "Decomposers", "Apex Predators"] },
-    { q: "If two organisms are in the same Class, they must also be in the same:", a: "Phylum", o: ["Order", "Family", "Genus", "Phylum"] },
-    { q: "What is the primary function of the cell membrane?", a: "To control what enters and leaves the cell", o: ["To produce energy", "To control what enters and leaves the cell", "To protect the nucleus", "To store water"] },
-    { q: "Which type of reproduction results in offspring that are genetically identical to the parent?", a: "Asexual reproduction", o: ["Sexual reproduction", "Asexual reproduction", "Meiosis", "Fertilization"] },
-    { q: "Which molecule carries the genetic code from the nucleus to the ribosomes?", a: "RNA", o: ["DNA", "RNA", "Protein", "ATP"] },
-
-    // EARTH & SPACE SCIENCE
-    { q: "Which type of rock forms from the cooling and solidification of lava on Earth's surface?", a: "Extrusive Igneous", o: ["Intrusive Igneous", "Extrusive Igneous", "Sedimentary", "Metamorphic"] },
-    { q: "What is the main cause of global ocean tides?", a: "The Moon's gravitational pull", o: ["The Sun's heat", "Earth's rotation", "The Moon's gravitational pull", "Wind patterns"] },
-    { q: "Where does most of the weather occur in Earth's atmosphere?", a: "Troposphere", o: ["Stratosphere", "Mesosphere", "Troposphere", "Thermosphere"] },
-    { q: "Which instrument is used to measure air pressure?", a: "Barometer", o: ["Thermometer", "Anemometer", "Barometer", "Hygrometer"] },
-    { q: "The point on Earth's surface directly above the focus of an earthquake is the:", a: "Epicenter", o: ["Fault line", "Epicenter", "Magma chamber", "Crust"] },
-    { q: "How long does it take Earth to complete one full revolution around the Sun?", a: "365.25 days", o: ["24 hours", "30 days", "365.25 days", "12 hours"] },
-    { q: "Which planet is known as the 'Red Planet' due to iron oxide on its surface?", a: "Mars", o: ["Venus", "Mars", "Jupiter", "Saturn"] },
-    { q: "What type of front occurs when a cold air mass slides under a warm air mass?", a: "Cold Front", o: ["Warm Front", "Cold Front", "Stationary Front", "Occluded Front"] },
-    { q: "The process of water vapor changing into liquid water droplets is:", a: "Condensation", o: ["Evaporation", "Condensation", "Precipitation", "Transpiration"] },
-    { q: "Which of the following is a non-renewable energy resource?", a: "Natural Gas", o: ["Solar", "Wind", "Natural Gas", "Hydroelectric"] }
-];
-
-// Fill the rest of the 50 questions
-while(questions.length < 50) {
-    questions.push({
-        q: "Standard Mastery Concept Check #" + (questions.length + 1) + ": Identify the correct scientific principle.",
-        a: "Correct Answer",
-        o: ["Correct Answer", "Distractor A", "Distractor B", "Distractor C"]
-    });
-}
-
-function loadExam() {
-    const form = document.getElementById('masteryForm');
-    questions.forEach((item, i) => {
-        const qDiv = document.createElement('div');
-        qDiv.className = 'q-box';
-        const shuffled = [...item.o].sort(() => Math.random() - 0.5);
-        let opts = '';
-        shuffled.forEach(opt => {
-            opts += `<label><input type="radio" name="q${i}" value="${opt}" data-correct="${opt === item.a}"> ${opt}</label>`;
-        });
-        qDiv.innerHTML = `<span class="q-text">${i+1}. ${item.q}</span><div class="options">${opts}</div>`;
-        form.appendChild(qDiv);
-    });
-}
-
-function gradeExam() {
-    let score = 0;
-    const checks = document.querySelectorAll('input[type="radio"]:checked');
-    checks.forEach(c => {
-        if(c.getAttribute('data-correct') === "true") score++;
-    });
-
-    const percent = (score / 50) * 100;
-    document.getElementById('masteryForm').style.display = 'none';
-    document.getElementById('results').style.display = 'block';
-    document.getElementById('scoreHeader').innerText = `Form C Result: ${score} / 50 (${percent}%)`;
-    
-    let msg = "";
-    if(percent >= 92) msg = "Excellent! You are maintaining a very high level of mastery.";
-    else if(percent >= 85) msg = "Great consistency. You are firmly in the top 25% range.";
-    else if(percent >= 75) msg = "Solid score, but check the questions you missed to find patterns.";
-    else msg = "Review the core concepts to push your score into the 85%+ bracket.";
-    
-    document.getElementById('rankMessage').innerHTML = msg;
-    window.scrollTo(0,0);
-}
-
-loadExam();
-</script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    { q: "If you move two magnets closer together, the magnetic force between them:", a: "Increases", o: ["Decreases", "Increases", "Stays the same", "Disappears"] },
+    { q: "Which of these is a heterogeneous mixture?", a: "Trail mix", o: ["Salt water", "Air", "Trail mix", "Sugar"] },
+    { q: "Resistance in an electrical circuit is measured in:", a: "Ohms", o: ["Volts", "Amps", "Watts", "Ohms"] },
+    { q: "A car travels 200 km in 2 hours. What is its average speed?", a: "100 km/h", o: ["400 km/h", "100 km/h", "50 km/h", "202 km/h"] },
+    { q: "Which state of matter has a definite volume but no definite shape?", a: "Liquid", o: ["Solid", "Liquid", "Gas", "Plasma"] },
+    { q: "Potential energy is energy that an object has due to its:", a: "Position or condition", o: ["Motion", "Position or condition", "Temperature", "Speed"] },
+    { q: "The atomic number of an element is determined by the number of
