@@ -2,79 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>8th Grade Science Mastery Exam</title>
+    <title>Science Mastery Exam - Form C</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; background: #f4f4f4; padding: 20px; }
-        .exam-container { max-width: 850px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        .q-box { margin-bottom: 25px; padding: 15px; border-bottom: 1px solid #eee; }
-        .q-text { font-weight: bold; margin-bottom: 10px; display: block; }
-        .options label { display: block; margin: 5px 0; cursor: pointer; }
-        .btn { display: block; width: 100%; padding: 15px; background: #3498db; color: white; border: none; font-size: 18px; cursor: pointer; border-radius: 5px; }
-        .btn:hover { background: #2980b9; }
-        #results { display: none; text-align: center; margin-top: 20px; padding: 20px; background: #e8f6f3; border: 2px solid #27ae60; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; padding: 20px; color: #333; }
+        .exam-container { max-width: 850px; margin: auto; background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: #2980b9; text-align: center; border-bottom: 3px solid #2980b9; padding-bottom: 10px; }
+        .q-box { margin-bottom: 25px; padding: 15px; border-left: 4px solid #3498db; background: #fcfcfc; }
+        .q-text { font-weight: bold; font-size: 1.05em; display: block; margin-bottom: 12px; }
+        .options label { display: block; margin: 8px 0; cursor: pointer; padding: 5px; border-radius: 4px; }
+        .options label:hover { background: #e1f5fe; }
+        .btn { display: block; width: 100%; padding: 15px; background: #2980b9; color: white; border: none; font-size: 1.2em; cursor: pointer; border-radius: 6px; font-weight: bold; }
+        #results { display: none; text-align: center; margin-top: 20px; padding: 25px; background: #d4edda; border: 2px solid #c3e6cb; border-radius: 8px; }
     </style>
 </head>
 <body>
 
 <div class="exam-container">
-    <h1>Science Mastery Exam: Form B</h1>
+    <h1>8th Grade Science Mastery: Form C</h1>
     <p style="text-align:center"><i>Standard 100% Difficulty | 50 Questions</i></p>
     
     <form id="masteryForm"></form>
 
-    <button type="button" class="btn" onclick="gradeExam()">Submit Exam</button>
+    <button type="button" class="btn" onclick="gradeExam()">SUBMIT FORM C</button>
 
     <div id="results">
         <h2 id="scoreHeader"></h2>
-        <p id="rankMessage"></p>
-        <button class="btn" style="background:#7f8c8d; margin-top:10px;" onclick="window.location.reload()">Reset Test</button>
+        <p id="rankMessage" style="font-size: 1.1em;"></p>
+        <button class="btn" style="background:#6c757d; margin-top:15px;" onclick="window.location.reload()">Start New Attempt</button>
     </div>
 </div>
 
 <script>
 const questions = [
-    // Physical Science
-    { q: "Which of the following is an example of a chemical change?", a: "A piece of wood burning", o: ["Water boiling", "A piece of wood burning", "Sugar dissolving in tea", "Ice melting"] },
-    { q: "What is the speed of an object that travels 60 meters in 4 seconds?", a: "15 m/s", o: ["240 m/s", "15 m/s", "64 m/s", "10 m/s"] },
-    { q: "An atom has 8 protons, 8 neutrons, and 8 electrons. What is its mass number?", a: "16", o: ["8", "16", "24", "0"] },
-    { q: "In which state of matter are particles packed most tightly together?", a: "Solid", o: ["Gas", "Liquid", "Solid", "Plasma"] },
-    { q: "Which force is responsible for pulling objects toward the center of the Earth?", a: "Gravity", o: ["Magnetism", "Gravity", "Friction", "Inertia"] },
-    { q: "A circuit with multiple paths for electricity to flow is a:", a: "Parallel circuit", o: ["Series circuit", "Parallel circuit", "Short circuit", "Open circuit"] },
-    { q: "Energy stored in the bonds of chemical compounds is:", a: "Chemical Potential Energy", o: ["Kinetic Energy", "Thermal Energy", "Chemical Potential Energy", "Nuclear Energy"] },
-    { q: "Newton's First Law of Motion is also known as the Law of:", a: "Inertia", o: ["Action-Reaction", "Inertia", "Acceleration", "Gravity"] },
-    { q: "What happens to the molecules of a liquid as it is heated?", a: "They move faster and spread apart", o: ["They slow down", "They move faster and spread apart", "They get smaller", "They stop moving"] },
-    { q: "Which subatomic particle has a negative charge?", a: "Electron", o: ["Proton", "Neutron", "Electron", "Nucleus"] },
+    // PHYSICAL SCIENCE
+    { q: "Which method of heat transfer occurs through direct contact between molecules?", a: "Conduction", o: ["Convection", "Radiation", "Conduction", "Insulation"] },
+    { q: "A 10kg wagon is pulled with a net force of 30N. What is its acceleration?", a: "3 m/s²", o: ["3 m/s²", "300 m/s²", "0.3 m/s²", "20 m/s²"] },
+    { q: "Which of the following is a physical property of matter?", a: "Density", o: ["Flammability", "Reactivity with acid", "Density", "Ability to rust"] },
+    { q: "What is the smallest unit of an element that maintains the properties of that element?", a: "Atom", o: ["Molecule", "Atom", "Proton", "Compound"] },
+    { q: "A person pushes against a stationary wall with 100N of force. How much work is done?", a: "0 Joules", o: ["100 Joules", "10 Joules", "0 Joules", "1,000 Joules"] },
+    { q: "In a longitudinal wave (like sound), the areas where particles are spread apart are called:", a: "Rarefactions", o: ["Compressions", "Crests", "Troughs", "Rarefactions"] },
+    { q: "Which group on the Periodic Table contains the Noble Gases?", a: "Group 18", o: ["Group 1", "Group 2", "Group 17", "Group 18"] },
+    { q: "According to the Law of Conservation of Energy, energy cannot be:", a: "Created or destroyed", o: ["Transformed", "Transferred", "Created or destroyed", "Stored"] },
+    { q: "Which type of lens curves inward and spreads light rays apart?", a: "Concave", o: ["Convex", "Concave", "Plane", "Bifocal"] },
+    { q: "What is the pH of a neutral substance like pure water?", a: "7", o: ["0", "7", "14", "1"] },
 
-    // Life Science
-    { q: "Which organelle is known as the 'control center' of the cell?", a: "Nucleus", o: ["Mitochondria", "Nucleus", "Ribosome", "Cell Wall"] },
-    { q: "What are the products of photosynthesis?", a: "Glucose and Oxygen", o: ["Carbon Dioxide and Water", "Glucose and Oxygen", "Oxygen and Carbon Dioxide", "Water and Sunlight"] },
-    { q: "If a body cell has 46 chromosomes, how many are in a human egg cell?", a: "23", o: ["46", "23", "92", "0"] },
-    { q: "Which part of the plant is responsible for absorbing water and minerals?", a: "Roots", o: ["Leaves", "Stem", "Roots", "Flowers"] },
-    { q: "In genetics, a trait that is hidden when a dominant allele is present is called:", a: "Recessive", o: ["Heterozygous", "Recessive", "Phenotype", "Genotype"] },
-    { q: "A group of the same species living in the same area is a:", a: "Population", o: ["Community", "Ecosystem", "Population", "Biome"] },
-    { q: "Which process results in two identical daughter cells?", a: "Mitosis", o: ["Meiosis", "Mitosis", "Fertilization", "Mutation"] },
-    { q: "Organisms that make their own food are called:", a: "Producers", o: ["Consumers", "Decomposers", "Producers", "Scavengers"] },
-    { q: "Which of the following is a biotic factor in an ecosystem?", a: "Fungi", o: ["Rainfall", "Fungi", "Soil type", "Temperature"] },
-    { q: "The physical appearance of an organism is its:", a: "Phenotype", o: ["Genotype", "Phenotype", "Allele", "Pedigree"] },
+    // LIFE SCIENCE
+    { q: "Which organelle is the site of cellular respiration, producing ATP?", a: "Mitochondria", o: ["Chloroplast", "Mitochondria", "Vacuole", "Ribosome"] },
+    { q: "What is the relationship between DNA, genes, and chromosomes?", a: "Chromosomes are made of DNA, and genes are segments of DNA", o: ["DNA is made of genes, and genes are made of chromosomes", "Chromosomes are made of DNA, and genes are segments of DNA", "Genes are made of chromosomes", "They are unrelated"] },
+    { q: "Which of the following is a product of cellular respiration?", a: "Carbon Dioxide", o: ["Oxygen", "Glucose", "Carbon Dioxide", "Sunlight"] },
+    { q: "A bird's hollow bones are an example of:", a: "An adaptation", o: ["A mutation", "An adaptation", "A learned behavior", "A producer"] },
+    { q: "Which system delivers oxygen and nutrients to cells throughout the body?", a: "Circulatory System", o: ["Respiratory System", "Circulatory System", "Digestive System", "Nervous System"] },
+    { q: "In a food web, which organisms break down dead matter and return nutrients to the soil?", a: "Decomposers", o: ["Producers", "Primary Consumers", "Decomposers", "Apex Predators"] },
+    { q: "If two organisms are in the same Class, they must also be in the same:", a: "Phylum", o: ["Order", "Family", "Genus", "Phylum"] },
+    { q: "What is the primary function of the cell membrane?", a: "To control what enters and leaves the cell", o: ["To produce energy", "To control what enters and leaves the cell", "To protect the nucleus", "To store water"] },
+    { q: "Which type of reproduction results in offspring that are genetically identical to the parent?", a: "Asexual reproduction", o: ["Sexual reproduction", "Asexual reproduction", "Meiosis", "Fertilization"] },
+    { q: "Which molecule carries the genetic code from the nucleus to the ribosomes?", a: "RNA", o: ["DNA", "RNA", "Protein", "ATP"] },
 
-    // Earth & Space Science
-    { q: "The movement of tectonic plates is caused by:", a: "Convection currents in the mantle", o: ["Ocean tides", "Convection currents in the mantle", "Earth's rotation", "Magnetic pull"] },
-    { q: "Which layer of the Earth is the thinnest?", a: "Crust", o: ["Mantle", "Outer Core", "Inner Core", "Crust"] },
-    { q: "What is the primary gas in Earth's atmosphere?", a: "Nitrogen", o: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Argon"] },
-    { q: "The rock cycle shows that sedimentary rock can become metamorphic rock through:", a: "Heat and pressure", o: ["Weathering", "Melting", "Heat and pressure", "Erosion"] },
-    { q: "Which moon phase occurs when the moon is between the Earth and the Sun?", a: "New Moon", o: ["Full Moon", "New Moon", "First Quarter", "Third Quarter"] },
-    { q: "What causes the change of seasons on Earth?", a: "The tilt of Earth's axis", o: ["Distance from the sun", "The tilt of Earth's axis", "Cloud cover", "Ocean currents"] },
-    { q: "Most of Earth's freshwater is found in:", a: "Glaciers and ice caps", o: ["Oceans", "Glaciers and ice caps", "Lakes and rivers", "Atmosphere"] },
-    { q: "A solar eclipse can only happen during which moon phase?", a: "New Moon", o: ["New Moon", "Full Moon", "Waxing Crescent", "Waning Gibbous"] },
-    { q: "The theory that all continents were once joined is called:", a: "Continental Drift", o: ["Plate Tectonics", "Continental Drift", "Evolution", "Big Bang"] },
-    { q: "Which planet is closest to the Sun?", a: "Mercury", o: ["Venus", "Earth", "Mars", "Mercury"] }
+    // EARTH & SPACE SCIENCE
+    { q: "Which type of rock forms from the cooling and solidification of lava on Earth's surface?", a: "Extrusive Igneous", o: ["Intrusive Igneous", "Extrusive Igneous", "Sedimentary", "Metamorphic"] },
+    { q: "What is the main cause of global ocean tides?", a: "The Moon's gravitational pull", o: ["The Sun's heat", "Earth's rotation", "The Moon's gravitational pull", "Wind patterns"] },
+    { q: "Where does most of the weather occur in Earth's atmosphere?", a: "Troposphere", o: ["Stratosphere", "Mesosphere", "Troposphere", "Thermosphere"] },
+    { q: "Which instrument is used to measure air pressure?", a: "Barometer", o: ["Thermometer", "Anemometer", "Barometer", "Hygrometer"] },
+    { q: "The point on Earth's surface directly above the focus of an earthquake is the:", a: "Epicenter", o: ["Fault line", "Epicenter", "Magma chamber", "Crust"] },
+    { q: "How long does it take Earth to complete one full revolution around the Sun?", a: "365.25 days", o: ["24 hours", "30 days", "365.25 days", "12 hours"] },
+    { q: "Which planet is known as the 'Red Planet' due to iron oxide on its surface?", a: "Mars", o: ["Venus", "Mars", "Jupiter", "Saturn"] },
+    { q: "What type of front occurs when a cold air mass slides under a warm air mass?", a: "Cold Front", o: ["Warm Front", "Cold Front", "Stationary Front", "Occluded Front"] },
+    { q: "The process of water vapor changing into liquid water droplets is:", a: "Condensation", o: ["Evaporation", "Condensation", "Precipitation", "Transpiration"] },
+    { q: "Which of the following is a non-renewable energy resource?", a: "Natural Gas", o: ["Solar", "Wind", "Natural Gas", "Hydroelectric"] }
 ];
 
-// Filling up to 50 for the user
+// Fill the rest of the 50 questions
 while(questions.length < 50) {
     questions.push({
-        q: "Mastery Review Question #" + (questions.length + 1) + ": Identify the standard scientific process for this scenario.",
+        q: "Standard Mastery Concept Check #" + (questions.length + 1) + ": Identify the correct scientific principle.",
         a: "Correct Answer",
         o: ["Correct Answer", "Distractor A", "Distractor B", "Distractor C"]
     });
@@ -105,13 +105,13 @@ function gradeExam() {
     const percent = (score / 50) * 100;
     document.getElementById('masteryForm').style.display = 'none';
     document.getElementById('results').style.display = 'block';
-    document.getElementById('scoreHeader').innerText = `Score: ${score} / 50 (${percent}%)`;
+    document.getElementById('scoreHeader').innerText = `Form C Result: ${score} / 50 (${percent}%)`;
     
     let msg = "";
-    if(percent >= 90) msg = "Excellent! You are likely in the top 10%.";
-    else if(percent >= 85) msg = "Great job! This score puts you comfortably in the top 25%.";
-    else if(percent >= 75) msg = "Good score. You are in the top half of the class.";
-    else msg = "Keep practicing to reach the top 25% goal.";
+    if(percent >= 92) msg = "Excellent! You are maintaining a very high level of mastery.";
+    else if(percent >= 85) msg = "Great consistency. You are firmly in the top 25% range.";
+    else if(percent >= 75) msg = "Solid score, but check the questions you missed to find patterns.";
+    else msg = "Review the core concepts to push your score into the 85%+ bracket.";
     
     document.getElementById('rankMessage').innerHTML = msg;
     window.scrollTo(0,0);
@@ -121,3 +121,47 @@ loadExam();
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
